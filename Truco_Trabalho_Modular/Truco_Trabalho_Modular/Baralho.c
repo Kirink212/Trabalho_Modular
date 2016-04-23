@@ -45,7 +45,6 @@ LIS_tppLista BAR_criaBaralho()
 			}
 			card->naipe = nap[i];
 			card->valor = val[j];
-			printf("Valor: %d\tNaipe: %d\n", card->valor, card->naipe);
 			if(LIS_InserirElementoApos(bar, card) != LIS_CondRetOK)
 			{
 				printf("Erro na inserção de carta");
@@ -81,9 +80,9 @@ void BAR_embaralhaCartas(LIS_tppLista baralho)
 	{
 		random = rand()%40;
 		IrInicioLista(baralho);
-		if (LIS_AvancarElementoCorrente(baralho, random) != LIS_CondRetOK)
+		if (LIS_AvancarElementoCorrente(baralho, random) == LIS_CondRetListaVazia)
 		{
-			printf("Erro ao tentar andar na lista");
+			printf("Erro ao tentar andar em uma lista vazia");
 			exit(1);
 		}
 		carta=LIS_ObterValor(baralho);
@@ -94,9 +93,9 @@ void BAR_embaralhaCartas(LIS_tppLista baralho)
 		}
 		random = rand()%40;
 		IrInicioLista(baralho);
-		if (LIS_AvancarElementoCorrente(baralho, random) != LIS_CondRetOK)
+		if (LIS_AvancarElementoCorrente(baralho, random) == LIS_CondRetListaVazia)
 		{
-			printf("Erro ao tentar andar na lista");
+			printf("Erro ao tentar andar em uma lista vazia");
 			exit(1);
 		}
 		if (LIS_InserirElementoAntes(baralho, carta) != LIS_CondRetOK)
