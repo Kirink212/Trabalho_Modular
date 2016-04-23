@@ -42,8 +42,10 @@ void BAR_liberaBaralho(LIS_tppLista baralho)
 {
 	IrInicioLista(baralho);
 	void* carta=LIS_ObterValor(baralho);
-	while(carta != NULL) {
-		if (LIS_ExcluirElemento(baralho) != LIS_CondRetOK) {
+	while(carta != NULL)
+	{
+		if (LIS_ExcluirElemento(baralho) != LIS_CondRetOK)
+		{
 			printf("Erro na exclusao de carta");
 			exit(1);
 		}
@@ -52,28 +54,34 @@ void BAR_liberaBaralho(LIS_tppLista baralho)
 	}
 }
 
-void BAR_embaralhaCartas(LIS_tppLista baralho){
+void BAR_embaralhaCartas(LIS_tppLista baralho)
+{
 	srand(time(NULL));
 	int random,i;
-	for(i=0;i<50;i++) {
+	for(i=0;i<50;i++)
+	{
 		random = rand(0,39);
 		IrInicioLista(baralho);
-		if (LIS_AvancarElementoCorrente(baralho, random) != LIS_CondRetOK) {
+		if (LIS_AvancarElementoCorrente(baralho, random) != LIS_CondRetOK)
+		{
 			printf("Erro ao tentar andar na lista");
 			exit(1);
 		}
 		void* carta=LIS_ObterValor(baralho);
-		if (LIS_ExcluirElemento(baralho) != LIS_CondRetOK) {
+		if (LIS_ExcluirElemento(baralho) != LIS_CondRetOK)
+		{
 			printf("Erro na exclusao de carta");
 			exit(1);
 		}
 		random = rand(0,39);
 		IrInicioLista(baralho);
-		if (LIS_AvancarElementoCorrente(baralho, random) != LIS_CondRetOK) {
+		if (LIS_AvancarElementoCorrente(baralho, random) != LIS_CondRetOK)
+		{
 			printf("Erro ao tentar andar na lista");
 			exit(1);
 		}
-		if (LIS_InserirElementoAntes(baralho, carta) != LIS_CondRetOK) {
+		if (LIS_InserirElementoAntes(baralho, carta) != LIS_CondRetOK)
+		{
 			printf("Erro ao tentar inserir valor na lista");
 			exit(1);
 		}
