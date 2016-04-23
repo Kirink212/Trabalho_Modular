@@ -2,10 +2,26 @@
 #include <stdio.h>
 #include <time.h>
 
-typedef enum valor {QUATRO, CINCO, SEIS, SETE, DAMA, VALETE, REI, AS, DOIS, TRES}Valor;
-typedef enum naipe {OUROS, ESPADAS, COPAS, PAUS} Naipe;
+typedef enum valor {
+	QUATRO,
+	CINCO,
+	SEIS,
+	SETE,
+	DAMA,
+	VALETE,
+	REI,
+	AS,
+	DOIS,
+	TRES
+} Valor;
+typedef enum naipe {
+	OUROS,
+	ESPADAS,
+	COPAS,
+	PAUS
+} Naipe;
 
-struct carta{
+struct carta {
 	Valor valor;
 	Naipe naipe;
 };
@@ -41,23 +57,23 @@ LIS_tppLista BAR_criaBaralho()
 void BAR_liberaBaralho(LIS_tppLista baralho)
 {
 	IrInicioLista(baralho);
-	void* carta=LIS_ObterValor(baralho);
-	while(carta != NULL)
+	Carta* card = (Carta*) LIS_ObterValor(baralho);
+	while(card != NULL)
 	{
 		if (LIS_ExcluirElemento(baralho) != LIS_CondRetOK)
 		{
 			printf("Erro na exclusao de carta");
 			exit(1);
 		}
-		free(carta);
-		carta=LIS_ObterValor(baralho);
+		free(card);
+		card= (Carta*) LIS_ObterValor(baralho);
 	}
 }
 
 void BAR_embaralhaCartas(LIS_tppLista baralho)
 {
+	int random, i;
 	srand(time(NULL));
-	int random,i;
 	for(i=0;i<50;i++)
 	{
 		random = rand(0,39);
@@ -102,5 +118,23 @@ void BAR_distribuiCartas(LIS_tppLista bar, LIS_tppLista jog)
 			exit(1);
 		}
 		LIS_InserirElementoApos(jog, card);
+	}
+}
+
+void exibeBaralho(LIS_tppLista baralho)
+{
+	IrInicioLista(baralho);
+	void *carta_void=LIS_ObterValor(baralho);
+	Carta* carta=(Carta*) carta_void;
+	while(carta != NULL)
+	{
+		carta=(Carta*) carta_void;
+		printf("Valor: %d\tNaipe: %d\n", carta->valor, carta->naipe);
+		if (LIS_AvancarElementoCorrente(baralho, 1) != LIS_CondRetOK)
+		{
+			printf("Erro na exclusao de carta");
+			exit(1);
+		}
+		carta_void=LIS_ObterValor(baralho);
 	}
 }

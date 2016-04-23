@@ -1,4 +1,4 @@
-#include<stdlib.h>
+#include <stdlib.h>
 #include "LISTA.h"
 
 typedef struct carta Carta;
@@ -10,3 +10,5 @@ void BAR_liberaBaralho(LIS_tppLista baralho);
 void BAR_embaralhaCartas(LIS_tppLista baralho);
 
 void BAR_distribuiCartas(LIS_tppLista bar, LIS_tppLista jog);
+
+void exibeBaralho(LIS_tppLista baralho);
