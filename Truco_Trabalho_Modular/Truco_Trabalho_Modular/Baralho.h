@@ -7,6 +7,6 @@ LIS_tppLista BAR_criaBaralho();
 
 void BAR_liberaCarta();
 
-LIS_tppLista BAR_embaralhaCartas();
+void BAR_embaralhaCartas();
 
 void BAR_distribuiCartas();
