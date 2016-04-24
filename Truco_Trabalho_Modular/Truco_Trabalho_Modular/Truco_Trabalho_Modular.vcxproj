@@ -80,6 +80,7 @@
   <ItemGroup>
     <ClCompile Include="Baralho.c" />
     <ClCompile Include="LISTA.c" />
+    <ClCompile Include="main.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
