@@ -12,8 +12,8 @@ typedef enum {
          BAR_CondRetCartaNaoCriada ,
                /* Erro na criação da carta */
 
-		 BAR_CondRetCartaNaoInseridaAntes ,
-               /* Erro na inserção de carta antes em uma lista*/
+		 BAR_CondRetFaltouMemoria ,
+               /* Erro na inserção de carta, falta de memória*/
 
          BAR_CondRetCartaNaoExcluida ,
                /* Erro na exclusão da carta */
@@ -23,14 +23,16 @@ typedef enum {
 
 } BAR_tpCondRet ;
 
-LIS_tppLista BAR_criaBaralho();
+LIS_tppLista BAR_CriarBaralho();
 
-BAR_tpCondRet BAR_liberaBaralho(LIS_tppLista baralho);
+BAR_tpCondRet BAR_LiberarBaralho(LIS_tppLista baralho);
 
-BAR_tpCondRet BAR_embaralhaCartas(LIS_tppLista baralho);
+BAR_tpCondRet BAR_EmbaralharCartas(LIS_tppLista baralho);
 
-BAR_tpCondRet BAR_distribuiCartas(LIS_tppLista bar, LIS_tppLista jog);
+BAR_tpCondRet BAR_DistribuirCartas(LIS_tppLista bar, LIS_tppLista jog);
 
-void* BAR_EscolheManilha(LIS_tppLista bar);
+int BAR_EscolherManilha(LIS_tppLista bar);
 
-void exibeBaralho(LIS_tppLista baralho);
+int BAR_ObterValor(Carta* card);
+
+int BAR_ObterNaipe(Carta* card);

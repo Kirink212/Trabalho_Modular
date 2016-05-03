@@ -51,7 +51,7 @@ struct carta {
 	Naipe naipe;
 };
 
-LIS_tppLista BAR_criaBaralho()
+LIS_tppLista BAR_CriarBaralho()
 {
 	int i, j;
 	Valor val[10] = {QUATRO, CINCO, SEIS, SETE, DAMA, VALETE, REI, AS, DOIS, TRES};
@@ -78,7 +78,7 @@ LIS_tppLista BAR_criaBaralho()
 	return bar;
 }
 
-BAR_tpCondRet BAR_liberaBaralho(LIS_tppLista baralho)
+BAR_tpCondRet BAR_LiberarBaralho(LIS_tppLista baralho)
 {
 	Carta* card = (Carta*) LIS_ObterValor(baralho);
 	LIS_IrInicioLista(baralho);
@@ -94,7 +94,7 @@ BAR_tpCondRet BAR_liberaBaralho(LIS_tppLista baralho)
 	return BAR_CondRetOK;
 }
 
-BAR_tpCondRet BAR_embaralhaCartas(LIS_tppLista baralho)
+BAR_tpCondRet BAR_EmbaralharCartas(LIS_tppLista baralho)
 {
 	int random, i;
 	void* carta;
@@ -120,13 +120,13 @@ BAR_tpCondRet BAR_embaralhaCartas(LIS_tppLista baralho)
 		}
 		if (LIS_InserirElementoAntes(baralho, carta) != LIS_CondRetOK)
 		{
-			return BAR_CondRetCartaNaoInseridaAntes;
+			return BAR_CondRetFaltouMemoria;
 		}
 	}
 	return BAR_CondRetOK;
 }
 
-BAR_tpCondRet BAR_distribuiCartas(LIS_tppLista bar, LIS_tppLista jog)
+BAR_tpCondRet BAR_DistribuirCartas(LIS_tppLista bar, LIS_tppLista jog)
 {
 	void* card;
 	int i;
@@ -143,45 +143,24 @@ BAR_tpCondRet BAR_distribuiCartas(LIS_tppLista bar, LIS_tppLista jog)
 	return BAR_CondRetOK;
 }
 
-void* BAR_EscolheManilha(LIS_tppLista bar)
+int BAR_EscolherManilha(LIS_tppLista bar)
 {
 	int i;
-	Valor val[10] = {QUATRO, CINCO, SEIS, SETE, DAMA, VALETE, REI, AS, DOIS, TRES};
-	Naipe nap[4] = {OUROS, ESPADAS, COPAS, PAUS};
-	Carta *vira, *manilha;
+	Carta *vira;
 	LIS_IrInicioLista(bar);
 	vira = (Carta*)LIS_ObterValor(bar);
-	for(i=0; i<10; i++)
-	{
-		if(val[i] == vira->valor)
-		{
-			manilha->valor = val[i+1];
-			break;
-		}
-	}
-	manilha->naipe = vira->naipe;
-	return manilha;
+	if (vira->valor == TRES)
+		return QUATRO;
+	else
+		return (vira->valor) + 1;
 }
 
-
-void exibeBaralho(LIS_tppLista baralho)
+int BAR_ObterValor(Carta* card)
 {
-	void *carta_void=NULL;
-	Carta* carta;
-	int qt=0;
-	LIS_IrFinalLista(baralho);
-	carta_void=LIS_ObterValor(baralho);
-	carta=(Carta*) carta_void;
-	while(carta != NULL)
-	{
-		carta=(Carta*) carta_void;
-		qt++;
-		printf("Valor: %d\tNaipe: %d\tQuantidade de cartas: %d\n", carta->valor, carta->naipe, qt);
-		if (LIS_AvancarElementoCorrente(baralho, -1) != LIS_CondRetOK)
-		{
-			printf("Erro na exclusao de carta ou fim da lista\n");
-			exit(1);
-		}
-		carta_void=LIS_ObterValor(baralho);
-	}
+	return card->valor;
+}
+
+int BAR_ObterNaipe(Carta* card)
+{
+	return card->naipe;
 }
