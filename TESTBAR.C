@@ -32,6 +32,8 @@ static const char LIBERAR_BARALHO_CMD      [ ] = "=liberarbaralho"    ;
 static const char EMBARALHAR_CARTAS_CMD    [ ] = "=embaralharcartas"  ;
 static const char DISTRIBUIR_CARTAS_CMD    [ ] = "=distribuircartas"  ;
 static const char ESCOLHER_MANILHA_CMD     [ ] = "=escolhermanilha"   ;
+static const char OBTER_VALOR_CMD          [ ] = "=obtervalor"        ;
+static const char OBTER_NAIPE_CMD          [ ] = "=obternaipe"        ;
 
 
 #define TRUE  1
@@ -68,6 +70,8 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 *     =embaralharcartas               inxBaralho  CondRetEsp
 *     =distribuircartas               inxBaralho  CondRetEsp
 *     =escolhermanilha                inxBaralho
+*     =obtervalor                     carta       CondRetEsp
+*     =obternaipe                     carta       CondRetEsp
 *
 ***********************************************************************/
 
@@ -88,8 +92,8 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
       int i ;
 	  
 	  LIS_tppLista jogador ;
-	  Carta* carta1, carta2 ;
-	  int numCarta1, numCarta2 ;
+	  Carta* carta ;
+	  int valor ;
 
       int numElem = -1 ;
 
@@ -211,9 +215,45 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 			
 			CondRet = BAR_EscolherManilha( vtBaralhos[ inxBaralho ] ) ;
 			
-			return TST_Comparar_INT( CondRetEsp, CondRet ,
+			return TST_Comparar_INT( CondRetEsp , CondRet ,
 					  "Condicao de retorno errada ao escolher manilha." ) ;
 		} /* fim ativa: Testar EscolherManilha */
+		
+	/* Testar ObterValor */
+		else if ( strcmp( ComandoTeste , OBTER_VALOR_CMD ) == 0 )
+		{
+			 
+			numLidos = LER_LerParametros( "pi" ,
+							  &carta , &CondRetEsp ) ;
+							  
+			if ( numLidos != 2 )
+			{
+				return TST_CondRetParm ;
+			} /* if */
+			
+			valor = BAR_ObterValor( carta ) ;
+			
+			return TST_Comparar_INT( CondRetEsp , valor ,
+					  "Condicao de retorno errada ao obter valor." ) ;
+		} /* fim ativa: Testar ObterValor */
+		
+	/* Testar ObterNaipe */
+		else if ( strcmp( ComandoTeste , OBTER_NAIPE_CMD ) == 0 )
+		{
+			 
+			numLidos = LER_LerParametros( "pi" ,
+							  &carta , &CondRetEsp ) ;
+							  
+			if ( numLidos != 2 )
+			{
+				return TST_CondRetParm ;
+			} /* if */
+			
+			valor = BAR_ObterNaipe( carta ) ;
+			
+			return TST_Comparar_INT( CondRetEsp , valor ,
+					  "Condicao de retorno errada ao obter naipe." ) ;
+		} /* fim ativa: Testar ObterNaipe */
 		
       return TST_CondRetNaoConhec ;
 
