@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "LISTA.h"
 
+/* Tipo referência para uma carta */
 typedef struct carta Carta;
 
 typedef enum {
@@ -11,16 +12,13 @@ typedef enum {
          BAR_CondRetCartaNaoCriada ,
                /* Erro na criação da carta */
 
-         BAR_CondRetCartaNaoInseridaApos ,
-               /* Erro na inserção de carta após em uma lista*/
-
 		 BAR_CondRetCartaNaoInseridaAntes ,
                /* Erro na inserção de carta antes em uma lista*/
 
          BAR_CondRetCartaNaoExcluida ,
                /* Erro na exclusão da carta */
 
-         BAR_CondRetErroAndarLista
+         BAR_CondRetErroAndarListaVazia
                /* Erro ao tentar andar em uma lista vazia */
 
 } BAR_tpCondRet ;

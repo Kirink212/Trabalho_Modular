@@ -2,6 +2,15 @@
 #include <stdio.h>
 #include <time.h>
 
+/***********************************************************************
+*
+*  $TC Tipo de dados: BAR Lista de Valores
+*
+*  $ED Descrição do tipo
+*     Tipos de valores possíveis para um elemento do tipo carta
+*
+*
+***********************************************************************/
 typedef enum valor {
 	QUATRO,
 	CINCO,
@@ -14,6 +23,16 @@ typedef enum valor {
 	DOIS,
 	TRES
 } Valor;
+
+/***********************************************************************
+*
+*  $TC Tipo de dados: BAR Lista de Naipes
+*
+*  $ED Descrição do tipo
+*     Tipos de naipes possíveis para um elemento do tipo carta
+*
+*
+***********************************************************************/
 typedef enum naipe {
 	OUROS,
 	ESPADAS,
@@ -21,6 +40,12 @@ typedef enum naipe {
 	PAUS
 } Naipe;
 
+/***********************************************************************
+*
+*  $TC Tipo de dados: BAR Tipo carta
+*
+*
+***********************************************************************/
 struct carta {
 	Valor valor;
 	Naipe naipe;
@@ -40,15 +65,13 @@ LIS_tppLista BAR_criaBaralho()
 			card = (Carta*) malloc(sizeof(Carta));
 			if(card == NULL)
 			{
-				printf("Erro na criação de carta");
-				exit(1);
+				return NULL;
 			}
 			card->naipe = nap[i];
 			card->valor = val[j];
 			if(LIS_InserirElementoApos(bar, card) != LIS_CondRetOK)
 			{
-				printf("Erro na inserção de carta após");
-				exit(1);
+				return NULL;
 			}
 		}
 	}
@@ -68,6 +91,7 @@ BAR_tpCondRet BAR_liberaBaralho(LIS_tppLista baralho)
 		free(card);
 		card= (Carta*) LIS_ObterValor(baralho);
 	}
+	return BAR_CondRetOK;
 }
 
 BAR_tpCondRet BAR_embaralhaCartas(LIS_tppLista baralho)
@@ -81,26 +105,22 @@ BAR_tpCondRet BAR_embaralhaCartas(LIS_tppLista baralho)
 		LIS_IrInicioLista(baralho);
 		if (LIS_AvancarElementoCorrente(baralho, random) == LIS_CondRetListaVazia)
 		{
-			printf("Erro ao tentar andar em uma lista vazia");
-			exit(1);
+			return BAR_CondRetErroAndarListaVazia;
 		}
 		carta=LIS_ObterValor(baralho);
 		if (LIS_ExcluirElemento(baralho) != LIS_CondRetOK)
 		{
-			printf("Erro na exclusao de carta");
-			exit(1);
+			return BAR_CondRetCartaNaoExcluida;
 		}
 		random = rand()%40;
 		LIS_IrInicioLista(baralho);
 		if (LIS_AvancarElementoCorrente(baralho, random) == LIS_CondRetListaVazia)
 		{
-			printf("Erro ao tentar andar em uma lista vazia");
-			exit(1);
+			return BAR_CondRetErroAndarListaVazia;
 		}
 		if (LIS_InserirElementoAntes(baralho, carta) != LIS_CondRetOK)
 		{
-			printf("Erro ao tentar inserir carta antes");
-			exit(1);
+			return BAR_CondRetCartaNaoInseridaAntes;
 		}
 	}
 	return BAR_CondRetOK;
@@ -116,8 +136,7 @@ BAR_tpCondRet BAR_distribuiCartas(LIS_tppLista bar, LIS_tppLista jog)
 		card = LIS_ObterValor(bar) ;
 		if(LIS_ExcluirElemento(bar) != LIS_CondRetOK)
 		{
-			printf("Erro na exclusão de carta");
-			exit(1);
+			return BAR_CondRetCartaNaoExcluida;
 		}
 		LIS_InserirElementoApos(jog, card);
 	}
