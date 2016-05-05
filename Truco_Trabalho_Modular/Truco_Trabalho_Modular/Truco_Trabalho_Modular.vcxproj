@@ -74,13 +74,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Baralho.h" />
+    <ClInclude Include="BARALHO.h" />
     <ClInclude Include="LISTA.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Baralho.c" />
+    <ClCompile Include="BARALHO.c" />
     <ClCompile Include="LISTA.c" />
-    <ClCompile Include="main.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

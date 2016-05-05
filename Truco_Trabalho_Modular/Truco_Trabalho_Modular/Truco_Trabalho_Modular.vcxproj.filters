@@ -15,21 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Baralho.h">
+    <ClInclude Include="LISTA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LISTA.h">
+    <ClInclude Include="BARALHO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Baralho.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LISTA.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.c">
+    <ClCompile Include="BARALHO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
