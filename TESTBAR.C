@@ -85,17 +85,12 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
       TST_tpCondRet CondRet ;
 
       char   StringDado[  DIM_VALOR ] ;
-      char * pDado ;
-
-      int ValEsp = -1 ;
 
       int i ;
 	  
 	  LIS_tppLista jogador ;
 	  Carta* carta ;
 	  int valor ;
-
-      int numElem = -1 ;
 
       StringDado[ 0 ] = 0 ;
 
@@ -189,13 +184,13 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 				return TST_CondRetParm ;
 			} /* if */
 			
-			jogador = LIS_CriarLista( ) ;
+			jogador = LIS_CriarLista( NULL ) ;
 			
 			BAR_DistribuirCartas( vtBaralhos[ inxBaralho ] , jogador ) ;
 			
 			CondRet = BAR_DistribuirCartas( jogador , vtBaralhos[ inxBaralho ] ) ;
 			
-			return TST_Comparar_INT( CondRetEsp , CondRet ,
+			return TST_CompararInt( CondRetEsp , CondRet ,
 					  "Condicao de retorno errada ao distribuir cartas." ) ;
 					  
 		} /* fim ativa: Testar DistribuirCartas */
@@ -215,7 +210,7 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 			
 			CondRet = BAR_EscolherManilha( vtBaralhos[ inxBaralho ] ) ;
 			
-			return TST_Comparar_INT( CondRetEsp , CondRet ,
+			return TST_CompararInt( CondRetEsp , CondRet ,
 					  "Condicao de retorno errada ao escolher manilha." ) ;
 		} /* fim ativa: Testar EscolherManilha */
 		
@@ -233,7 +228,7 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 			
 			valor = BAR_ObterValor( carta ) ;
 			
-			return TST_Comparar_INT( CondRetEsp , valor ,
+			return TST_CompararInt( CondRetEsp , valor ,
 					  "Condicao de retorno errada ao obter valor." ) ;
 		} /* fim ativa: Testar ObterValor */
 		
@@ -251,7 +246,7 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 			
 			valor = BAR_ObterNaipe( carta ) ;
 			
-			return TST_Comparar_INT( CondRetEsp , valor ,
+			return TST_CompararInt( CondRetEsp , valor ,
 					  "Condicao de retorno errada ao obter naipe." ) ;
 		} /* fim ativa: Testar ObterNaipe */
 		
@@ -280,13 +275,13 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
          
       if ( Modo == VAZIO )
       {
-         if ( vtBaralho[ inxBaralho ] != 0 )
+         if ( vtBaralhos[ inxBaralho ] != 0 )
          {
             return FALSE ;
          } /* if */
       } else
       {
-         if ( vtBaralho[ inxBaralho ] == 0 )
+         if ( vtBaralhos[ inxBaralho ] == 0 )
          {
             return FALSE ;
          } /* if */
