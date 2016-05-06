@@ -20,7 +20,7 @@
 *     3			lfer	03/maio/2016		criação das condições 
 *											de retorno e adição de 
 *                                           funções
-*     2			llages	07/jul/2003			unificação de todos os módulos em um só projeto
+*     2			llages	07/jul/2003			revisão de implementação
 *     1			lfer	16/abr/2003			início desenvolvimento
 *
 ***************************************************************************/
@@ -104,23 +104,32 @@ LIS_tppLista BAR_CriarBaralho()
 	/* Vetores de Valor e de Naipe */
 	Valor val[10] = {QUATRO,CINCO,SEIS,SETE,DAMA,VALETE,REI,AS,DOIS,TRES};
 	Naipe nap[4] = {OUROS, ESPADAS, COPAS, PAUS};
+
 	Carta* card=NULL;
+
+	// Cria o baralho como uma lista vazia 
 	LIS_tppLista bar = LIS_CriarLista(NULL);
+
+	// Percorre os vetores de Valor e Naipe declarados
 	for(i=0; i<4; i++)
 	{
 		for(j=0; j<10 ;j++)
 		{
-			card = (Carta*) malloc(sizeof(Carta));
+			//Cada carta sendo alocada dinamicamente à cada iteração
+			card = (Carta*) malloc(sizeof(Carta)); 
+
 			if(card == NULL)
 			{
 				return NULL;
-			}
+			}/* if */
+
+			// Elemento inicializado e inserido na lista com valor e naipe
 			card->naipe = nap[i];
 			card->valor = val[j];
 			if(LIS_InserirElementoApos(bar, card) != LIS_CondRetOK)
 			{
 				return NULL;
-			}
+			}/* if */
 		}
 	}
 	return bar;
@@ -133,17 +142,26 @@ LIS_tppLista BAR_CriarBaralho()
 
 BAR_tpCondRet BAR_LiberarBaralho(LIS_tppLista baralho)
 {
+	// Obtendo o valor da carta no topo do baralho
 	Carta* card = (Carta*) LIS_ObterValor(baralho);
+
+	// Movendo o ponteiro para o começo da lista de cartas
 	LIS_IrInicioLista(baralho);
+
 	while(card != NULL)
 	{
 		if (LIS_ExcluirElemento(baralho) != LIS_CondRetOK)
 		{
 			return BAR_CondRetCartaNaoExcluida;
-		}
+		}/* if */
+
+		/* Liberando a carta e inicializando a próxima a ser retirada na
+		  iteração, respectivamente */
 		free(card);
 		card= (Carta*) LIS_ObterValor(baralho);
-	}
+
+	}/* while */
+
 	return BAR_CondRetOK;
 }/* Fim função: BAR  &Liberar baralho */
 
@@ -161,32 +179,39 @@ BAR_tpCondRet BAR_EmbaralharCartas(LIS_tppLista baralho)
 	{
 		random = rand()%40;
 		LIS_IrInicioLista(baralho);
+
 		if (LIS_AvancarElementoCorrente(baralho, random) == LIS_CondRetListaVazia)
 		{
 			return BAR_CondRetErroAndarListaVazia;
-		}
+		}/* if */
+
 		carta=LIS_ObterValor(baralho);
+
 		if (LIS_ExcluirElemento(baralho) != LIS_CondRetOK)
 		{
 			return BAR_CondRetCartaNaoExcluida;
-		}
+		}/* if */
+
 		random = rand()%40;
 		LIS_IrInicioLista(baralho);
+
 		if (LIS_AvancarElementoCorrente(baralho, random) == LIS_CondRetListaVazia)
 		{
 			return BAR_CondRetErroAndarListaVazia;
-		}
+		}/* if */
+
 		if (LIS_InserirElementoAntes(baralho, carta) != LIS_CondRetOK)
 		{
 			return BAR_CondRetFaltouMemoria;
-		}
-	}
+		}/* if */
+
+	}/* for */
 	return BAR_CondRetOK;
-}/* Fim função: BAR  &Criar baralho */
+}/* Fim função: BAR  &Embaralhar cartas*/
 
 /***************************************************************************
 *
-*  Função: BAR &Liberar Baralho
+*  Função: BAR &Distribuir cartas
 *  ****/
 
 BAR_tpCondRet BAR_DistribuirCartas(LIS_tppLista bar, LIS_tppLista jog)
@@ -204,42 +229,58 @@ BAR_tpCondRet BAR_DistribuirCartas(LIS_tppLista bar, LIS_tppLista jog)
 		LIS_InserirElementoApos(jog, card);
 	}
 	return BAR_CondRetOK;
-}/* Fim função: BAR  &Criar baralho */
+}/* Fim função: BAR  &Distribuir cartas */
 
 /***************************************************************************
 *
-*  Função: BAR &Liberar Baralho
+*  Função: BAR &Escolher manilha
 *  ****/
 
 int BAR_EscolherManilha(LIS_tppLista bar)
 {
 	int i;
 	Carta *vira;
+
+	/* Posiciona-se o ponteiro no início da lista de cartas e obtém o valor
+	  do primeiro elemento, que na nossa especificação é denominado "vira" */
 	LIS_IrInicioLista(bar);
 	vira = (Carta*)LIS_ObterValor(bar);
+
+	/* Como TRES é o valor mais alto do baralho, escolhe o menos valor 
+	como manilha */
 	if (vira->valor == TRES)
+	{
 		return QUATRO;
+	}
+	// Considerando todos os outros casos, a manilha é o valor logo acima
 	else
+	{
 		return (vira->valor) + 1;
-}/* Fim função: BAR  &Criar baralho */
+	}/* if */
+
+}/* Fim função: BAR  &Escolher manilha */
 
 /***************************************************************************
 *
-*  Função: BAR &Liberar Baralho
+*  Função: BAR &Obter valor
 *  ****/
 
 int BAR_ObterValor(Carta* card)
 {
+
 	return card->valor;
-}/* Fim função: BAR  &Criar baralho */
+
+}/* Fim função: BAR  &Obter Valor*/
 
 /***************************************************************************
 *
-*  Função: BAR &Liberar Baralho
+*  Função: BAR &Obter naipe
 *  ****/
 
 int BAR_ObterNaipe(Carta* card)
 {
+
 	return card->naipe;
-}/* Fim função: BAR  &Criar baralho */
+
+}/* Fim função: BAR  &Obter naipe */
 

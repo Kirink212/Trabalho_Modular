@@ -9,8 +9,9 @@
 *  Arquivo da base de software: D:\AUTOTEST\PROJETOS\LISTA.BSW
 *
 *  Projeto: INF 1301 / 1628 Automatização dos testes de módulos C
-*  Gestor:  LES/DI/PUC-Rio
-*  Autores: avs
+*  Autores: Luís Fernando Teixeira Bicalho (lfer),  
+*			Leonardo Lages de Alencar(llages) e 
+*			Bruno D'Almeida Franco (bfranco)
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data     Observações
@@ -20,32 +21,9 @@
 *     1       avs   16/abr/2003 início desenvolvimento
 *
 *  $ED Descrição do módulo
-*     Implementa listas genéricas duplamente encadeadas.
-*     Podem existir n listas em operação simultaneamente.
-*     As listas possuem uma cabeça encapsulando o seu estado.
+*     Implementa o representativo do baralho no jogo de Truco
 *
-*     Cada lista é homogênea quanto ao tipo dos dados que armazena.
-*     Cada elemento da lista referencia o valor que contém.
-*
-*     Os ponteiros para os dados são copiados para elementos da lista.
-*        Não é copiado o valor apontado por estes ponteiros.
-*
-*     O controle da destruição do valor de um elemento a ser excluído
-*        é realizado por uma função fornecida pelo usuário.
-*
-*     Cada lista referencia uma função que determina como devem ser
-*        desalocados os dados nela contidos.
-*
-*     A função de liberação dos valores contidos nos elementos deve
-*        assegurar a liberação de todos os espaços referênciados pelo
-*        valor contido em um elemento.
-*        Esta função é chamada antes de se desalocar um elemento
-*        de uma lista.
-*        Caso não seja necessário desalocar o valor referenciado pelo
-*        elemento, o ponteiro para a função de liberação poderá ser NULL .
-*        Caso o elemento da lista seja a única âncora do valor referenciado,
-*        esta função deve promover a destruição (free) desse valor e
-*        de todos os dados nele ancorados.
+*     
 *
 ***************************************************************************/
 
@@ -76,16 +54,128 @@ typedef enum {
 
 } BAR_tpCondRet ;
 
-LIS_tppLista BAR_CriarBaralho();
+/***********************************************************************
+*
+*  $FC Função: BAR &Cria baralho
+*
+*  $ED Descrição da função
+*     Cria uma lista genérica duplamente encadeada.
+*     Os possíveis tipos são desconhecidos a priori.
+*     A tipagem é implicita.
+*     Não existe identificador de tipo associado à lista.
+*
+*  $EP Parâmetros
+*     ExcluirValor  - ponteiro para a função que processa a
+*                     exclusão do valor referenciado pelo elemento
+*                     a ser excluído.
+*                     Ver descrição do módulo.
+*
+*  $FV Valor retornado
+*     Se executou corretamente retorna o ponteiro para a lista de 40 
+*	  cartas, ou seja, para o baralho, estando estas inicialmente
+*	  inicializadas com valores em ordem crescente de naipe e valor.
+*
+*     Este ponteiro será utilizado pelas funções que utilizem o baralho.
+*
+*     Se ocorreu algum erro, por exemplo falta de memória ou dados 
+*     errados, a função retornará NULL.
+*     Não será dada mais informação quanto ao problema ocorrido.
+*
+***********************************************************************/
+	LIS_tppLista BAR_CriarBaralho();
 
-BAR_tpCondRet BAR_LiberarBaralho(LIS_tppLista baralho);
+/***********************************************************************
+*
+*  $FC Função: BAR  &Liberar baralho
+*
+*  $ED Descrição da função
+*     Libera a memória relativa ao baralho fornecido como parâmetro.
+*     O parâmetro ponteiro para a lista de cartas não é modificado.
+*
+*  $EP Parâmetros
+*     baralho - ponteiro para a lista de cartas a ser liberada
+*
+*  $FV Valor retornado
+*     BAR_CondRetCartaNaoExcluida - baralho não foi liberado com sucesso
+*     BAR_CondRetOK    - baralho liberado
+*
+***********************************************************************/
 
-BAR_tpCondRet BAR_EmbaralharCartas(LIS_tppLista baralho);
+	BAR_tpCondRet BAR_LiberarBaralho(LIS_tppLista baralho);
 
-BAR_tpCondRet BAR_DistribuirCartas(LIS_tppLista bar, LIS_tppLista jog);
+/***********************************************************************
+*
+*  $FC Função: BAR  &Embaralhar cartas
+*
+*  $ED Descrição da função
+*     Recebe como parâmetro uma lista de cartas, embaralhando-as através
+*	  da utilização das funções rand() e srand(), que regularizam a
+*     aleatoriedade.
+*
+*  $EP Parâmetros
+*     baralho - ponteiro para a lista de cartas a ser embaralhada
+*
+*  $FV Valor retornado
+*     BAR_CondRetErroAndarListaVazia - lista de cartas vazia no elemento
+*									   corrente.
+*	  BAR_CondRetCartaNaoExcluida - carta não foi retirado do baralho
+*	  BAR_CondRetFaltouMemoria - Erro de falta de memória
+*     BAR_CondRetOK - baralho liberado
+*
+***********************************************************************/
 
-int BAR_EscolherManilha(LIS_tppLista bar);
+	BAR_tpCondRet BAR_EmbaralharCartas(LIS_tppLista baralho);
 
-int BAR_ObterValor(Carta* card);
+/***********************************************************************
+*
+*  $FC Função: BAR  &Distribuir cartas
+*
+*  $ED Descrição da função
+*     Distribui três cartas do baralho já embaralhado para cada um
+*	  dos jogadores indo do primeiro ao último da lista jog.
+*
+*  $EP Parâmetros
+*     bar - ponteiro para a lista de cartas a ser distribuída
+*     jog - ponteiro para a lista de jogadores que receberão as cartas
+*
+*  $FV Valor retornado
+*     BAR_CondRetCartaNaoExcluida - baralho não foi liberado com sucesso
+*     BAR_CondRetOK    - baralho liberado
+*
+***********************************************************************/
 
-int BAR_ObterNaipe(Carta* card);
+	BAR_tpCondRet BAR_DistribuirCartas(LIS_tppLista bar, LIS_tppLista jog);
+
+/***********************************************************************
+*
+*  $FC Função: BAR  &Escolher manilha
+*
+*  $ED Descrição da função
+*     Escolher a manilha depois do baralho, o qual é passado como 
+*     parâmetro ter sido embaralhado e distribuído para os jogadores.
+*
+***********************************************************************/
+
+	int BAR_EscolherManilha(LIS_tppLista bar);
+
+/***********************************************************************
+*
+*  $FC Função: BAR  &Obter valor
+*
+*  $ED Descrição da função
+*     Obtém o valor da carta cujo ponteiro é passado como parâmetro
+*
+***********************************************************************/
+
+	int BAR_ObterValor(Carta* card);
+
+/***********************************************************************
+*
+*  $FC Função: BAR  &Obter naipe
+*
+*  $ED Descrição da função
+*     Obtém o naipe da carta cujo ponteiro é passado como parâmetro
+*
+***********************************************************************/
+
+	int BAR_ObterNaipe(Carta* card);
