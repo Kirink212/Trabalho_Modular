@@ -1,0 +1,40 @@
+// 	Script:	TesteBaralho.script
+// 	Autor:	Bruno Franco
+//	Data:	07/05/2016
+//	Propósito: Testar superficialmente o modulo baralho
+//
+
+== Inicializar valores
+=declaraparm	baralho0	int 0
+=declaraparm	baralho1	int 1
+=declaraparm	baralho2	int 2
+
+=declaraparm	carta0		int 0
+
+=declaraparm	OK			int 0
+=declaraparm	NaoCriou	int 1
+=declaraparm	NaoInsApos	int 2
+=declaraparm	NaoInsAnte	int 3
+=declaraparm	NaoExcl		int 4
+=declaraparm	ErroAndar	int 5
+
+=declaraparm	pNULL		int 0
+=declaraparm	pNaoNULL	int 1
+
+== Criar o baralho
+=criarbaralho	baralho0
+
+== Embaralhar cartas
+=embaralharcartas	baralho0	OK
+
+== Distribuir cartas
+=distribuircartas 	baralho0	
+
+== Escolher manilha
+=escolhermanilha	baralho0
+=obtervalor			carta0		OK
+=obternaipe			carta0		OK
+
+== Verificar se baralho foi liberado
+=liberarbaralho	baralho0	OK
+
