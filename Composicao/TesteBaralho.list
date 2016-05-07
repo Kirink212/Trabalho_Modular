@@ -22,19 +22,19 @@ Módulos do construto: TesteBaralho.comp
 Estatísticas do construto
 
    Estatísticas do arquivo: Baralho.c
-      Total linhas:             165
-      Linhas de código:         131
-      Linhas de comentário:      24
-      Linhas em branco:          10
+      Total linhas:             285
+      Linhas de código:         135
+      Linhas de comentário:     115
+      Linhas em branco:          43
    Arquivos de inclusão de que necessita
       Baralho.h
       LISTA.h
 
    Estatísticas do arquivo: Baralho.h
-      Total linhas:              38
+      Total linhas:             181
       Linhas de código:          17
-      Linhas de comentário:       6
-      Linhas em branco:          15
+      Linhas de comentário:     141
+      Linhas em branco:          23
    Arquivos de inclusão de que necessita
       LISTA.h
    Arquivos em que é incluído
@@ -125,24 +125,24 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: DEFAULT  Path: .
-         Total linhas do tipo:      2101
+         Total linhas do tipo:      2244
          Linhas de código:           200
-         Linhas de comentário:      1639
-         Linhas em branco:           262
+         Linhas de comentário:      1774
+         Linhas em branco:           270
          Arquivos deste tipo:          6
 
   Tipo: c        Path: .
-         Total linhas do tipo:      1020
-         Linhas de código:           579
-         Linhas de comentário:       221
-         Linhas em branco:           248
+         Total linhas do tipo:      1140
+         Linhas de código:           583
+         Linhas de comentário:       312
+         Linhas em branco:           281
          Arquivos deste tipo:          3
 
 Totais para todo o construto TesteBaralho
 
-   Total linhas:              3121
-   Linhas de código:           779
-   Linhas de comentário:      1860
-   Linhas em branco:           510
+   Total linhas:              3384
+   Linhas de código:           783
+   Linhas de comentário:      2086
+   Linhas em branco:           551
    Arquivos processados:         9
 
