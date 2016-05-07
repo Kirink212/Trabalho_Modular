@@ -174,7 +174,7 @@ BAR_tpCondRet BAR_EmbaralharCartas(LIS_tppLista baralho)
 {
 	int random, i;
 	void* carta;
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	for(i=0;i<50;i++)
 	{
 		random = rand()%40;
@@ -238,7 +238,6 @@ BAR_tpCondRet BAR_DistribuirCartas(LIS_tppLista bar, LIS_tppLista jog)
 
 int BAR_EscolherManilha(LIS_tppLista bar)
 {
-	int i;
 	Carta *vira;
 
 	/* Posiciona-se o ponteiro no início da lista de cartas e obtém o valor
