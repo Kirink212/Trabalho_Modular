@@ -1,0 +1,34 @@
+23/03/2016; 1 horas trabalhadas; Estudar; Relembrando o jogo "Truco", como ele funciona e todas as suas especificações, segundo um site especializado.
+04/04/2016; 2 horas trabalhadas; Redigir especificações; Atividade realizada em sala de aula, como parte do T1, que consistiu em escrevermos as
+especificações não funcionais e funcionais do nosso projeto.
+06/04/2016; 2 horas trabalhadas; Redigir especificações; Atividade realizada em sala de aula, como parte do T1, que consistiu em continuarmos a escrever
+as especificações não funcionais e funcionais do nosso projeto.
+10/04/2016; 4 horas trabalhadas; Especificar os Módulos; Pelo aplicativo Skype, o grupo discutiu quais módulos seriam melhores para o nosso trabalho,
+facilitando na hora da entrega da segunda parte do T1 em sala de aula.
+11/04/2016; 2 horas trabalhadas; Especificar os módulos, Revisar Especificações, Especificar as Funções; Atividade realizada em sala de aula, 
+como parte do T1, que consistiu em especificarmos e desenharmos os módulos, bem como corrigir erros na especificação de requisitos, além de dar 
+nomes às funções de cada módulo.
+13/04/2016; 2 horas trabalhadas; Especificar os módulos, Revisar Especificações, Especificar as Funções; Atividade realizada em sala de aula, 
+como parte do T1, que consistiu em continuarmos especificando e desenhando os módulos, bem como corrigir erros na especificação de requisitos,
+além de dar nomes às funções de cada módulo.
+18/04/2016; 2 horas trabalhadas; Especificar os módulos; Atividade realizada em sala de aula, como parte do T1, que consistiu em desenharmos o modelo de
+relacionamento entre os módulos e tipos enumerados existentes no projeto.
+23/04/2016; 4 horas trabalhadas; Codificar Módulo, Revisar Código do Módulo; Pelo aplicativo Skype, o grupo desenvolveu em conjunto todas as funções do
+módulo "Baralho", o que exigiu que revisássemos primeiramente todo o código do módulo Lista.
+
+
+
+
+
+estudar
+especificar os módulos
+especificar as funções
+revisar especificações
+projetar
+revisar projetos
+codificar módulo
+revisar código do módulo
+redigir script de teste
+revisar script de teste
+realizar os testes
+diagnosticar e corrigir os problemas encontrados 
