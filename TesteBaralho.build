@@ -1,6 +1,0 @@
-/OUT:TesteBaralho.exe
-/INCREMENTAL:NO
-/MACHINE:IX86
-TestBar.obj  Baralho.obj  Lista.obj  
-ArcaboucoTeste.lib
-
