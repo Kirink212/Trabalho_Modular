@@ -16,11 +16,11 @@ módulos BARALHO e LISTA, ambos com suas próprias declaração, definição e teste.
 
 e) Objetos: Contém todos os arquivos com extensões ".bat".
 
-f) Produto:
+f) Produto: Contém todos os arquivos com extensões ".lib" e ".exe".
 
-g) Relatórios:
+g) Relatórios: Contém todos os arquivos com extensões ".txt", contendo os relatórios de cada membro do grupo.
 
-h) Scripts:
+h) Scripts: Contém todos os arquivos com extensões ".script".
 
 5- Para compilar os modulos separadamente execute   COMPILA_COL.bat ou
 						    COMPILA_EMB.bat ou

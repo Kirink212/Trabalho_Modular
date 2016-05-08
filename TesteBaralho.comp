@@ -1,0 +1,23 @@
+# Composicao do programa de teste de uma lista genérica duplamente encadeada
+# Este exemplo utiliza o arcabouço completo 
+
+[Diretorios]
+
+Nome        =  TesteBaralho
+PathDefault =  .
+err         =  .
+
+[Modulos]
+TestBar
+Baralho
+Lista
+
+[BuildInicio]
+/OUT:TesteBaralho.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+
+[Fim]
