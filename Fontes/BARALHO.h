@@ -14,11 +14,8 @@
 *			Bruno D'Almeida Franco (bfranco)
 *
 *  $HA Histórico de evolução:
-*     Versão  Autor    Data     Observações
-*     4       avs   01/fev/2006 criar linguagem script simbólica
-*     3       avs   08/dez/2004 uniformização dos exemplos
-*     2       avs   07/jul/2003 unificação de todos os módulos em um só projeto
-*     1       avs   16/abr/2003 início desenvolvimento
+*     Versão  Autor    Data        Observações
+*     1       lfer   16/abr/2016   início desenvolvimento
 *
 *  $ED Descrição do módulo
 *     Implementa o representativo do baralho no jogo de Truco
@@ -82,7 +79,7 @@ typedef enum {
 *     Não será dada mais informação quanto ao problema ocorrido.
 *
 ***********************************************************************/
-	LIS_tppLista BAR_CriarBaralho();
+	LIS_tppLista BAR_CriarBaralho( ) ;
 
 /***********************************************************************
 *
@@ -101,7 +98,7 @@ typedef enum {
 *
 ***********************************************************************/
 
-	BAR_tpCondRet BAR_LiberarBaralho(LIS_tppLista baralho);
+	BAR_tpCondRet BAR_LiberarBaralho( LIS_tppLista baralho ) ;
 
 /***********************************************************************
 *
@@ -119,12 +116,12 @@ typedef enum {
 *     BAR_CondRetErroAndarListaVazia - lista de cartas vazia no elemento
 *									   corrente.
 *	  BAR_CondRetCartaNaoExcluida - carta não foi retirado do baralho
-*	  BAR_CondRetFaltouMemoria - Erro de falta de memória
-*     BAR_CondRetOK - baralho liberado
+*	  BAR_CondRetFaltouMemoria - erro de falta de memória
+*     BAR_CondRetOK - baralho embaralhado
 *
 ***********************************************************************/
 
-	BAR_tpCondRet BAR_EmbaralharCartas(LIS_tppLista baralho);
+	BAR_tpCondRet BAR_EmbaralharCartas( LIS_tppLista baralho ) ;
 
 /***********************************************************************
 *
@@ -139,12 +136,12 @@ typedef enum {
 *     jog - ponteiro para a lista de jogadores que receberão as cartas
 *
 *  $FV Valor retornado
-*     BAR_CondRetCartaNaoExcluida - baralho não foi liberado com sucesso
-*     BAR_CondRetOK    - baralho liberado
+*     BAR_CondRetCartaNaoExcluida - falha na transferência de cartas
+*     BAR_CondRetOK    - cartas transferidas com sucesso
 *
 ***********************************************************************/
 
-	BAR_tpCondRet BAR_DistribuirCartas(LIS_tppLista bar, LIS_tppLista jog);
+	BAR_tpCondRet BAR_DistribuirCartas( LIS_tppLista baralho , LIS_tppLista jogador ) ;
 
 /***********************************************************************
 *
@@ -156,7 +153,7 @@ typedef enum {
 *
 ***********************************************************************/
 
-	int BAR_EscolherManilha(LIS_tppLista bar);
+	int BAR_EscolherManilha( LIS_tppLista baralho ) ;
 
 /***********************************************************************
 *
@@ -167,7 +164,7 @@ typedef enum {
 *
 ***********************************************************************/
 
-	int BAR_ObterValor(Carta* card);
+	int BAR_ObterValor( Carta* carta ) ;
 
 /***********************************************************************
 *
@@ -178,4 +175,4 @@ typedef enum {
 *
 ***********************************************************************/
 
-	int BAR_ObterNaipe(Carta* card);
+	int BAR_ObterNaipe( Carta* carta ) ;

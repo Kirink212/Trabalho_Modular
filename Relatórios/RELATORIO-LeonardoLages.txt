@@ -1,0 +1,10 @@
+10/04/2016 ; 2 horas ; Especificar os módulos ; Discutimos sobre a especificações dos módulos, tentando dividir bem suas funcionalidades.
+11/04/2016 ; 30 minutos ; Especificar os módulos ; Continuamos a especificação dos módulos, adicionando e retirando conforme considerávamos necessário.
+11/04/2016 ; 30 minutos ; Especificar as funções ; Iniciamos a especificação das funções com base nos módulos definidos anteriormente.
+13/04/2016 ; 30 minutos ; Especificar os módulos ; Com o feedback do professor, fizemos mais alterações nos módulos.
+13/04/2016 ; 30 minutos ; Revisar especificações ; Com a correção do professor, fizemos mais alterações nas especificações.
+13/04/2016 ; 1 hora ; Especificar as funções ; Seguindo as alterações nos módulos, reformamos a especificação das funções.
+23/04/2016 ; 2 horas e 30 minutos ; Codificar módulo ; Codificação do módulo baralho.
+03/05/2016 ; 4 horas ; Codificar módulo ; Codificação do módulo de teste do módulo baralho.
+07/05/2016 ; 3 horas ; Diagnosticar e corrigir os problemas encontrados ; Os scripts de teste estão dando erro em qualquer comando, portanto trabalhei em tentar resolver os problemas.
+08/05/2016 ; 30 minutos ; Revisar código do módulo ; Revisar o código do módulo para verificar se segue os padrões de programação.

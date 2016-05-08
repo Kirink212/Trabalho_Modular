@@ -9,20 +9,20 @@
 !!!    0  Linha:     4  //	PropÃ³sito: Testar superficialmente o modulo baralho 
 !!!    0  Linha:     5  // 
     7  == Inicializar valores
-   22  == Criar o baralho
-   25  == Embaralhar cartas
-   28  == Distribuir cartas
-   31  == Escolher manilha
->>>    1  Linha:    33  Condicao de retorno errada ao obter valor. Deveria ser: 9  É: 8
->>>    2  Linha:    34  Não é comando recuperar:  =obternaipe       baralho0      3
-   36  == Verificar se baralho foi liberado
+   21  == Criar o baralho
+   24  == Embaralhar cartas
+   27  == Distribuir cartas
+   30  == Verificar se baralho foi liberado
+   33  == Teste com o baralho 1
+   36  == Escolher manilha em um baralho ordenado
+   41  == Liberar baralho 1
 
-!!! Número de linhas lidas:          38
-!!! Número de casos de teste:         6
-!!! Número comandos corretos:        16
-!!! Número de falhas encontradas:     2
+!!! Número de linhas lidas:          43
+!!! Número de casos de teste:         8
+!!! Número comandos corretos:        19
+!!! Número de falhas encontradas:     0
 
-!!! Foram encontrados problemas
+!!! Não foram encontrados problemas
 
 
 !!! Numero de espacos ainda alocados: 0

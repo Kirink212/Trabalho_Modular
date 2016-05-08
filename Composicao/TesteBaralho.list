@@ -22,18 +22,18 @@ Módulos do construto: TesteBaralho.comp
 Estatísticas do construto
 
    Estatísticas do arquivo: Baralho.c
-      Total linhas:             285
-      Linhas de código:         135
-      Linhas de comentário:     115
+      Total linhas:             308
+      Linhas de código:         154
+      Linhas de comentário:     119
       Linhas em branco:          43
    Arquivos de inclusão de que necessita
       Baralho.h
       LISTA.h
 
    Estatísticas do arquivo: Baralho.h
-      Total linhas:             181
+      Total linhas:             178
       Linhas de código:          17
-      Linhas de comentário:     141
+      Linhas de comentário:     138
       Linhas em branco:          23
    Arquivos de inclusão de que necessita
       LISTA.h
@@ -125,24 +125,24 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: DEFAULT  Path: .
-         Total linhas do tipo:      2244
+         Total linhas do tipo:      2241
          Linhas de código:           200
-         Linhas de comentário:      1774
+         Linhas de comentário:      1771
          Linhas em branco:           270
          Arquivos deste tipo:          6
 
   Tipo: c        Path: .
-         Total linhas do tipo:      1140
-         Linhas de código:           583
-         Linhas de comentário:       312
+         Total linhas do tipo:      1163
+         Linhas de código:           602
+         Linhas de comentário:       316
          Linhas em branco:           281
          Arquivos deste tipo:          3
 
 Totais para todo o construto TesteBaralho
 
-   Total linhas:              3384
-   Linhas de código:           783
-   Linhas de comentário:      2086
+   Total linhas:              3404
+   Linhas de código:           802
+   Linhas de comentário:      2087
    Linhas em branco:           551
    Arquivos processados:         9
 

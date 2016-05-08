@@ -9,12 +9,11 @@
 =declararparm   baralho1    int 1
 =declararparm   baralho2    int 2
 
-=declararparm   OK          int 0
-=declararparm   NaoCriou    int 1
-=declararparm   NaoInsApos  int 2
-=declararparm   NaoInsAnte  int 3
-=declararparm   NaoExcl     int 4
-=declararparm   ErroAndar   int 5
+=declararparm   OK             int 0
+=declararparm   NaoCriou       int 1
+=declararparm   FaltouMemoria  int 2
+=declararparm   NaoExcl        int 3
+=declararparm   ErroAndar      int 4
 
 =declararparm   pNULL       int 0
 =declararparm   pNaoNULL    int 1
