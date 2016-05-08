@@ -3,13 +3,26 @@
 !!!      Construto sob teste: testeBaralho
 !!!      Script de teste:     TesteBaralho.script
 
+!!!    0  Linha:     1  // 	Script:	TesteBaralho.script 
+!!!    0  Linha:     2  // 	Autor:	Bruno Franco 
+!!!    0  Linha:     3  //	Data:	07/05/2016 
+!!!    0  Linha:     4  //	PropÃ³sito: Testar superficialmente o modulo baralho 
+!!!    0  Linha:     5  // 
+    7  == Inicializar valores
+   22  == Criar o baralho
+   25  == Embaralhar cartas
+   28  == Distribuir cartas
+   31  == Escolher manilha
+>>>    1  Linha:    33  Condicao de retorno errada ao obter valor. Deveria ser: 9  É: 8
+>>>    2  Linha:    34  Não é comando recuperar:  =obternaipe       baralho0      3
+   36  == Verificar se baralho foi liberado
 
-!!! Número de linhas lidas:           0
-!!! Número de casos de teste:         0
-!!! Número comandos corretos:         0
-!!! Número de falhas encontradas:     0
+!!! Número de linhas lidas:          38
+!!! Número de casos de teste:         6
+!!! Número comandos corretos:        16
+!!! Número de falhas encontradas:     2
 
-!!! Não foram encontrados problemas
+!!! Foram encontrados problemas
 
 
 !!! Numero de espacos ainda alocados: 0

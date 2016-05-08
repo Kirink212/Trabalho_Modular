@@ -69,9 +69,9 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 *     =liberarbaralho                 inxBaralho  CondRetEsp
 *     =embaralharcartas               inxBaralho  CondRetEsp
 *     =distribuircartas               inxBaralho  CondRetEsp
-*     =escolhermanilha                inxBaralho
-*     =obtervalor                     carta       CondRetEsp
-*     =obternaipe                     carta       CondRetEsp
+*     =escolhermanilha                inxBaralho  CondRetEsp
+*     =obtervalor                     inxBaralho  CondRetEsp
+*     =obternaipe                     inxBaralho  CondRetEsp
 *
 ***********************************************************************/
 
@@ -84,15 +84,11 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 
       TST_tpCondRet CondRet ;
 
-      char   StringDado[  DIM_VALOR ] ;
-
       int i ;
 	  
 	  LIS_tppLista jogador ;
 	  Carta* carta ;
 	  int valor ;
-
-      StringDado[ 0 ] = 0 ;
 
       /* Efetuar reset de teste de baralho */
 
@@ -117,7 +113,7 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 					   &inxBaralho) ;
 
             if (( numLidos != 1 )
-				|| ( ! ValidarInxBaralho( inxBaralho , NAO_VAZIO )))
+				|| ( ! ValidarInxBaralho( inxBaralho , VAZIO )))
             {
                return TST_CondRetParm ;
             } /* if */
@@ -152,8 +148,8 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
          } /* fim ativa: Testar LiberarBaralho */
 		 
 	/* Testar EmbaralharCartas */
-		else if ( strcmp( ComandoTeste , EMBARALHAR_CARTAS_CMD ) == 0 )
-		{
+		 else if ( strcmp( ComandoTeste , EMBARALHAR_CARTAS_CMD ) == 0 )
+		 {
 				
 			numLidos = LER_LerParametros( "ii" ,
 								&inxBaralho , &CondRetEsp ) ;
@@ -169,11 +165,11 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 			return TST_CompararInt( CondRetEsp , CondRet ,
 					 "Condicao de retorno errada ao embaralhar cartas." ) ;
 			
-		} /* fim ativa: Testar EmbaralharCartas */
+		 } /* fim ativa: Testar EmbaralharCartas */
 		
 	/* Testar DistribuirCartas */
-		else if ( strcmp( ComandoTeste , DISTRIBUIR_CARTAS_CMD ) == 0 )
-		{
+		 else if ( strcmp( ComandoTeste , DISTRIBUIR_CARTAS_CMD ) == 0 )
+		 {
 				
 			numLidos = LER_LerParametros( "ii" ,
 							  &inxBaralho , &CondRetEsp ) ;
@@ -193,16 +189,16 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 			return TST_CompararInt( CondRetEsp , CondRet ,
 					  "Condicao de retorno errada ao distribuir cartas." ) ;
 					  
-		} /* fim ativa: Testar DistribuirCartas */
+		 } /* fim ativa: Testar DistribuirCartas */
 		
 	/* Testar EscolherManilha */
-		else if ( strcmp( ComandoTeste , ESCOLHER_MANILHA_CMD ) == 0 )
-		{
+		 else if ( strcmp( ComandoTeste , ESCOLHER_MANILHA_CMD ) == 0 )
+		 {
 				
-			numLidos = LER_LerParametros( "i" ,
-							  &inxBaralho ) ;
+			numLidos = LER_LerParametros( "ii" ,
+							  &inxBaralho, &CondRetEsp ) ;
 							  
-			if ( ( numLidos != 1 )
+			if ( ( numLidos != 2 )
 			  || ( ! ValidarInxBaralho( inxBaralho , NAO_VAZIO )))
 			{
 				return TST_CondRetParm ;
@@ -212,43 +208,47 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 			
 			return TST_CompararInt( CondRetEsp , CondRet ,
 					  "Condicao de retorno errada ao escolher manilha." ) ;
-		} /* fim ativa: Testar EscolherManilha */
+		 } /* fim ativa: Testar EscolherManilha */
 		
 	/* Testar ObterValor */
-		else if ( strcmp( ComandoTeste , OBTER_VALOR_CMD ) == 0 )
-		{
+		 else if ( strcmp( ComandoTeste , OBTER_VALOR_CMD ) == 0 )
+		 {
 			 
-			numLidos = LER_LerParametros( "pi" ,
-							  &carta , &CondRetEsp ) ;
+			numLidos = LER_LerParametros( "ii" ,
+							  &inxBaralho , &CondRetEsp ) ;
 							  
 			if ( numLidos != 2 )
 			{
 				return TST_CondRetParm ;
 			} /* if */
+			
+			carta = LIS_ObterValor( vtBaralhos[ inxBaralho ] ) ;
 			
 			valor = BAR_ObterValor( carta ) ;
 			
 			return TST_CompararInt( CondRetEsp , valor ,
 					  "Condicao de retorno errada ao obter valor." ) ;
-		} /* fim ativa: Testar ObterValor */
+		 } /* fim ativa: Testar ObterValor */
 		
 	/* Testar ObterNaipe */
-		else if ( strcmp( ComandoTeste , OBTER_NAIPE_CMD ) == 0 )
-		{
+		 else if ( strcmp( ComandoTeste , OBTER_NAIPE_CMD ) == 0 )
+		 {
 			 
-			numLidos = LER_LerParametros( "pi" ,
-							  &carta , &CondRetEsp ) ;
+			numLidos = LER_LerParametros( "ii" ,
+							  &inxBaralho , &CondRetEsp ) ;
 							  
 			if ( numLidos != 2 )
 			{
 				return TST_CondRetParm ;
 			} /* if */
 			
+			carta = LIS_ObterValor( vtBaralhos[ inxBaralho ] ) ;
+			
 			valor = BAR_ObterNaipe( carta ) ;
 			
 			return TST_CompararInt( CondRetEsp , valor ,
 					  "Condicao de retorno errada ao obter naipe." ) ;
-		} /* fim ativa: Testar ObterNaipe */
+		 } /* fim ativa: Testar ObterNaipe */
 		
       return TST_CondRetNaoConhec ;
 
