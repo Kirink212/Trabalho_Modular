@@ -1,2 +1,53 @@
-# Trabalho_Modular
-Trabalho de Modular - Truco
+
+Trabalho 2 para a disciplina INF-1310: Programação Modular - Implementação do jogo "Truco
+"
+
+1) Os diretórios foram organizados de acordo com o padrão entitulado no arcabouço, com as pastas:
+
+a) Batches: Contém todos os arquivos com extensões ".bat".
+
+b) Composicao: Contém todos os arquivos com extensões ".comp", ".parm", ".list" e ".make".
+
+c) Especificações, Arquitetura e Modelo Físico: Contém um arquivo com extensão ".docx", cuja documentação
+aborda a especificação de requisitos, a arquitetura no padrão UML e o modelo físico, juntamente com as assertivas.
+
+d) Fontes: Contém todos os arquivos com extensões ".c" e ".h", ou seja, tudos os arquivos relacionados aos
+módulos BARALHO e LISTA, ambos com suas próprias declaração, definição e teste.
+
+e) Objetos: Contém todos os arquivos com extensões ".bat".
+
+f) Produto:
+
+g) Relatórios:
+
+h) Scripts:
+
+5- Para compilar os modulos separadamente execute   COMPILA_COL.bat ou
+						    COMPILA_EMB.bat ou
+						    COMPILA_EXT.bat ou
+						    COMPILA_ORD.bat ou
+						    COMPILA_LIS.bat
+
+6-Para testar os modulos separadamente execute    TestaCOL.bat ou
+						  TestaEMB.bat ou
+						  TestaEXT.bat ou
+						  TestaORD.bat ou
+						  TestaLIS.bat
+(OBS:os testes .bat tambem compilam o codigo)
+
+
+7- Caso queira compilar tudo execute o COMPILA_TUDO.bat
+	O .bat vai executar uma compilação por vez, basta apertar qualquer tecla para passar para o modulo seguinte.
+
+8- Caso queira Testar tudo execute o TestaTUDO.bat
+	O .bat vai executar um teste por vez, basta apertar qualquer tecla para passar para o modulo seguinte.
+
+9-Abaixo estão os executaveis e seus respectivos modulos
+
+TRAB2-1.EXE -> Embaralhamento
+TRAB2-2.EXE -> Colunas(sequencias visiveis)
+TRAB2-3.EXE -> Ordenadas(sequencias ordenadas)
+TRAB2-4.EXE -> Extra
+TRAB2-5.EXE -> Lista
+
+10- O Leia-me e os relatórios individuais se encontram na pasta "Leia-me e relatórios individuais".
