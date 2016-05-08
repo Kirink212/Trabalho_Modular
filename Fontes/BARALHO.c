@@ -166,7 +166,7 @@ BAR_tpCondRet BAR_LiberarBaralho( LIS_tppLista baralho )
 		/* Liberando a carta e inicializando a próxima a ser retirada na
 		  iteração, respectivamente */
 		free( carta ) ;
-		carta= (Carta*) LIS_ObterValor( baralho ) ;
+		carta = (Carta*) LIS_ObterValor( baralho ) ;
 
 	}/* while */
 
