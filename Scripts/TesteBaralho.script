@@ -5,36 +5,40 @@
 //
 
 == Inicializar valores
-=declaraparm	baralho0	int 0
-=declaraparm	baralho1	int 1
-=declaraparm	baralho2	int 2
+=declararparm   baralho0    int 0
+=declararparm   baralho1    int 1
+=declararparm   baralho2    int 2
 
-=declaraparm	carta0		int 0
+=declararparm   OK          int 0
+=declararparm   NaoCriou    int 1
+=declararparm   NaoInsApos  int 2
+=declararparm   NaoInsAnte  int 3
+=declararparm   NaoExcl     int 4
+=declararparm   ErroAndar   int 5
 
-=declaraparm	OK			int 0
-=declaraparm	NaoCriou	int 1
-=declaraparm	NaoInsApos	int 2
-=declaraparm	NaoInsAnte	int 3
-=declaraparm	NaoExcl		int 4
-=declaraparm	ErroAndar	int 5
-
-=declaraparm	pNULL		int 0
-=declaraparm	pNaoNULL	int 1
+=declararparm   pNULL       int 0
+=declararparm   pNaoNULL    int 1
 
 == Criar o baralho
-=criarbaralho	baralho0
+=criarbaralho  baralho0
 
 == Embaralhar cartas
-=embaralharcartas	baralho0	OK
+=embaralharcartas  baralho0  OK
 
 == Distribuir cartas
-=distribuircartas 	baralho0	
-
-== Escolher manilha
-=escolhermanilha	baralho0
-=obtervalor			carta0		OK
-=obternaipe			carta0		OK
+=distribuircartas  baralho0	 OK
 
 == Verificar se baralho foi liberado
-=liberarbaralho	baralho0	OK
+=liberarbaralho   baralho0     OK
+
+== Teste com o baralho 1
+=criarbaralho     baralho1
+
+== Escolher manilha em um baralho ordenado
+=escolhermanilha  baralho1     1
+=obtervalor       baralho1     0
+=obternaipe       baralho1     0
+
+== Liberar baralho 1
+=liberarbaralho   baralho1     OK
 
