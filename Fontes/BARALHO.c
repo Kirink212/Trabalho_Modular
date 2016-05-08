@@ -151,10 +151,12 @@ BAR_tpCondRet BAR_LiberarBaralho( LIS_tppLista baralho )
 		asset( baralho != NULL ) ;
 	#endif
 	// Obtendo o valor da carta no topo do baralho
-	Carta* carta = (Carta*) LIS_ObterValor( baralho ) ;
+	Carta* carta ;
 
 	// Movendo o ponteiro para o começo da lista de cartas
 	LIS_IrInicioLista( baralho ) ;
+	
+	carta = (Carta*) LIS_ObterValor( baralho ) ;
 
 	while( carta != NULL )
 	{
@@ -169,6 +171,8 @@ BAR_tpCondRet BAR_LiberarBaralho( LIS_tppLista baralho )
 		carta = (Carta*) LIS_ObterValor( baralho ) ;
 
 	}/* while */
+	
+	LIS_DestruirLista( baralho ) ;
 
 	return BAR_CondRetOK ;
 }/* Fim função: BAR  &Liberar baralho */
