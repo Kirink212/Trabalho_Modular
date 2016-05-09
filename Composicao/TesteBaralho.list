@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: TesteBaralho.comp
 
    Nome do Construto:           TesteBaralho
-   Diretório base:              C:\Users\Leo\Documents\puc\modular\baralho
+   Diretório base:              C:\Users\Leo\Documents\puc\modular\baralho new
 
    Arquivo composição:          TesteBaralho.comp
    Arquivo plataforma:          gmake.parm
@@ -22,18 +22,18 @@ Módulos do construto: TesteBaralho.comp
 Estatísticas do construto
 
    Estatísticas do arquivo: Baralho.c
-      Total linhas:             308
-      Linhas de código:         154
-      Linhas de comentário:     119
-      Linhas em branco:          43
+      Total linhas:             322
+      Linhas de código:         156
+      Linhas de comentário:     126
+      Linhas em branco:          48
    Arquivos de inclusão de que necessita
       Baralho.h
       LISTA.h
 
    Estatísticas do arquivo: Baralho.h
-      Total linhas:             178
+      Total linhas:             195
       Linhas de código:          17
-      Linhas de comentário:     138
+      Linhas de comentário:     155
       Linhas em branco:          23
    Arquivos de inclusão de que necessita
       LISTA.h
@@ -125,24 +125,24 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: DEFAULT  Path: .
-         Total linhas do tipo:      2241
+         Total linhas do tipo:      2258
          Linhas de código:           200
-         Linhas de comentário:      1771
+         Linhas de comentário:      1788
          Linhas em branco:           270
          Arquivos deste tipo:          6
 
   Tipo: c        Path: .
-         Total linhas do tipo:      1163
-         Linhas de código:           602
-         Linhas de comentário:       316
-         Linhas em branco:           281
+         Total linhas do tipo:      1177
+         Linhas de código:           604
+         Linhas de comentário:       323
+         Linhas em branco:           286
          Arquivos deste tipo:          3
 
 Totais para todo o construto TesteBaralho
 
-   Total linhas:              3404
-   Linhas de código:           802
-   Linhas de comentário:      2087
-   Linhas em branco:           551
+   Total linhas:              3435
+   Linhas de código:           804
+   Linhas de comentário:      2111
+   Linhas em branco:           556
    Arquivos processados:         9
 
