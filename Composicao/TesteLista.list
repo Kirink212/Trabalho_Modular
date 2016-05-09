@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: TesteLista.comp
 
    Nome do Construto:           TesteLista
-   Diretório base:              D:\AutoTest\Lista
+   Diretório base:              C:\Users\Leo\Documents\puc\modular\lista new
 
    Arquivo composição:          TesteLista.comp
    Arquivo plataforma:          gmake.parm
@@ -21,10 +21,10 @@ Módulos do construto: TesteLista.comp
 Estatísticas do construto
 
    Estatísticas do arquivo: Generico.h
-      Total linhas:             713
-      Linhas de código:          59
-      Linhas de comentário:     572
-      Linhas em branco:          82
+      Total linhas:             588
+      Linhas de código:          54
+      Linhas de comentário:     470
+      Linhas em branco:          64
    Arquivos de inclusão de que necessita
       TST_Espc.h
    Arquivos em que é incluído
@@ -39,10 +39,10 @@ Estatísticas do construto
       Lista.c
 
    Estatísticas do arquivo: LerParm.h
-      Total linhas:             291
+      Total linhas:             463
       Linhas de código:          36
-      Linhas de comentário:     188
-      Linhas em branco:          67
+      Linhas de comentário:     362
+      Linhas em branco:          65
    Arquivos em que é incluído
       TestLis.c
 
@@ -63,9 +63,9 @@ Estatísticas do construto
       TestLis.c
 
    Estatísticas do arquivo: TST_Espc.h
-      Total linhas:             228
+      Total linhas:             320
       Linhas de código:          23
-      Linhas de comentário:     185
+      Linhas de comentário:     277
       Linhas em branco:          20
    Arquivos em que é incluído
       Generico.h
@@ -99,10 +99,10 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: DEFAULT  Path: .
-         Total linhas do tipo:      1924
-         Linhas de código:           188
-         Linhas de comentário:      1469
-         Linhas em branco:           267
+         Total linhas do tipo:      2063
+         Linhas de código:           183
+         Linhas de comentário:      1633
+         Linhas em branco:           247
          Arquivos deste tipo:          5
 
   Tipo: c        Path: .
@@ -114,9 +114,9 @@ Totais por tipo de arquivo
 
 Totais para todo o construto TesteLista
 
-   Total linhas:              2910
-   Linhas de código:           707
-   Linhas de comentário:      1688
-   Linhas em branco:           547
+   Total linhas:              3049
+   Linhas de código:           702
+   Linhas de comentário:      1852
+   Linhas em branco:           527
    Arquivos processados:         7
 
