@@ -22,32 +22,8 @@ g) Relatórios: Contém todos os arquivos com extensões ".txt", contendo os relató
 
 h) Scripts: Contém todos os arquivos com extensões ".script".
 
-5- Para compilar os modulos separadamente execute   COMPILA_COL.bat ou
-						    COMPILA_EMB.bat ou
-						    COMPILA_EXT.bat ou
-						    COMPILA_ORD.bat ou
-						    COMPILA_LIS.bat
+2) Para executar o módulo baralho, deve-se seguir o procedimento abaixo:
 
-6-Para testar os modulos separadamente execute    TestaCOL.bat ou
-						  TestaEMB.bat ou
-						  TestaEXT.bat ou
-						  TestaORD.bat ou
-						  TestaLIS.bat
-(OBS:os testes .bat tambem compilam o codigo)
+a) Crie uma pasta de nome qualquer e, das pastas indicadas acima, copie os seguintes arquivos:
 
-
-7- Caso queira compilar tudo execute o COMPILA_TUDO.bat
-	O .bat vai executar uma compilação por vez, basta apertar qualquer tecla para passar para o modulo seguinte.
-
-8- Caso queira Testar tudo execute o TestaTUDO.bat
-	O .bat vai executar um teste por vez, basta apertar qualquer tecla para passar para o modulo seguinte.
-
-9-Abaixo estão os executaveis e seus respectivos modulos
-
-TRAB2-1.EXE -> Embaralhamento
-TRAB2-2.EXE -> Colunas(sequencias visiveis)
-TRAB2-3.EXE -> Ordenadas(sequencias ordenadas)
-TRAB2-4.EXE -> Extra
-TRAB2-5.EXE -> Lista
-
-10- O Leia-me e os relatórios individuais se encontram na pasta "Leia-me e relatórios individuais".
+- Na pasta a) os arquivos: Compila.bat, Compila_.bat, Gera_.bat, Testa_.bat, Tudo_.bat (substitua o _ por Baralho em todos os casos)

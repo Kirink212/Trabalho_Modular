@@ -6,7 +6,6 @@
 *
 *  Nome da base de software:    Arcabouço para a automação de testes 
 *								de programas redigidos em C
-*  Arquivo da base de software: D:\AUTOTEST\PROJETOS\LISTA.BSW
 *
 *  Projeto: INF 1301 - T2 de Programação Modular - Implementação do Truco
 *  Autores: Luís Fernando Teixeira Bicalho (lfer),  
@@ -110,7 +109,7 @@ LIS_tppLista BAR_CriarBaralho( )
 					  VALETE , REI , AS , DOIS , TRES } ;
 	Naipe nap[4] = { OUROS , ESPADAS , COPAS , PAUS } ;
 
-	Carta* carta=NULL ;
+	BAR_tppCarta* carta=NULL ;
 
 	// Cria o baralho como uma lista vazia 
 	LIS_tppLista baralho = LIS_CriarLista( NULL ) ;
@@ -121,7 +120,7 @@ LIS_tppLista BAR_CriarBaralho( )
 		for( j = 0 ; j < 10 ; j++ )
 		{
 			//Cada carta sendo alocada dinamicamente à cada iteração
-			carta = (Carta*) malloc( sizeof( Carta ) ) ; 
+			carta = (BAR_tppCarta*) malloc( sizeof( BAR_tppCarta ) ) ; 
 
 			if( carta == NULL )
 			{
@@ -147,19 +146,23 @@ LIS_tppLista BAR_CriarBaralho( )
 
 BAR_tpCondRet BAR_LiberarBaralho( LIS_tppLista baralho )
 {
+	// Assertiva que verifica se baralho está vazio
 	#ifdef _DEBUG
 		asset( baralho != NULL ) ;
 	#endif
+
 	// Obtendo o valor da carta no topo do baralho
-	Carta* carta ;
+	BAR_tppCarta* carta ;
 
 	// Movendo o ponteiro para o começo da lista de cartas
 	LIS_IrInicioLista( baralho ) ;
 	
-	carta = (Carta*) LIS_ObterValor( baralho ) ;
+	carta = (BAR_tppCarta*) LIS_ObterValor( baralho ) ;
 
+	// Percorre o baralho enquanto não chega ao seu final
 	while( carta != NULL )
 	{
+		//Verificando se a retirada da carta foi bem sucedida
 		if (LIS_ExcluirElemento( baralho ) != LIS_CondRetOK )
 		{
 			return BAR_CondRetCartaNaoExcluida ;
@@ -168,7 +171,7 @@ BAR_tpCondRet BAR_LiberarBaralho( LIS_tppLista baralho )
 		/* Liberando a carta e inicializando a próxima a ser retirada na
 		  iteração, respectivamente */
 		free( carta ) ;
-		carta = (Carta*) LIS_ObterValor( baralho ) ;
+		carta = (BAR_tppCarta*) LIS_ObterValor( baralho ) ;
 
 	}/* while */
 	
@@ -184,9 +187,11 @@ BAR_tpCondRet BAR_LiberarBaralho( LIS_tppLista baralho )
 
 BAR_tpCondRet BAR_EmbaralharCartas(LIS_tppLista baralho)
 {
+	// Assertiva que verifica se baralho está vazio
 	#ifdef _DEBUG
 		assert( baralho != NULL ) ;
 	#endif
+
 	int random, i ;
 	void* carta ;
 	srand( (unsigned int) time( NULL ) ) ;
@@ -231,6 +236,7 @@ BAR_tpCondRet BAR_EmbaralharCartas(LIS_tppLista baralho)
 
 BAR_tpCondRet BAR_DistribuirCartas(LIS_tppLista baralho, LIS_tppLista jogador)
 {
+	// Assertiva que verifica se baralho e jogador estão vazios
 	#ifdef _DEBUG
 		assert( baralho != NULL && jogador != NULL) ;
 	#endif
@@ -256,15 +262,17 @@ BAR_tpCondRet BAR_DistribuirCartas(LIS_tppLista baralho, LIS_tppLista jogador)
 
 int BAR_EscolherManilha(LIS_tppLista baralho)
 {
+	// Assertiva que verifica se baralho está vazio
 	#ifdef _DEBUG
 		assert( baralho != NULL ) ;
 	#endif
-	Carta *vira ;
+
+	BAR_tppCarta *vira ;
 
 	/* Posiciona-se o ponteiro no início da lista de cartas e obtém o valor
 	  do primeiro elemento, que na nossa especificação é denominado "vira" */
 	LIS_IrInicioLista( baralho ) ;
-	vira = (Carta*) LIS_ObterValor( baralho ) ;
+	vira = (BAR_tppCarta*) LIS_ObterValor( baralho ) ;
 
 	/* Como TRES é o valor mais alto do baralho, escolhe o menos valor 
 	como manilha */
@@ -285,8 +293,9 @@ int BAR_EscolherManilha(LIS_tppLista baralho)
 *  Função: BAR &Obter valor
 *  ****/
 
-int BAR_ObterValor( Carta* carta )
+int BAR_ObterValor( BAR_tppCarta* carta )
 {
+	// Assertiva que verifica se carta está vazia
 	#ifdef _DEBUG
 		assert( carta != NULL ) ;
 	#endif
@@ -300,8 +309,9 @@ int BAR_ObterValor( Carta* carta )
 *  Função: BAR &Obter naipe
 *  ****/
 
-int BAR_ObterNaipe( Carta* carta )
+int BAR_ObterNaipe( BAR_tppCarta* carta )
 {
+	// Assertiva que verifica se carta está vazia
 	#ifdef _DEBUG
 		assert( carta != NULL ) ;
 	#endif
