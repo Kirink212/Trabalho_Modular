@@ -15,20 +15,12 @@ além de dar nomes às funções de cada módulo.
 relacionamento entre os módulos e tipos enumerados existentes no projeto.
 23/04/2016; 4 horas trabalhadas; Codificar Módulo, Revisar Código do Módulo; Pelo aplicativo Skype, o grupo desenvolveu em conjunto todas as funções do
 módulo "Baralho", o que exigiu que revisássemos primeiramente todo o código do módulo Lista.
-
-
-
-
-
-estudar
-especificar os módulos
-especificar as funções
-revisar especificações
-projetar
-revisar projetos
-codificar módulo
-revisar código do módulo
-redigir script de teste
-revisar script de teste
-realizar os testes
-diagnosticar e corrigir os problemas encontrados 
+02/05/2016; 1 horas trabalhadas; Projetar; Pelo facebook o grupo se reuniu para organizar a divisão de tarefas para a última semana de trabalho.
+03/05/2016; 6 horas trabalhadas; Codificar Módulo, Revisar Código do Módulo e Especificar Módulos; Adição de comentários e revisão de padrões estabelecidos
+por convenção, além de utilizar o programa draw.io para desenhar o modelo físico.
+05/05/2016; 4 horas trabalhadas; Codificar Módulo, Revisar Código do Módulo; Adição de comentários e revisão de padrões estabelecidos por convenção.
+06/05/2016; 2 horas trabalhadas; Codificar Módulo, Revisar Código do Módulo; Adição de comentários e revisão de padrões estabelecidos por convenção.
+07/05/2016; 1 horas trabalhadas; Codificar Módulo, Revisar Código do Módulo; Adição de comentários e revisão de padrões estabelecidos por convenção, 
+além do LEIA-ME ter sido redigido.
+08/05/2016; 6 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Todos os membros testaram os arquivos executáveis e
+a compilação deles, em nome da entrega de um trabalho bem feito. Conclusão do mdoelo físico.

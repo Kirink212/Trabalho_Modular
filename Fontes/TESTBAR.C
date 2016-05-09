@@ -87,7 +87,7 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
       int i ;
 	  
 	  LIS_tppLista jogador ;
-	  Carta* carta ;
+	  BAR_tppCarta* carta ;
 	  int valor ;
 
       /* Efetuar reset de teste de baralho */

@@ -1,12 +1,12 @@
 /***************************************************************************
 *
-*  $MCD Módulo de definição: LIS  Lista duplamente encadeada
+*  $MCD Módulo de definição: BAR  Baralho de Cartas
 *
-*  Arquivo gerado:              LISTA.h
-*  Letras identificadoras:      LIS
+*  Arquivo gerado:              BARALHO.h
+*  Letras identificadoras:      BAR
 *
-*  Nome da base de software:    Arcabouço para a automação de testes de programas redigidos em C
-*  Arquivo da base de software: D:\AUTOTEST\PROJETOS\LISTA.BSW
+*  Nome da base de software:    Arcabouço para a automação de testes 
+*								de programas redigidos em C
 *
 *  Projeto: INF 1301 / 1628 Automatização dos testes de módulos C
 *  Autores: Luís Fernando Teixeira Bicalho (lfer),  
@@ -14,13 +14,30 @@
 *			Bruno D'Almeida Franco (bfranco)
 *
 *  $HA Histórico de evolução:
-*     Versão  Autor    Data        Observações
-*     1       lfer   16/abr/2016   início desenvolvimento
-*
+*     Versão	Autor		Data				Observações
+*     5         llages  08/maio/2016        alteração do nome de
+*                                           variáveis para seguir
+*                                           os padrões e adição de
+*                                           assertivas
+*     4			lfer	05/maio/2016		adição e revisão de 
+*											comentários no código
+*     3			lfer	03/maio/2016		criação das condições 
+*											de retorno e adição de 
+*                                           funções
+*     2			llages	07/abr/2016			revisão de implementação
+*     1			lfer	16/abr/2016			início desenvolvimento
+
 *  $ED Descrição do módulo
-*     Implementa o representativo do baralho no jogo de Truco
-*
-*     
+*     Implementa o representativo do baralho no jogo de Truco, podendo
+*	  criá-lo contendo 40 cartas, com valores entre 10 enumerados e naipes
+*	  dentre 4 enumerados, além de liberá-lo e embaralhá-lo de forma 
+*	  randômica.
+*	  Além dessas três ações, os jogadores poderão receber as cartas
+*	  através da distribuição delas a partir do topo do baralho, ação feita
+*	  pela função de distribuição.
+*	  Ações como escolher a manilha da rodada e obter valores e naipes de
+*	  respectivas quartas também são requisitos funcionais englobados pelo
+*	  código a seguir.
 *
 ***************************************************************************/
 
@@ -30,7 +47,7 @@
 /***** Declarações exportadas pelo módulo *****/
 
 /* Tipo referência para uma carta */
-typedef struct carta Carta;
+typedef struct carta BAR_tppCarta;
 
 typedef enum {
 
@@ -129,11 +146,11 @@ typedef enum {
 *
 *  $ED Descrição da função
 *     Distribui três cartas do baralho já embaralhado para cada um
-*	  dos jogadores indo do primeiro ao último da lista jog.
+*	  dos jogadores indo do primeiro ao último da lista jogador.
 *
 *  $EP Parâmetros
-*     bar - ponteiro para a lista de cartas a ser distribuída
-*     jog - ponteiro para a lista de jogadores que receberão as cartas
+*     baralho - ponteiro para a lista de cartas a ser distribuída
+*     jogador - ponteiro para a lista de jogadores que receberão as cartas
 *
 *  $FV Valor retornado
 *     BAR_CondRetCartaNaoExcluida - falha na transferência de cartas
@@ -164,7 +181,7 @@ typedef enum {
 *
 ***********************************************************************/
 
-	int BAR_ObterValor( Carta* carta ) ;
+	int BAR_ObterValor( BAR_tppCarta* carta ) ;
 
 /***********************************************************************
 *
@@ -175,4 +192,4 @@ typedef enum {
 *
 ***********************************************************************/
 
-	int BAR_ObterNaipe( Carta* carta ) ;
+	int BAR_ObterNaipe( BAR_tppCarta* carta ) ;
