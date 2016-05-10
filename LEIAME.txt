@@ -12,7 +12,7 @@ Trabalho 2 para a disciplina INF-1310: Programação Modular - Implementação do jo
   aborda a especificação de requisitos, a arquitetura no padrão UML e o modelo físico, juntamente com as assertivas.
 
   d) Fontes: Contém todos os arquivos com extensões ".c" e ".h", ou seja, todos os arquivos relacionados aos
-  módulos BARALHO e LISTA, ambos com suas próprias declaração, definição, teste e .
+  módulos BARALHO e LISTA, ambos com suas próprias declaração, definição e testes.
 
   e) Objetos: Contém todos os arquivos com extensões ".obj" e ".lib".
 
