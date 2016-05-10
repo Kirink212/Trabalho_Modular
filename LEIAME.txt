@@ -1,0 +1,63 @@
+
+Trabalho 2 para a disciplina INF-1310: Programação Modular - Implementação do jogo "Truco
+"
+
+1) Os diretórios foram organizados de acordo com o padrão entitulado no arcabouço, com as pastas:
+
+  a) Batches: Contém todos os arquivos com extensões ".bat".
+
+  b) Composicao: Contém todos os arquivos com extensões ".comp", ".parm", ".list" e ".make".
+
+  c) Especificações, Arquitetura e Modelo Físico: Contém um arquivo com extensão ".docx", cuja documentação
+  aborda a especificação de requisitos, a arquitetura no padrão UML e o modelo físico, juntamente com as assertivas.
+
+  d) Fontes: Contém todos os arquivos com extensões ".c" e ".h", ou seja, todos os arquivos relacionados aos
+  módulos BARALHO e LISTA, ambos com suas próprias declaração, definição, teste e .
+
+  e) Objetos: Contém todos os arquivos com extensões ".obj" e ".lib".
+
+  f) Produto: Contém todos os arquivos com extensões ".log" e ".exe".
+
+  g) Relatórios: Contém todos os arquivos com extensões ".txt", contendo os relatórios de cada membro do grupo.
+
+  h) Scripts: Contém todos os arquivos com extensões ".script".
+
+2) Para executar os testes dos módulos, devem-se seguir os procedimentos abaixo:
+
+  a) Crie uma pasta de nome qualquer e, das pastas indicadas acima, copie os seguintes arquivos:
+
+    - Para compilar o teste do módulo LISTA, copie os arquivos:
+       i. Da pasta Batches: CompilaLista.bat, GeraLista.bat, LimpaLista.bat, TestaLista.bat e TudoLista.bat
+       ii. Da pasta Composicao: Gmake.parm e TesteLista.comp
+       iii. Da pasta Fontes: CESPDIN.h, CONTA.h, GENERICO.h, LERPARM.h, LISTA.h, LISTA.c, TESTLIS.c, TST_ESPC.h
+       iv. Da pasta Objetos: ArcaboucoTeste.lib
+       v. Da pasta Produto: exbestat.exe e GMake.exe
+       vi. Da pasta Scripts: TesteLista.script
+
+    - Para compilar o teste do módulo BARALHO, copie os arquivos:
+       i. Da pasta Batches: CompilaBaralho.bat, GeraBaralho.bat, LimpaBaralho.bat, TestaBaralho.bat e TudoBaralho.bat
+       ii. Da pasta Composicao: Gmake.parm e TesteBaralho.comp
+       iii. Da pasta Fontes: BARALHO.h, BARALHO.c, CESPDIN.h, CONTA.h, GENERICO.h, LERPARM.h, LISTA.h, LISTA.c, TESTBAR.c, TST_ESPC.h
+       iv. Da pasta Objetos: ArcaboucoTeste.lib
+       v. Da pasta Produto: exbestat.exe e GMake.exe
+       vi. Da pasta Scripts: TesteBaralho.script
+
+    OBS: Para ambos os casos, deve-se copiar o arquivo "vsvars32.bat" referente ao Visual Studio instalado na máquina. O arquivo encontra-se (dentro da pasta do Visual Studio) na pasta /Common7/Tools.
+
+  b) Após copiar os arquivos referentes ao teste desejado, deve-se abrir o prompt comando na pasta criada e rodar o arquivo "vsvars32.bat". Após a execução do mesmo, basta executar o arquivo "TudoLista.bat" ou "TudoBaralho.bat". Assim, será compilado o executável do teste e rodado o .script de teste referente ao módulo.
+
+  c) Depois da compilação, para rodar outros testes, basta utilizar, ainda no prompt de comando, "testelista /sNomeDoArquivo" ou "testebaralho /sNomeDoArquivo", sendo "NomeDoArquivo" o nome referente ao novo .script de teste a ser realizado.
+
+3) Para apenas executar os testes, sem compilação, é necessário criar uma nova pasta e copiar os seguintes arquivos:
+
+  a)
+
+  - Para executar o teste do módulo LISTA, copie os arquivos:
+    i. Da pasta Produto: TRAB2-2.exe
+    ii. Da pasta Scripts: TesteLista.script
+
+  - Para executar o teste do módulo BARALHo, copie os arquivos:
+    i. Da pasta Produto: TRAB2-1.exe
+    ii. Da pasta Scripts: TesteBaralho.script
+
+  b) Após copiar os arquivos, abra o prompt de comando na pasta e utilize os comandos "trab2-1 /stestebaralho" ou "trab2-2 /stestelista" para rodar os testes. Caso deseje rodar outro script de teste, veja o item 2c, alterando o primeiro parâmetro do comando para "trab2-1" ou "trab2-2" conforme o teste copiado.
