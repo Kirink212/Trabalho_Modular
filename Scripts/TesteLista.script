@@ -68,6 +68,9 @@
 =esvaziarlista   lista1
 =obtervalorelem  lista1   "???"     pNULL
 
+== Procurar um valor em uma lista vazia
+=procurarvalor   lista1   "???"    ListaVazia
+
 == Destruir a lista
 =destruirlista   lista1
 
@@ -105,6 +108,17 @@
 == Verificar a lista andando demais de frente para trás
 =avancarelem     lista2   10     FimLista
 =obtervalorelem  lista2   str3   pNaoNULL
+
+== Andar para o inicio da lista e remover o primeiro elemento
+=irinicio        lista2
+=excluirelem     lista2               OK
+
+== Andar para o final da lista e remover o ultimo elemento
+=irfinal         lista2
+=excluirelem     lista2               OK
+
+== Verificar se um elemento que nao esta na lista é encontrado
+=procurarvalor  lista2   str3   NaoAchou
 
 == Destruir a lista
 =destruirlista   lista2

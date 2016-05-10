@@ -43,6 +43,7 @@ static const char EXC_ELEM_CMD            [ ] = "=excluirelem"    ;
 static const char IR_INICIO_CMD           [ ] = "=irinicio"       ;
 static const char IR_FIM_CMD              [ ] = "=irfinal"        ;
 static const char AVANCAR_ELEM_CMD        [ ] = "=avancarelem"    ;
+static const char PROCURAR_VALOR_CMD      [ ] = "=procurarvalor"  ;
 
 
 #define TRUE  1
@@ -366,6 +367,35 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
                       "Condicao de retorno errada ao avancar" ) ;
 
          } /* fim ativa: LIS  &Avançar elemento */
+		 
+	  /* LIS  &Procurar valor */
+		 
+		 else if ( strcmp( ComandoTeste , PROCURAR_VALOR_CMD ) == 0 )
+		 {
+			 
+			numLidos = LER_LerParametros( "isi" , &inxLista , StringDado ,
+								&ValEsp ) ;
+								
+			if ( ( numLidos != 3 )
+              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+			
+			pDado = ( char * ) malloc( strlen( StringDado ) + 1 ) ;
+            if ( pDado == NULL )
+            {
+               return TST_CondRetMemoria ;
+            } /* if */
+
+            strcpy( pDado , StringDado ) ;
+			
+			CondRet = LIS_ProcurarValor( vtListas[ inxLista ] , pDado ) ;
+			
+			return TST_CompararInt( ValEsp , CondRet ,
+					  "Condicao de retorno errada ao procurar valor" ) ;
+					  
+		 } /* fim ativa: LIS  &Procurar valor */
 
       return TST_CondRetNaoConhec ;
 

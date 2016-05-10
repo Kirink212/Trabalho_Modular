@@ -186,6 +186,8 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 			
 			CondRet = BAR_DistribuirCartas( jogador , vtBaralhos[ inxBaralho ] ) ;
 			
+			LIS_DestruirLista( jogador ) ;
+			
 			return TST_CompararInt( CondRetEsp , CondRet ,
 					  "Condicao de retorno errada ao distribuir cartas." ) ;
 					  

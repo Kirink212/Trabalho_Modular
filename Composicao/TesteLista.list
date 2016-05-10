@@ -72,10 +72,10 @@ Estatísticas do construto
       TestLis.c
 
    Estatísticas do arquivo: TestLis.c
-      Total linhas:             426
-      Linhas de código:         231
-      Linhas de comentário:      83
-      Linhas em branco:         126
+      Total linhas:             456
+      Linhas de código:         251
+      Linhas de comentário:      85
+      Linhas em branco:         135
    Arquivos de inclusão de que necessita
       Generico.h
       LerParm.h
@@ -106,17 +106,17 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          5
 
   Tipo: c        Path: .
-         Total linhas do tipo:       986
-         Linhas de código:           519
-         Linhas de comentário:       219
-         Linhas em branco:           280
+         Total linhas do tipo:      1016
+         Linhas de código:           539
+         Linhas de comentário:       221
+         Linhas em branco:           289
          Arquivos deste tipo:          2
 
 Totais para todo o construto TesteLista
 
-   Total linhas:              3049
-   Linhas de código:           702
-   Linhas de comentário:      1852
-   Linhas em branco:           527
+   Total linhas:              3079
+   Linhas de código:           722
+   Linhas de comentário:      1854
+   Linhas em branco:           536
    Arquivos processados:         7
 

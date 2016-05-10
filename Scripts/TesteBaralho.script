@@ -33,8 +33,14 @@
 == Teste com o baralho 1
 =criarbaralho     baralho1
 
+== Obter naipe e valor da ultima carta de um baralho ordenado
+=obtervalor       baralho1     9
+=obternaipe       baralho1     3
+
 == Escolher manilha em um baralho ordenado
 =escolhermanilha  baralho1     1
+
+== Obter naipe e valor da primeira carta de um baralho ordenado
 =obtervalor       baralho1     0
 =obternaipe       baralho1     0
 
