@@ -23,8 +23,9 @@
 *     3			lfer	03/maio/2016		criação das condições 
 *											de retorno e adição de 
 *                                           funções
-*     2			llages	07/jul/2016			revisão de implementação
-*     1			lfer	16/abr/2016			início desenvolvimento
+*     2			llages	22/abr/2016			revisão de implementação
+*     1			lfer e	16/abr/2016			início desenvolvimento
+*				bfranco
 *
 ***************************************************************************/
 
@@ -148,7 +149,7 @@ BAR_tpCondRet BAR_LiberarBaralho( LIS_tppLista baralho )
 {
 	// Assertiva que verifica se baralho está vazio
 	#ifdef _DEBUG
-		asset( baralho != NULL ) ;
+		assert( baralho != NULL ) ;
 	#endif
 
 	// Obtendo o valor da carta no topo do baralho
@@ -302,7 +303,7 @@ int BAR_ObterValor( BAR_tppCarta* carta )
 
 	return carta->valor ;
 
-}/* Fim função: BAR  &Obter Valor*/
+}/* Fim função: BAR  &Obter valor*/
 
 /***************************************************************************
 *

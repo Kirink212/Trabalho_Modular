@@ -1,10 +1,24 @@
 10/04/2016;2 horas e 30 min;Especificação dos módulos;Discutimos sobre os módulos , para ver como ficariam melhor na composição do trabalho.
-11/04/2016;2 horas;Especificação dos módulos e das funções;Durante a atividade em sala de aula melhoramos,corrigindo e/ou adicionando, e desenhamos os módulos ja 
+
+11/04/2016;2 horas;Especificação dos módulos e das funções;Durante a atividade em sala de aula melhoramos,corrigindo e/ou 
+adicionando, e desenhamos os módulos ja 
 feitos , e tambem nomeando as funções de cada módulo.
+
 13/04/2016;2 horas;Especificação dos módulos e das funções;Continuamos as atividades realizadas em aula dia 11/04/2016.
-18/04/2016;2 horas;Especificação dos módulos;Atividade em sala de aula para construirmos um modelo das relacões entre os módulos e os tipos enumerados do projeto.
+
+18/04/2016;2 horas;Especificação dos módulos;Atividade em sala de aula para construirmos um modelo das relacões entre os módulos e os tipos
+enumerados do projeto.
+
 23/04/2016;2 horas;Codificação do módulo;Codificamos o módulo baralho;
+
 05/05/2016;3 horas;Script e testes;Revisando a relação dos scripts e dos testes com os exemplos disponibilizados pelo professor.
-07/05/2016;3 horas;Script e erros;Terminado a criação do script de teste para o modulo baralho e realizando testes, que estavam apontando erros nos comandos do script
+
+07/05/2016;3 horas;Script e erros;Terminado a criação do script de teste para o modulo baralho e realizando testes, que estavam apontando 
+erros nos comandos do script
 assim tendo q realizar uma revisão dos códigos até encontrar o erro.
+
 09/05/2016;30 min;Teste lista;Revisar e corrigir os nomes de algumas funções.
+02/05/2016; 1 horas trabalhadas; Projetar; Pelo facebook o grupo se reuniu para organizar a divisão de tarefas para a última semana de trabalho.
+07/05/2016; 1 horas trabalhadas; Codificar Módulo, Revisar Código do Módulo; Adição de comentários e revisão de padrões estabelecidos por convenção.
+08/05/2016; 4 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Todos os membros testaram os arquivos executáveis e
+a compilação deles, em nome da entrega de um trabalho bem feito. Conclusão do mdoelo físico.

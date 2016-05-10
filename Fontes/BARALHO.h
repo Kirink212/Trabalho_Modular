@@ -24,9 +24,10 @@
 *     3			lfer	03/maio/2016		criação das condições 
 *											de retorno e adição de 
 *                                           funções
-*     2			llages	07/abr/2016			revisão de implementação
-*     1			lfer	16/abr/2016			início desenvolvimento
-
+*     2			llages	22/abr/2016			revisão de implementação
+*     1			lfer e	16/abr/2016			início desenvolvimento
+*				bfranco
+*
 *  $ED Descrição do módulo
 *     Implementa o representativo do baralho no jogo de Truco, podendo
 *	  criá-lo contendo 40 cartas, com valores entre 10 enumerados e naipes
