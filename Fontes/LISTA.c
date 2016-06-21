@@ -26,6 +26,11 @@
 #include   <malloc.h>
 #include   <assert.h>
 
+#ifdef _DEBUG
+	#include   "cespdin.h"
+	#include   "IdTiposEspaco.def"
+#endif
+
 #define LISTA_OWN
 #include "LISTA.h"
 #undef LISTA_OWN
@@ -38,6 +43,10 @@
 ***********************************************************************/
 
    typedef struct tagElemLista {
+		#ifdef _DEBUG
+		 tppLista cabecaLista ;
+			   /* Ponteiro para a cabeça de lista */
+		#endif
 
          void * pValor ;
                /* Ponteiro para o valor contido no elemento */
@@ -104,6 +113,10 @@
       {
          return NULL ;
       } /* if */
+	  
+	  #ifdef _DEBUG
+		 CED_DefinirTipoEspaco( pLista , LIS_TipoEspacoCabeca ) ;
+	  #endif
 
       LimparCabeca( pLista ) ;
 
@@ -528,6 +541,11 @@
       {
          return NULL ;
       } /* if */
+	  
+	  #ifdef _DEBUG
+		CED_DefinirTipoEspaco( pElem , LIS_TipoEspacoElemento ) ;
+		pElem->cabecaLista = pLista ;
+	  #endif
 
       pElem->pValor = pValor ;
       pElem->pAnt   = NULL  ;
