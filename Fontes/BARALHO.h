@@ -178,19 +178,21 @@ typedef enum {
 *  $FC Função: BAR  &Obter valor
 *
 *  $ED Descrição da função
-*     Obtém o valor da carta cujo ponteiro é passado como parâmetro
+*     Obtém o valor da carta cujo ponteiro é passado como parâmetro,
+*     preenchendo a variável "valor" caso seja passado um endereço.
 *
 ***********************************************************************/
 
-	int BAR_ObterValor( BAR_tppCarta* carta ) ;
+	int BAR_ObterValor( BAR_tppCarta* carta , char* valor ) ;
 
 /***********************************************************************
 *
 *  $FC Função: BAR  &Obter naipe
 *
 *  $ED Descrição da função
-*     Obtém o naipe da carta cujo ponteiro é passado como parâmetro
+*     Obtém o naipe da carta cujo ponteiro é passado como parâmetro,
+*     preenchendo a variável "naipe" caso seja passado um endereço.
 *
 ***********************************************************************/
 
-	int BAR_ObterNaipe( BAR_tppCarta* carta ) ;
+	int BAR_ObterNaipe( BAR_tppCarta* carta , char* naipe ) ;

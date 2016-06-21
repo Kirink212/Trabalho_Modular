@@ -14,6 +14,10 @@
 *
 *  $HA Histórico de evolução:
 *     Versão	Autor		Data				Observações
+*     6         llages  21/jul/2016         alterações nas funções
+*                                           obtervalor e obternaipe
+*                                           para preencherem uma
+*                                           string dada
 *     5         llages  08/maio/2016        alteração do nome de
 *                                           variáveis para seguir
 *                                           os padrões e adição de
@@ -294,12 +298,56 @@ int BAR_EscolherManilha(LIS_tppLista baralho)
 *  Função: BAR &Obter valor
 *  ****/
 
-int BAR_ObterValor( BAR_tppCarta* carta )
+int BAR_ObterValor( BAR_tppCarta* carta , char* valor )
 {
 	// Assertiva que verifica se carta está vazia
 	#ifdef _DEBUG
 		assert( carta != NULL ) ;
 	#endif
+	
+	if ( valor != NULL )
+	{
+		if ( carta->valor == QUATRO )
+		{
+			strcpy( valor , "QUATRO" ) ;
+		}
+		else if ( carta->valor == CINCO )
+		{
+			strcpy( valor , "CINCO" ) ;
+		}
+		else if ( carta->valor == SEIS )
+		{
+			strcpy( valor , "SEIS" ) ;
+		}
+		else if ( carta->valor == SETE )
+		{
+			strcpy( valor , "SETE" ) ;
+		}
+		else if ( carta->valor == DAMA )
+		{
+			strcpy( valor , "DAMA" ) ;
+		}
+		else if ( carta->valor == VALETE )
+		{
+			strcpy( valor , "VALETE" ) ;
+		}
+		else if ( carta->valor == REI )
+		{
+			strcpy( valor , "REI" ) ;
+		}
+		else if ( carta->valor == AS )
+		{
+			strcpy( valor , "AS" ) ;
+		}
+		else if ( carta->valor == DOIS )
+		{
+			strcpy( valor , "DOIS" ) ;
+		}
+		else if ( carta->valor == TRES )
+		{
+			strcpy( valor , "TRES" ) ;
+		}
+	}
 
 	return carta->valor ;
 
@@ -310,12 +358,32 @@ int BAR_ObterValor( BAR_tppCarta* carta )
 *  Função: BAR &Obter naipe
 *  ****/
 
-int BAR_ObterNaipe( BAR_tppCarta* carta )
+int BAR_ObterNaipe( BAR_tppCarta* carta , char* naipe )
 {
 	// Assertiva que verifica se carta está vazia
 	#ifdef _DEBUG
 		assert( carta != NULL ) ;
 	#endif
+	
+	if ( naipe != NULL )
+	{
+		if ( carta->naipe == OUROS)
+		{
+			strcpy( naipe , "OUROS" ) ;
+		}
+		else if ( carta->naipe == ESPADAS )
+		{
+			strcpy( naipe , "ESPADAS" ) ;
+		}
+		else if ( carta->naipe == COPAS )
+		{
+			strcpy( naipe , "COPAS" ) ;
+		}
+		else if ( carta->naipe == PAUS )
+		{
+			strcpy( naipe , "PAUS" ) ;
+		}
+	}
 	
 	return carta->naipe ;
 
