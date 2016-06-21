@@ -40,6 +40,8 @@ MES_tpCondRet MES_ExibirCartas( tppLista cartas )
 		retornoLista = LIS_AvancarElementoCorrente( cartas , 1 ) ;
 	}
 	
+	free( valor ) ;
+	fere( naipe ) ;
 	return MES_CondRetOK ;
 }
 
