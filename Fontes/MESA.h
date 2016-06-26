@@ -16,7 +16,7 @@ MES_tpCondRet MES_ExibirPlacar( int valor1 , int valor2 ) ;
 
 MES_tpCondRet MES_ExibirCartas( tppLista cartas ) ;
 
-MES_tpCondRet MES_ExibirValorMao( int valor ) ;
+MES_tpCondRet MES_ExibirValor( int valor ) ;
 
 MES_tpCondRet MES_ExibirMensagem( char* mensagem ) ;
 
