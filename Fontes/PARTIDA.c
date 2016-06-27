@@ -1,9 +1,33 @@
 #include "PARTIDA.h"
 
-void PAR_GerenciarPartida();
-void PAR_ReiniciarPartida();
+void PAR_GerenciarPartida()
+{
+   while(pontuacaoPartidaGrupo1 != 12 && pontuacaoPartidaGrupo2 != 12)
+   {
+       if(PAR_GerenciarMao() == 1)
+       {
+          pontucaoPartidaGrupo1++;
+       }
+       else if(PAR_GerenciarMao() == 2)
+       {
+          pontucaoPartidaGrupo2++;
+       }
+   }
+}
+void PAR_ReiniciarPartida()
+{
+    pontuacaoPartidaGrupo1 = pontuacaoPartidaGrupo2 = 0;
+
+}
 void PAR_GerenciarRodada();
-void PAR_GerenciarMao();
+int PAR_GerenciarMao()
+{
+    if(pontucaoMaoGrupo1 > pontucaoMaoGrupo2)
+    {
+        
+    }
+
+}
 void PAR_IniciarMaoDeOnze();
 void PAR_IniciarMaoDeFerro();
 int PAR_PedirAumento(int n, int *pontuacao_mao)
@@ -17,7 +41,5 @@ int PAR_PedirAumento(int n, int *pontuacao_mao)
 }
 int PAR_ResponderAumento(int n, int *pontuacao_mao)
 {
-
-
 
 }
