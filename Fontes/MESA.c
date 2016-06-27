@@ -41,7 +41,7 @@ MES_tpCondRet MES_ExibirCartas( tppLista cartas )
 	}
 	
 	free( valor ) ;
-	fere( naipe ) ;
+	free( naipe ) ;
 	return MES_CondRetOK ;
 }
 
