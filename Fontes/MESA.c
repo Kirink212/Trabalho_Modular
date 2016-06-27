@@ -13,7 +13,7 @@ MES_tpCondRet MES_ExibirPlacar( int valor1 , int valor2 )
 
 MES_tpCondRet MES_ExibirCartas( tppLista cartas )
 {
-	tppCarta carta ;
+	BAR_tppCarta* carta ;
 	LIS_tpCondRet retornoLista ;
 	char* valor = ( char* ) malloc( 7 * sizeof( char ) ) ;
 	char* naipe = ( char* ) malloc( 8 * sizeof( char ) ) ;
@@ -25,7 +25,13 @@ MES_tpCondRet MES_ExibirCartas( tppLista cartas )
 	
 	LIS_IrInicioLista( cartas ) ;
 	
-	carta = (tppCarta) LIS_ObterValor( cartas ) ;
+	carta = (BAR_tppCarta*) LIS_ObterValor( cartas ) ;
+	
+	if (carta == NULL )
+	{
+		return MES_CondRetListaVazia ;
+	}
+	
 	BAR_ObterValor( carta , valor ) ;
 	BAR_ObterNaipe( carta , naipe ) ;
 	printf( "%s de %s\n" , valor , naipe ) ;
@@ -33,7 +39,7 @@ MES_tpCondRet MES_ExibirCartas( tppLista cartas )
 	
 	while ( retornoLista != LIS_CondRetFimLista )
 	{
-		carta = (tppCarta) LIS_ObterValor( cartas ) ;
+		carta = (BAR_tppCarta*) LIS_ObterValor( cartas ) ;
 		BAR_ObterValor( carta , valor ) ;
 		BAR_ObterNaipe( carta , naipe ) ;
 		printf( "%s de %s\n" , valor , naipe ) ;
