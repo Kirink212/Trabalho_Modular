@@ -1,0 +1,71 @@
+////////////////////////////////////////////////
+//
+// Declaracao de contadores para teste de 
+// modulo lista
+//
+///////////////////////////////////////////////
+
+Criacao da uma lista
+Lista nao existe, criar lista
+Lista existe, criar lista
+Destruir lista, inicio
+Destruir lista, lista existente
+Esvaziar lista, inicio
+Esvaziar lista, lista existente
+Esvaziar lista, repete
+Inserir elemento antes, inicio
+Inserir elemento antes, elemento nao existe
+Inserir elemento antes, elemento existe
+Inserir elemento antes, elemento corrente nulo
+Inserir elemento antes, elemento corrente nao nulo
+Inserir elemento antes, anterior nao nulo
+Inserir elemento antes, anterior nulo
+Inserir elemento apos, inicio
+Inserir elemento apos, elemento nao existe
+Inserir elemento apos, elemento existe
+Inserir elemento apos, elemento corrente nulo
+Inserir elemento apos, elemento corrente nao nulo
+Inserir elemento apos, proximo nao nulo
+Inserir elemento apos, proximo nulo
+Excluir elemento, inicio
+Excluir elemento, corrente nulo
+Excluir elemento, corrente nao nulo
+Excluir elemento, desencadear esq anterior nao nulo
+Excluir elemento, desencadear esq anterior nulo
+Excluir elemento, desencadear dir prox nao nulo
+Excluir elemento, desencadear dir prox nulo
+Obter valor, inicio
+Obter valor, lista nao nula
+Obter valor, elemento corrente nulo
+Obter valor, elemento corrente nao nulo
+Ir inicio lista, inicio
+Ir inicio lista, lista nao nula
+Ir final lista, inicio
+Ir final lista, lista nao nula
+Avancar elemento corrente, inicio
+Avancar elemento corrente, lista nao nula
+Avancar elemento corrente, elemento corrente nulo
+Avancar elemento corrente, elemento corrente nao nulo
+Avancar elemento corrente, num elemento > 0
+Avancar elemento corrente, repete
+Avancar elemento corrente, elemento nulo
+Avancar elemento corrente, elemento nao nulo
+Avancar elemento corrente, num elemento < 0
+Avancar elemento corrente, repete2
+Avancar elemento corrente, elemento nulo2
+Avancar elemento corrente, elemento nao nulo2
+Avancar elemento corrente, nao avanca
+Procurar valor, inicio
+Procurar valor, lista nao nula
+Procurar valor, elemento corrente nulo
+Procurar valor, elemento corrente nao nulo
+Procurar valor, repete
+Procurar valor, encontrou valor
+Procurar valor, nao encontrou valor
+Liberar elemento, inicio
+Liberar elemento, excluir e valor nao nulos
+Liberar elemento, excluir ou valor nulo
+Criar elemento, inicio
+Criar elemento, elemento nulo
+Criar elemento, elemento nao nulo
+Limpar cabeca

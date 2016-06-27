@@ -22,3 +22,4 @@ assim tendo q realizar uma revisão dos códigos até encontrar o erro.
 07/05/2016; 1 horas trabalhadas; Codificar Módulo, Revisar Código do Módulo; Adição de comentários e revisão de padrões estabelecidos por convenção.
 08/05/2016; 4 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Todos os membros testaram os arquivos executáveis e
 a compilação deles, em nome da entrega de um trabalho bem feito. Conclusão do mdoelo físico.
+26/06/2016; 1 horas trabalhadas;Módulo Conta e script;Revisando o módulo conta e scripts de teste com os exemplos disponibilizados pelo professor.
