@@ -3,12 +3,19 @@
 typedef enum {
 	
 	MES_CondRetOK,
+	/* Retorno OK, funcionamento correto */
 	
 	MES_CondRetFaltouMemoria,
+	/* Faltou memória em alguma operação */
 	
 	MES_CondRetListaVazia,
+	/* Lista a ser manipulada estava vazia */
 	
 	MES_CondRetMensagemVazia,
+	/* Mensagem a ser escrita estava vazia */
+	
+	MES_CondRetMinMaiorMax,
+	/* Valor minimo passado maior que o valor maximo */
 	
 } MES_tpCondRet ;
 
@@ -33,6 +40,7 @@ MES_tpCondRet MES_ExibirValor( int valor ) ;
 MES_tpCondRet MES_ExibirMensagem( char* mensagem ) ;
 
 /*
-* Capta um comando do jogador
+* Capta um comando do jogador.
+* Obriga o jogador a digitar um número entre min e max
 */
-MES_tpCondRet MES_ReceberComando( int* comando ) ;
+MES_tpCondRet MES_ReceberComando( int* comando , int min , int max ) ;

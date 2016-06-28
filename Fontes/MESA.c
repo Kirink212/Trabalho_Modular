@@ -69,9 +69,20 @@ MES_tpCondRet MES_ExibirMensagem( char* mensagem )
 	return MES_CondRetOK ;
 }
 
-MES_tpCondRet MES_ReceberComando( int* comando )
+MES_tpCondRet MES_ReceberComando( int* comando , int min , int max )
 {	
+	if ( min > max )
+	{
+		return MES_CondRetMinMaiorMax ;
+	}
+	printf( "Digite um comando entre %d e %d:\n" , min , max ) ;
 	scanf( "%d" , comando ) ;
+	
+	while ( comando < min || comando > max ) 
+	{
+		printf( "Comando inválido. Digite um comando entre %d e %d:\n" , min , max ) ;
+		scanf( "%d" , comando ) ;
+	}
 	
 	return MES_CondRetOK ;
 }
