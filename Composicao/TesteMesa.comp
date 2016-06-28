@@ -1,0 +1,24 @@
+# Composicao do programa de teste do modulo mesa
+# Este exemplo utiliza o arcabouço completo 
+
+[Diretorios]
+
+Nome        =  TesteMesa
+PathDefault =  .
+err         =  .
+
+[Modulos]
+TestMes
+Baralho
+Lista
+Mesa
+
+[BuildInicio]
+/OUT:TesteMesa.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+
+[Fim]

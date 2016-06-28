@@ -6,12 +6,12 @@
 MES_tpCondRet MES_ExibirPlacar( int valor1 , int valor2 )
 {
 	
-	printf( "Placar:\nEquipe 1: %d\tEquipe 2: %d\n" , valor1 , valor2 ) ;
+	printf( "\nPlacar:\nEquipe 1: %d\tEquipe 2: %d" , valor1 , valor2 ) ;
 	
 	return MES_CondRetOK ;
 }
 
-MES_tpCondRet MES_ExibirCartas( tppLista cartas )
+MES_tpCondRet MES_ExibirCartas( LIS_tppLista pCartas )
 {
 	BAR_tppCarta* carta ;
 	LIS_tpCondRet retornoLista ;
@@ -23,13 +23,13 @@ MES_tpCondRet MES_ExibirCartas( tppLista cartas )
 		return MES_CondRetFaltouMemoria ;
 	}
 	
-	if ( cartas == NULL )
+	if ( pCartas == NULL )
 	{
 		return MES_CondRetListaNaoExiste ;
 	}
-	LIS_IrInicioLista( cartas ) ;
+	LIS_IrInicioLista( pCartas ) ;
 	
-	carta = (BAR_tppCarta*) LIS_ObterValor( cartas ) ;
+	carta = (BAR_tppCarta*) LIS_ObterValor( pCartas ) ;
 	
 	if ( carta == NULL )
 	{
@@ -38,16 +38,16 @@ MES_tpCondRet MES_ExibirCartas( tppLista cartas )
 	
 	BAR_ObterValor( carta , valor ) ;
 	BAR_ObterNaipe( carta , naipe ) ;
-	printf( "%s de %s\n" , valor , naipe ) ;
-	retornoLista = LIS_AvancarElementoCorrente( cartas , 1 ) ;
+	printf( "\n%s de %s" , valor , naipe ) ;
+	retornoLista = LIS_AvancarElementoCorrente( pCartas , 1 ) ;
 	
 	while ( retornoLista != LIS_CondRetFimLista )
 	{
-		carta = (BAR_tppCarta*) LIS_ObterValor( cartas ) ;
+		carta = (BAR_tppCarta*) LIS_ObterValor( pCartas ) ;
 		BAR_ObterValor( carta , valor ) ;
 		BAR_ObterNaipe( carta , naipe ) ;
-		printf( "%s de %s\n" , valor , naipe ) ;
-		retornoLista = LIS_AvancarElementoCorrente( cartas , 1 ) ;
+		printf( "\n%s de %s" , valor , naipe ) ;
+		retornoLista = LIS_AvancarElementoCorrente( pCartas , 1 ) ;
 	}
 	
 	free( valor ) ;
@@ -68,7 +68,7 @@ MES_tpCondRet MES_ExibirMensagem( char* mensagem )
 	{
 		return MES_CondRetMensagemVazia ;
 	}
-	printf( mensagem ) ;
+	printf( "\n%s" , mensagem ) ;
 	
 	return MES_CondRetOK ;
 }
@@ -79,10 +79,10 @@ MES_tpCondRet MES_ReceberComando( int* comando , int min , int max )
 	{
 		return MES_CondRetMinMaiorMax ;
 	}
-	printf( "Digite um comando entre %d e %d:\n" , min , max ) ;
+	printf( "\nDigite um comando entre %d e %d:\n" , min , max ) ;
 	scanf( "%d" , comando ) ;
 	
-	while ( comando < min || comando > max ) 
+	while ( *comando < min || *comando > max ) 
 	{
 		printf( "Comando inválido. Digite um comando entre %d e %d:\n" , min , max ) ;
 		scanf( "%d" , comando ) ;

@@ -30,7 +30,7 @@ MES_tpCondRet MES_ExibirPlacar( int valor1 , int valor2 ) ;
 /*
 * Recebe uma lista de cartas e escreve o nome e naipe de todas as cartas
 */
-MES_tpCondRet MES_ExibirCartas( tppLista cartas ) ;
+MES_tpCondRet MES_ExibirCartas( LIS_tppLista pCartas ) ;
 
 /*
 * Escreve um inteiro na tela

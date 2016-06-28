@@ -1,0 +1,55 @@
+// Script:    TesteMesa.script
+// Autor:     Leonardo Lages
+// Data:      28/jun/2016
+// Propósito: Testar superficialmente o módulo mesa para jogo de truco
+//
+
+== Inicializar valores
+
+=declararparm   str0    string  "teste abcd"
+=declararparm   str1    string  "teste1 aaty"
+
+=declararparm   OK             int  0
+=declararparm   FaltouMemoria  int  1
+=declararparm   ListaVazia     int  2
+=declararparm   MensagemVazia  int  3
+=declararparm   ListaNaoExiste int  5
+
+== Exibir placar igual zerado
+=exibirplacar    0  0  OK
+
+== Exibir placar igual negativo
+=exibirplacar    -10  -10  OK
+
+== Exibir placar igual positivo
+=exibirplacar    10  10  OK
+
+== Exibir placares diferentes
+=exibirplacar    10  -10  OK
+=exibirplacar    -10  10  OK
+
+== Exibir cartas existentes
+=exibircartas    OK
+
+== Exibir cartas lista vazia
+=exibircartas    ListaVazia
+
+== Exibir cartas lista nao existe
+=exibircartas    ListaNaoExiste
+
+== Exibir valor zero
+=exibirvalor     0  OK
+
+== Exibir valor negativo
+=exibirvalor     -10  OK
+
+== Exibir valor positivo
+=exibirvalor     10  OK
+
+== Exibir mensagens
+=exibirmensagem   OK  str0
+=exibirmensagem   MensagemVazia  "???"
+=exibirmensagem   OK  str1
+=exibirmensagem   OK  "teste\nteste"
+
+// fim
