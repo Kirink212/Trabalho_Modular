@@ -58,7 +58,7 @@ typedef enum {
          BAR_CondRetCartaNaoCriada ,
                /* Erro na criação da carta */
 
-		 BAR_CondRetFaltouMemoria ,
+         BAR_CondRetFaltouMemoria ,
                /* Erro na inserção de carta, falta de memória*/
 
          BAR_CondRetCartaNaoExcluida ,

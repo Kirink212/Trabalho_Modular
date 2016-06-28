@@ -108,7 +108,8 @@ struct carta {
 *  ****/
 LIS_tppLista BAR_CriarBaralho( )
 {
-	int i, j ;
+	int i, 
+      j ;
 	/* Vetores de Valor e de Naipe */
 	Valor val[10] = { QUATRO , CINCO , SEIS , SETE , DAMA ,
 					  VALETE , REI , AS , DOIS , TRES } ;
@@ -197,7 +198,8 @@ BAR_tpCondRet BAR_EmbaralharCartas(LIS_tppLista baralho)
 		assert( baralho != NULL ) ;
 	#endif
 
-	int random, i ;
+	int random,
+      i ;
 	void* carta ;
 	srand( (unsigned int) time( NULL ) ) ;
 	for( i = 0 ; i < 50 ; i++ )
