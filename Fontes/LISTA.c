@@ -44,7 +44,7 @@
 
    typedef struct tagElemLista {
 		#ifdef _DEBUG
-		 tppLista cabecaLista ;
+		 LIS_tppLista cabecaLista ;
 			   /* Ponteiro para a cabeça de lista */
 		#endif
 
