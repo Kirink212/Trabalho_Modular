@@ -27,9 +27,8 @@
 #include   <assert.h>
 
 #ifdef _DEBUG
-   #include   "conta.h" 
+	#include   "conta.h" 
 	#include   "cespdin.h"
-	#include   "IdTiposEspaco.def"
 #endif
 
 #define LISTA_OWN
@@ -85,6 +84,34 @@
                /* Ponteiro para a função de destruição do valor contido em um elemento */
 
    } LIS_tpLista ;
+   
+/************************************************************************
+*
+*  $TC Tipo de dados: LIS Id Tipo de Espaco
+*
+*
+*************************************************************************/
+
+#ifdef _DEBUG
+	typedef enum {
+   
+		 CED_ID_TIPO_VALOR_NULO ,
+		   /* Tipo de espaço com valor nulo */
+		 
+		 LIS_TipoEspacoCabeca ,
+		   /* Tipo de espaço Cabeça de Lista */
+		 
+		 LIS_TipoEspacoElemento ,
+		   /* Tipo de espaço Elemento de Lista */
+		 
+		 CED_ID_TIPO_NULL   = 99998 ,
+		   /* Tipo de espaço nulo */
+		 
+		 CED_ID_TIPO_ILEGAL = 99999 
+		   /* Tipo de espaço ilegal */
+		 
+	} LIS_tpIdTipoEspaco ;
+#endif
 
 /***** Protótipos das funções encapsuladas no módulo *****/
 
