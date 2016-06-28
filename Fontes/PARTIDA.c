@@ -7,11 +7,11 @@ void PAR_GerenciarPartida()
    {
        if(PAR_GerenciarMao() == 1)
        {
-          pontucaoPartidaGrupo1 += pontuacaoMao;
+          pontuacaoPartidaGrupo1 += pontuacaoMao;
        }
        else if(PAR_GerenciarMao() == 2)
        {
-          pontucaoPartidaGrupo2 += pontuacaoMao;
+          pontuacaoPartidaGrupo2 += pontuacaoMao;
        }
    }
 }
@@ -22,7 +22,7 @@ void PAR_ReiniciarPartida()
 }
 int PAR_GerenciarMao()
 {
-    int contabiliza = pontucaoMaoGrupo1 - pontucaoMaoGrupo2 ;
+    int contabiliza = pontuacaoMaoGrupo1 - pontuacaoMaoGrupo2 ;
     bool ganhador = false ;
     while(!ganhador)
     {

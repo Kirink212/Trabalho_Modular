@@ -23,11 +23,15 @@ MES_tpCondRet MES_ExibirCartas( tppLista cartas )
 		return MES_CondRetFaltouMemoria ;
 	}
 	
+	if ( cartas == NULL )
+	{
+		return MES_CondRetListaNaoExiste ;
+	}
 	LIS_IrInicioLista( cartas ) ;
 	
 	carta = (BAR_tppCarta*) LIS_ObterValor( cartas ) ;
 	
-	if (carta == NULL )
+	if ( carta == NULL )
 	{
 		return MES_CondRetListaVazia ;
 	}

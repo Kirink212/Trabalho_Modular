@@ -17,6 +17,9 @@ typedef enum {
 	MES_CondRetMinMaiorMax,
 	/* Valor minimo passado maior que o valor maximo */
 	
+	MES_CondRetListaNaoExiste,
+	/* Lista a ser manipulada nao existe */
+	
 } MES_tpCondRet ;
 
 /*
