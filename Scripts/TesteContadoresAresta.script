@@ -138,10 +138,25 @@
 == Destruir a lista
 =destruirlista   lista2
 
+== Limitar número de espaços
+=limitarnumeroespacos	1
+
 == Criar lista
 =criarlista 	lista3
 
-== Inserir elemento em lista vazia
+== Criar lista falta memoria
+=criarlista	lista1
+
+== Inserir elemento antes falta memoria
+=inselemantes    lista3   str0   FaltouMemoria
+
+== Inserir elemento apos falta memoria
+=inselemapos	 lista3   str0   FaltouMemoria
+
+== Eliminar limite espaços
+=eliminarlimitesespaco
+
+== Inserir elemento antes em lista vazia
 =inselemantes    lista3   str0   OK
 =obtervalorelem  lista3   str0   pNaoNULL
 
