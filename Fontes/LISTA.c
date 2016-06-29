@@ -718,10 +718,6 @@
          
          if ( pElem->pValor == pValor )
          {
-            #ifdef _DEBUG
-               CNT_CONTAR( "Procurar valor, encontrou valor" );
-            #endif
-            
             pLista->pElemCorr = pElem ;
             return LIS_CondRetOK ;
          } /* if */

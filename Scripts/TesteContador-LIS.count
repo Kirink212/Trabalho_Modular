@@ -60,7 +60,6 @@ Procurar valor, lista nao nula
 Procurar valor, elemento corrente nulo
 Procurar valor, elemento corrente nao nulo
 Procurar valor, repete
-Procurar valor, encontrou valor
 Procurar valor, nao encontrou valor
 Liberar elemento, inicio
 Liberar elemento, excluir e valor nao nulos

@@ -160,10 +160,6 @@
 =inselemantes    lista3   str0   OK
 =obtervalorelem  lista3   str0   pNaoNULL
 
-== Procurar elemnto contido na lista
-=obtervalorelem  lista3   str0   pNaoNULL
-=procurarvalor   lista3   str0   OK
-
 == Inserir elemento antes do primeiro
 =inselemantes 	 lista3   str1   OK
 =obtervalorelem  lista3   str1   pNaoNULL
