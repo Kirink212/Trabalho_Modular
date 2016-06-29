@@ -224,7 +224,7 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 				return TST_CondRetParm ;
 			} /* if */
 			
-			carta = LIS_ObterValor( vtBaralhos[ inxBaralho ] ) ;
+			carta = LIS_ObterValor( vtBaralhos[ inxBaralho ] , NULL ) ;
 			
 			valor = BAR_ObterValor( carta ) ;
 			
@@ -244,7 +244,7 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 				return TST_CondRetParm ;
 			} /* if */
 			
-			carta = LIS_ObterValor( vtBaralhos[ inxBaralho ] ) ;
+			carta = LIS_ObterValor( vtBaralhos[ inxBaralho ] , NULL ) ;
 			
 			valor = BAR_ObterNaipe( carta ) ;
 			
