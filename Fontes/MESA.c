@@ -6,13 +6,14 @@
 MES_tpCondRet MES_ExibirPlacar( int valor1 , int valor2 )
 {
 	
-	printf( "\nPlacar:\nEquipe 1: %d\tEquipe 2: %d" , valor1 , valor2 ) ;
+	printf( "\nEquipe 1: %d\tEquipe 2: %d" , valor1 , valor2 ) ;
 	
 	return MES_CondRetOK ;
 }
 
 MES_tpCondRet MES_ExibirCartas( LIS_tppLista pCartas )
 {
+	int i = 1 ;
 	BAR_tppCarta* carta ;
 	LIS_tpCondRet retornoLista ;
 	char* valor = ( char* ) malloc( 7 * sizeof( char ) ) ;
@@ -38,15 +39,16 @@ MES_tpCondRet MES_ExibirCartas( LIS_tppLista pCartas )
 	
 	BAR_ObterValor( carta , valor ) ;
 	BAR_ObterNaipe( carta , naipe ) ;
-	printf( "\n%s de %s" , valor , naipe ) ;
+	printf( "\n%d - %s de %s" , i , valor , naipe ) ;
 	retornoLista = LIS_AvancarElementoCorrente( pCartas , 1 ) ;
 	
 	while ( retornoLista != LIS_CondRetFimLista )
 	{
+		i++ ;
 		carta = (BAR_tppCarta*) LIS_ObterValor( pCartas ) ;
 		BAR_ObterValor( carta , valor ) ;
 		BAR_ObterNaipe( carta , naipe ) ;
-		printf( "\n%s de %s" , valor , naipe ) ;
+		printf( "\n%d - %s de %s" , i , valor , naipe ) ;
 		retornoLista = LIS_AvancarElementoCorrente( pCartas , 1 ) ;
 	}
 	

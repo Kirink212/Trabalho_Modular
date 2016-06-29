@@ -1,5 +1,6 @@
 #include "PARTIDA.h"
 #include "BARALHO.h"
+#include <stdlib.h>
 #include "LISTA.h"
 #include "MESA.h"
 
@@ -18,10 +19,17 @@ typedef enum {
 
 static LIS_tppLista estruturaPrincipal = LIS_CriarLista ( NULL ) ;
 
-static int equipeVencedora = 1 ,
-		   jogadorVencedor = 1 ;
+static int numeroTotalJogadores ,
+		   pontuacaoPartidaEquipeUm ,
+		   pontuacaoPartidaEquipeDois ,
+		   pontuacaoMaoEquipeUm ,
+		   pontuacaoMaoEquipeDois ,
+		   equipeVencedora = 1 ,
+		   jogadorVencedor = 0 ;
+		   /* As variáveis de vencedores representam os
+		   *  vencedores da última rodada realizada. */
 
-PAR_tpCondRet PAR_GerenciarPartida(int numeroTotalJogadores)
+PAR_tpCondRet PAR_GerenciarPartida()
 {
    int indiceMao = 0 ,
        numeroAtualJogadores ;
@@ -105,7 +113,8 @@ void PAR_ReiniciarPartida()
     PAR_GerenciarPartida();
 }
 
-PAR_tpCondResultado PAR_GerenciarMao()
+/* Gerenciar mão feita logo abaixo de gerenciar rodada */
+/* PAR_tpCondResultado PAR_GerenciarMao()
 {
     int contabiliza = ( pontuacaoMaoEquipe1 - pontuacaoMaoEquipe2 ) ;
     bool ganhador = false ;
@@ -148,15 +157,224 @@ PAR_tpCondResultado PAR_GerenciarMao()
             }
         }
     }
-}
-void PAR_GerenciarRodada( int manilha )
+} */
+
+PAR_tpCondRet PAR_GerenciarRodada( int manilha )
 {
-    int jogadorDaVez ,
-		equipeDaVez ;
-    LIS_tppLista BAR_CriarBaralho( ) ;
-    BAR_tpCondRet BAR_EmbaralharCartas( LIS_tppLista baralho ) ;
-    BAR_tpCondRet BAR_DistribuirCartas( LIS_tppLista baralho , LIS_tppLista jogador ) ;
-    int BAR_EscolherManilha( LIS_tppLista baralho ) ;
+    int quantidadeJogadas ,
+		equipeAtual = equipeVencedora - 1 ,
+		retornoLista ,
+		jogadorAtual = jogadorVencedor ,
+		quantidadeCartas ,
+		comando ,
+		valorCarta ,
+		valorMaiorCarta ;
+	
+	Jogada *novaJogada ,
+			jogadaMaiorCarta ;
+	
+	LIS_tppLista mesa ,
+				 *equipes ,
+				 jogador ;
+				 
+	/* Criar a mesa */
+	LIS_IrFinalLista( estruturaPrincipal ) ;
+	mesa = LIS_CriarLista( NULL ) ;
+   
+	/* Inserir a mesa na lista de listas */
+	LIS_InserirElementoApos( estruturaPrincipal , mesa ) ;
+	
+	/* Agora vamos pegar as equipes. Vamos utilizar
+	*  um vetor para facilitar a transição entre equipes
+	*  na realização de jogadas. */
+	equipes = ( LIS_tppLista* ) malloc( 2 * sizeof( LIS_tppLista ) ) ;
+	LIS_IrInicioLista( estruturaPrincipal ) ;
+	LIS_AvancarElementoCorrente( estruturaPrincipal , 1 ) ;
+	equipes[0] = ( LIS_tppLista ) LIS_ObterValor( estruturaPrincipal ) ;
+	LIS_AvancarElementoCorrente( estruturaPrincipal , 1 ) ;
+	equipes[1] = ( LIS_tppLista ) LIS_ObterValor( estruturaPrincipal ) ;
+	
+	/* Ok, temos as listas das duas equipes. Agora temos
+	*  que organizar os elementos correntes para os
+	*  jogadores corretamente. */
+	LIS_IrInicioLista( equipes[0] ) ;
+	LIS_IrInicioLista( equipes[1] ) ;
+	
+	/* Ambos os elementos correntes estão no começo.
+	*  Se a equipe 1 venceu, os índices dos jogadores
+	*  que começam a rodada são os mesmos, mas se a
+	*  equipe 2 venceu, o índice do jogador da equipe
+	*  1 é 1 a mais que o da equipe 2. */
+	if ( equipeVencedora == 1 )
+	{
+		/* Equipe 1 venceu, jogadores de mesmo índice */
+		LIS_AvancarElementoCorrente( equipes[0] , jogadorVencedor ) ;
+		LIS_AvancarElementoCorrente( equipes[1] , jogadorVencedor ) ;
+	}
+	else
+	{
+		/* Equipe 2 venceu, jogador da equipe 1 com índice
+		*  1 a mais que o da equipe 2. Se passar do fim da
+		*  lista, volta ao jogador inicial. */
+		LIS_AvancarElementoCorrente( equipes[1] , jogadorVencedor ) ;
+		retornoLista = LIS_AvancarElementoCorrente( equipes[0] , jogadorVencedor + 1) ;
+		if (retornoLista == LIS_CondRetFimLista )
+		{
+			LIS_IrInicioLista( equipes[0] ) ;
+		}
+	}
+	
+	/* Realizar a contagem de cartas para saber quantas opções
+	*  de jogada o jogador tem. Tanto faz o jogador, todos
+	*  devem ter a mesma quantidade de cartas. */
+	jogador = LIS_ObterValor( equipes[0] ) ;
+	for ( quantidadeCartas = 1 ;;
+		  quantidadeCartas++)
+	{
+		if ( LIS_AvancarElementoCorrente( jogador , 1 ) == LIS_CondRetFimLista )
+		{
+			break ;
+		}
+	}
+	/* Agora os elementos correntes estão nas posições corretas
+	*  para iniciar a rodada. */
+	for ( quantidadeJogadas = 0 ; 
+		  quantidadeJogadas < numeroTotalJogadores ;
+		  quantidadeJogadas++ )
+	{
+		jogador = ( LIS_tppLista ) LIS_ObterValor( equipes[equipeAtual] ) ;
+		/* Exibir placar da partida */
+		MES_ExibirMensagem( "Placar da partida:" ) ;
+		MES_ExibirPlacar( pontuacaoPartidaEquipeUm ,
+						  pontuacaoPartidaEquipeDois ) ;
+						  
+		/* Exibir placar da mão */
+		MES_ExibirMensagem( "Placar da mao:" ) ;
+		MES_ExibirPlacar( pontuacaoMaoEquipeUm ,
+						  pontuacaoMaoEquipeDois ) ;
+		
+		/* Exibir qual jogador de qual equipe estará jogando */
+		MES_ExibirMensagem( "E a vez do jogador " ) ;
+		MES_ExibirValor( jogadorAtual + 1 ) ;
+		MES_ExibirMensagem( " da equipe " ) ;
+		MES_ExibirValor( equipeAtual + 1 ) ;
+		MES_ExibirMensagem( " jogar. Suas opcoes sao:" ) ;
+		
+		/* Exibir opções do jogador */
+		MES_ExibirCartas( jogador ) ;
+		MES_ExibirMensagem( "" ) ;
+		MES_ExibirValor( quantidadeCartas + 1) ;
+		MES_ExibirMensagem( " - Pedir truco" ) ;
+		
+		/* Perguntar qual comando o jogador deseja executar */
+		MES_ReceberComando( &comando , 1 , quantidadeCartas + 1 ) ;
+		
+		/* Comando recebido. Se for um número até quantidadeCartas,
+		*  é um comando de jogar carta. */
+		if ( comando <= quantidadeCartas )
+		{
+			/* Jogador escolheu jogar uma carta. */
+			
+			/* Chegar até a carta escolhida. */
+			LIS_AvancarElementoCorrente( jogador , comando - 1 ) ;
+			
+			/* Criar a nova jogada. */
+			novaJogada = ( Jogada* ) malloc( sizeof( Jogada ) ) ;
+			
+			/* Armazenar a carta jogada, juntamente à equipe
+			*  do jogador que a jogou e qual jogador foi. */
+			novaJogada->carta = ( BAR_tppCarta ) LIS_ObterValor( jogador ) ;
+			novaJogada->equipe = equipeAtual ;
+			novaJogada->jogador = jogadorAtual ;
+			
+			/* Inserir a jogada na mesa. */
+			LIS_InserirElementoApos( mesa , novaJogada ) ;
+			
+			/* Remover a carta do jogador. */
+			LIS_ExcluirElemento( jogador ) ;
+		}
+		else
+		{
+			/* Jogador pediu truco. Ainda deve ser implementado. */
+			PAR_PedirAumento() ;
+		}
+		/* Andar o elemento corrente da equipe para o próximo
+		*  jogador. */
+		LIS_AvancarElementoCorrente( equipes[equipeAtual] , 1 ) ;
+		
+		/* Passar a jogada para a próxima equipe. */
+		equipeAtual++ ;
+		if ( equipeAtual > 1 )
+		{
+			equipeAtual = 0 ;
+		}
+	}
+	
+	/* Todos os jogadores jogaram suas cartas. Caso haja um pedido
+	*  de truco, este foi aceito, caso contrário a mão já foi
+	*  cancelada. É hora de comparar as cartas para decidir o
+	*  vencedor. */
+	
+	/* A primeira jogada começará sendo a de maior valor. */
+	LIS_IrInicioLista( mesa ) ;
+	jogadaMaiorCarta = ( Jogada* ) LIS_ObterValor( mesa ) ;
+	valorMaiorCarta = BAR_ObterValor( jogadaMaiorCarta->carta , NULL ) ;
+	retornoLista = LIS_AvancarElementoCorrente( mesa , 1 ) ;
+	while ( retornoLista != LIS_CondRetFimLista )
+	{
+		/* A partir da primeira, vamos comparar os valores. */
+		novaJogada = ( Jogada* ) LIS_ObterValor( mesa ) ;
+		valorCarta = BAR_ObterValor( novaJogada->carta , NULL ) ;
+		/* Se a maior carta for a manilha e a carta sendo analisada
+		*  também for a manilha, então deve-se checar o naipe. */
+		if ( valorMaiorCarta == manilha && valorCarta == manilha )
+		{
+			/* Caso o naipe da carta sendo analisada seja maior que
+			*  o naipe da maior carta, a primeira será a nova maior. */
+			if ( BAR_ObterNaipe( novaJogada->carta , NULL ) >
+				 BAR_ObterNaipe( jogadaMaiorCarta->carta , NULL ) )
+			{
+				/* Não há necessidade de alterar o valor, pois
+				*  ambas são a manilha. */
+				jogadaMaiorCarta = novaJogada ;
+			}
+		}
+		/* Se a maior carta não for a manilha, então podemos
+		*  comparar os valores. */
+		else if ( valorMaiorCarta != manilha && valorCarta > valorMaiorCarta )
+		{
+			jogadaMaiorCarta = novaJogada ;
+			valorMaiorCarta = valorCarta ;
+		}
+		/* Se a maior carta não for a manilha e for igual à
+		*  carta sendo analisada, então há um empate. */
+		else if ( valorMaiorCarta != manilha && valorCarta == valorMaiorCarta )
+		{
+			/* Limpar mesa, ainda falta implementar */
+			free( equipes ) ;
+			return PAR_CondRetEmpate ;
+		}
+		/* Passamos para a próxima jogada. */
+		retornoLista = LIS_AvancarElementoCorrente( mesa , 1 ) ;
+	}
+	
+	/* Ao fim do loop, teremos a jogada de maior valor.
+	*  Dela, tiramos o jogadorVencedor e a equipeVencedora. */
+	jogadorVencedor = jogadaMaiorCarta->jogador ;
+	equipeVencedora = jogadaMaiorCarta->equipe + 1 ;
+	
+	if ( equipeVencedora == 1 )
+	{
+		/* Limpar mesa, ainda falta implementar */
+		free( equipes ) ;
+		return PAR_CondRetEquipeUmVenceu ;
+	}
+	else if ( equipeVencedora == 2 )
+	{
+		/* Limpar mesa, ainda falta implementar */
+		free( equipes ) ;
+		return PAR_CondRetEquipeDoisVenceu ;
+	}
 }
 
 PAR_tpCondRet PAR_GerenciarMao( int equipeInicial , int jogadorInicial )
@@ -168,13 +386,14 @@ PAR_tpCondRet PAR_GerenciarMao( int equipeInicial , int jogadorInicial )
 		vencedorRodada ,
 		valorRodada = 1 ,
 		vencedorPrimeiraRodada = 0 ,
-		pontuacaoEquipeUm ,
-		pontuacaoEquipeDois ,
 		manilha ;
 		
 	LIS_tppLista equipe ,
 				 jogador ;
 				 
+	/* Resetar a pontuação de mão das equipes */
+	pontuacaoMaoEquipeUm = 0 ;
+	pontuacaoMaoEquipeDois = 0 ;
 	/* Criar o baralho */
 	LIS_tppLista baralho = BAR_CriarBaralho( ) ;
 	
@@ -221,19 +440,12 @@ PAR_tpCondRet PAR_GerenciarMao( int equipeInicial , int jogadorInicial )
 	*  atingir 2 pontos. */
 	for ( i = 0 ; i < 3 ; i++ )
 	{
-		/* Criar a mesa */
-		LIS_IrFinalLista( estruturaPrincipal ) ;
-		mesa = LIS_CriarLista( NULL ) ;
-	   
-		/* Inserir a mesa na lista de listas */
-		LIS_InserirElementoApos( estruturaPrincipal , mesa ) ;
-		
 		/* Gerenciar rodada e definir o vencedor.
 		*  O vencedor leva 1 ponto na mão. */
 		vencedorRodada = PAR_GerenciarRodada( manilha ) ;
 		if ( vencedorRodada == PAR_CondRetEquipeUmVenceu )
 		{
-			pontuacaoEquipeUm += valorRodada ;
+			pontuacaoMaoEquipeUm += valorRodada ;
 			if ( i == 0 )
 			{
 				vencedorPrimeiraRodada = 1 ;
@@ -241,7 +453,7 @@ PAR_tpCondRet PAR_GerenciarMao( int equipeInicial , int jogadorInicial )
 		}
 		else if ( vencedorRodada == PAR_CondRetEquipeDoisVenceu )
 		{
-			pontuacaoEquipeDois += valorRodada ;
+			pontuacaoMaoEquipeDois += valorRodada ;
 			if ( i == 0 )
 			{
 				vencedorPrimeiraRodada = 2 ;
@@ -263,7 +475,7 @@ PAR_tpCondRet PAR_GerenciarMao( int equipeInicial , int jogadorInicial )
 			*  vence a mão. */
 			else if ( i == 1 && vencedorPrimeiraRodada == 0 )
 			{
-				if ( pontuacaoEquipeUm > pontuacaoEquipeDois )
+				if ( pontuacaoMaoEquipeUm > pontuacaoMaoEquipeDois )
 				{
 					return PAR_CondRetEquipeUmVenceu ;
 				}
@@ -301,8 +513,8 @@ PAR_tpCondRet PAR_GerenciarMao( int equipeInicial , int jogadorInicial )
 		*  pontos for pelo menos 2, então houve empate
 		*  na primeira e alguém ganhou a segunda ou
 		*  uma equipe ganhou as duas primeiras. */
-		if ( pontuacaoEquipeUm - pontuacaoEquipeDois >= 2
-			 || pontuacaoEquipeDois - pontuacaoEquipeUm >= 2 )
+		if ( pontuacaoMaoEquipeUm - pontuacaoMaoEquipeDois >= 2
+			 || pontuacaoMaoEquipeDois - pontuacaoMaoEquipeUm >= 2 )
 		{
 			break ;
 		}
@@ -312,7 +524,7 @@ PAR_tpCondRet PAR_GerenciarMao( int equipeInicial , int jogadorInicial )
 	*  2. A primeira rodada empatar e uma equipe ganhar
 	*     a segunda rodada.
 	*  3. Serem jogadas as 3 rodadas, sem empate nenhum. */
-	if ( pontuacaoEquipeUm > pontuacaoEquipeDois )
+	if ( pontuacaoMaoEquipeUm > pontuacaoMaoEquipeDois )
 	{
 		return PAR_CondRetEquipeUmVenceu ;
 	}
@@ -320,6 +532,9 @@ PAR_tpCondRet PAR_GerenciarMao( int equipeInicial , int jogadorInicial )
 	{
 		return PAR_CondRetEquipeDoisVenceu ;
 	}
+	/* Falta a manipulação das cartas dos jogadores para
+	*  caso uma mão seja terminada mais cedo que a terceira
+	*  rodada. Esvaziar as cartas de cada jogador. */
 }
 void PAR_IniciarMaoDeOnze(int indiceEquipe, int numeroTotalJogadores)
 {
