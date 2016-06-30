@@ -838,24 +838,159 @@
 
    } /* Fim função: LIS  -Limpar a cabeça da lista */
 
-/********** Fim do módulo de implementação: LIS  Lista duplamente encadeada **********/
+#ifdef _DEBUG
+
+/***************************************************************************
+*
+*  Função: LIS  &Verificar uma lista
+*  ****/
+
+   LIS_tpCondRet LIS_VerificarLista( LIS_tppLista pListaParm )
+   {
+      CNT_CONTAR("Verificar lista , inicio");
+
+      if ( LIS_VerificarCabeca( pListaParm ) != LIS_CondRetOK )
+      {
+         return LIS_CondRetListaVazia ;
+      } /* if */
+
+      CED_MarcarEspacoAtivo( pListaParm ) ;
+
+      return LIS_CondRetOK ;
+
+   } /* Fim função: LIS  &Verificar uma lista */
+
+#endif
+
+#ifdef _DEBUG
+
+/***************************************************************************
+*
+*  Função: LIS  &Verificar cabeça da lista
+*  ****/
+
+   LIS_tpCondRet LIS_VerificarCabeca( LIS_tppLista pListaParm )
+   {
+
+      LIS_tppLista * pCabeca = NULL ;
+
+      CNT_CONTAR("Verificar cabeca , inicio");
+      /* Verifica o tipo do espaço */
+
+         if ( pListaParm->pOrigemLista == NULL )
+         {
+            TST_NotificarFalha( "Tentou verificar cabeça inexistente." ) ;
+            return LIS_CondRetListaVazia ;
+         } /* if */
+
+         CNT_CONTAR("Verificar cabeca , cabeca existe");
+
+         if ( ! CED_VerificarEspaco( pListaParm->pOrigemLista , NULL ))
+         {
+            TST_NotificarFalha( "Controle do espaço acusou erro." ) ;
+            return LIS_CondRetListaVazia ;
+         } /* if */
+
+         CNT_CONTAR("Verificar cabeca , espaco ok");
+
+         if ( TST_CompararInt( LIS_TipoEspacoCabeca ,
+              CED_ObterTipoEspaco( pListaParm->pOrigemLista->cabecaLista ) ,
+              "Tipo do espaço de dados não é cabeça de lista." ) != TST_CondRetOK )
+         {
+            return LIS_CondRetListaVazia ;
+         } /* if */
+
+         CNT_CONTAR("Verificar cabeca , cabeca");
+
+         pCabeca = pListaParm->pOrigemLista->cabecaLista ;
+
+      /* Verifica cabeca lista */
+
+         if ( pCabeca != NULL )
+         {
+
+            CNT_CONTAR("Verificar cabeca , cabeca nao nula");
+
+            if ( TST_CompararPonteiro( pListaParm , pCabeca ,
+                 "Origem lista não aponta para cabeça." ) != TST_CondRetOK )
+            {
+               return LIS_CondRetListaVazia ;
+            } /* if */
+         } else {
+
+            CNT_CONTAR("Verificar cabeca , origem aponta cabeca");
+
+            if ( TST_CompararPonteiro( NULL , pCabeca->pElemCorr ,
+                 "Lista vazia tem elemento corrente não NULL." ) != TST_CondRetOK )
+            {
+               return LIS_CondRetNaoAchou ;
+            } /* if */ 
+
+            CNT_CONTAR("Verificar cabeca , lista vazia corrente nulo");
+         } /* if */
+
+
+
+      /* Verifica corrente */
+
+         if ( pCabeca->pElemCorr != NULL )
+         {
+
+            CNT_CONTAR("Verificar cabeca , corrente nao nulo");
+
+            if ( TST_CompararPonteiro( pListaParm , pCabeca->pElemCorr->cabecaLista ,
+                 "Elemento corrente não aponta para cabeça." ) != TST_CondRetOK )
+            {
+               return LIS_CondRetNaoAchou ;
+            } /* if */
+
+            CNT_CONTAR("Verificar cabeca , corrente aponta cabeca");
+         } else {
+
+            CNT_CONTAR("Verificar cabeca , corrente nulo");
+
+            if ( TST_CompararPonteiro( NULL , pCabeca->pOrigemLista ,
+                 "Lista não vazia tem elemento corrente NULL." ) != TST_CondRetOK )
+            {
+               return LIS_CondRetNaoAchou ;
+            } /* if */
+
+            CNT_CONTAR("Verificar cabeca , lista nao vazia corrente nulo");
+         } /* if */
+
+      return LIS_CondRetOK ;
+
+   } /* Fim função: LIS  &Verificar cabeça da lista */
+
+#endif
+
 #ifdef _DEBUG
       void LIS_Deturpar(LIS_tppLista pListaParm, 
                         LIS_tpModosDeturpacao ModoDeturpar)
       {
             tpElemLista * pElem = NULL;
 
+            CNT_CONTAR("Deturpar , inicio");
+
             if ( pListaParm == NULL)
             {
+               CNT_CONTAR("Deturpar , lista vazia");
+
                return;
             }
+
+            CNT_CONTAR("Deturpar , lista nao vazia");
 
             pElem = pListaParm->pOrigemLista;
 
             switch ( ModoDeturpar ) {
 
+               CNT_CONTAR("Deturpar , deturpa");
+
                case DeturpaPonteiroCabeca:
                {
+
+                  CNT_CONTAR("Deturpar , ponteiro cabeca");
 
                   pElem->cabecaLista = NULL;
 
@@ -865,6 +1000,8 @@
                case DeturpaTipoCabeca:
                {
 
+                  CNT_CONTAR("Deturpar , tipo cabeca");
+
                   CED_DefinirTipoEspaco( pElem->cabecaLista , CED_ID_TIPO_VALOR_NULO );
 
                   break;
@@ -872,6 +1009,8 @@
 
                case DeturpaTipoElem:
                {
+
+                  CNT_CONTAR("Deturpar , tipo elemento");
 
                   CED_DefinirTipoEspaco( pListaParm->pElemCorr , CED_ID_TIPO_VALOR_NULO );
 
@@ -881,6 +1020,8 @@
                case DeturpaEspacoCabeca:
                {
 
+                  CNT_CONTAR("Deturpar , espaco cabeca");
+
                   memcpy( (( LIS_tppLista * )( pElem->cabecaLista )) - 50 , "????????" , 8 ) ;
 
                   break;
@@ -889,10 +1030,14 @@
                case DeturpaEspacoCorrente:
                {
 
-                  memcpy( (( tpElemLista * )( pListaParm->pElemCorr)) - 50 , "????????" , 8)
+                  CNT_CONTAR("Deturpar , espaco corrente");
+
+                  memcpy( (( tpElemLista * )( pListaParm->pElemCorr)) - 50 , "????????" , 8);
 
                   break;
                }
             }
       }
 #endif
+
+/********** Fim do módulo de implementação: LIS  Lista duplamente encadeada **********/
