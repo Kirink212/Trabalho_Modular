@@ -977,6 +977,12 @@
 #endif
 
 #ifdef _DEBUG
+
+/***************************************************************************
+*
+*  Função: LIS  &Deturpar lista
+*  ****/
+
       void LIS_Deturpar(LIS_tppLista pListaParm, 
                         LIS_tpModosDeturpacao ModoDeturpar)
       {
@@ -989,7 +995,7 @@
                CNT_CONTAR("Deturpar , lista vazia");
 
                return;
-            }
+            }/* if */
 
             CNT_CONTAR("Deturpar , lista nao vazia");
 
@@ -999,6 +1005,8 @@
 
                CNT_CONTAR("Deturpar , deturpa");
 
+            /* Anula o ponteiro de cabeça */
+
                case DeturpaPonteiroCabeca:
                {
 
@@ -1007,7 +1015,9 @@
                   pElem->cabecaLista = NULL;
 
                   break;
-               }
+               }/* fim ativa: Anula o ponteiro de cabeça */
+
+            /* Modifica o tipo de cabeça*/
 
                case DeturpaTipoCabeca:
                {
@@ -1017,7 +1027,9 @@
                   CED_DefinirTipoEspaco( pElem->cabecaLista , CED_ID_TIPO_VALOR_NULO );
 
                   break;
-               }
+               }/* fim ativa: Modifica o tipo de cabeça*/
+
+            /* Modifica o tipo de elemento */
 
                case DeturpaTipoElem:
                {
@@ -1027,7 +1039,9 @@
                   CED_DefinirTipoEspaco( pListaParm->pElemCorr , CED_ID_TIPO_VALOR_NULO );
 
                   break;
-               }
+               }/* fim ativa: Modifica o tipo de elemento*/
+
+            /* Deturpa espaço cabeca */
 
                case DeturpaEspacoCabeca:
                {
@@ -1037,7 +1051,9 @@
                   memcpy( (( LIS_tppLista * )( pElem->cabecaLista )) - 50 , "????????" , 8 ) ;
 
                   break;
-               }
+               }/* fim ativa: Deturpa espaço cabeca */
+
+            /* Deturpa espaço corrente*/
 
                case DeturpaEspacoCorrente:
                {
@@ -1047,9 +1063,11 @@
                   memcpy( (( tpElemLista * )( pListaParm->pElemCorr)) - 50 , "????????" , 8);
 
                   break;
-               }
-            }
-      }
+               }/* fim ativa: Deturpa espaço corrente*/
+
+            }/* fim seleciona: Deturpa lista*/
+
+      }/* Fim função: LIS  &Deturpar lista*/
 #endif
 
 /********** Fim do módulo de implementação: LIS  Lista duplamente encadeada **********/
