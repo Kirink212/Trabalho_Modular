@@ -846,7 +846,7 @@
 *  Função: LIS  &Verificar uma lista
 *  ****/
 
-   LIS_tpCondRet LIS_VerificarLista( LIS_tppLista pListaParm )
+   LIS_tpCondRet LIS_VerificarLista( void * pListaParm )
    {
       CNT_CONTAR("Verificar lista , inicio");
 
@@ -872,42 +872,11 @@
 *  Função: LIS  &Verificar cabeça da lista
 *  ****/
 
-   LIS_tpCondRet LIS_VerificarCabeca( LIS_tppLista pListaParm )
+   LIS_tpCondRet LIS_VerificarCabeca(void * pListaPar )
    {
+      LIS_tppLista pListaParm = (LIS_tpLista *) (pListaPar);
 
       CNT_CONTAR("Verificar cabeca , inicio");
-      /* Verifica o tipo do espaço */
-
-         if ( pListaParm->pOrigemLista == NULL )
-         {
-            CNT_CONTAR("Verificar cabeca , origem lista nula");
-
-            TST_NotificarFalha( "Tentou verificar cabeça inexistente." ) ;
-            return LIS_CondRetErroEstrutura ;
-         } /* if */
-
-         CNT_CONTAR("Verificar cabeca , cabeca existe");
-
-         if ( ! CED_VerificarEspaco( pListaParm->pOrigemLista , NULL ))
-         {
-            CNT_CONTAR("Verificar cabeca , espaco erro");
-
-            TST_NotificarFalha( "Controle do espaço acusou erro." ) ;
-            return LIS_CondRetErroEstrutura ;
-         } /* if */
-
-         CNT_CONTAR("Verificar cabeca , espaco ok");
-
-         if ( TST_CompararInt( LIS_TipoEspacoCabeca ,
-              CED_ObterTipoEspaco( pListaParm->pOrigemLista->cabecaLista ) ,
-              "Tipo do espaço de dados não é cabeça de lista." ) != TST_CondRetOK )
-         {
-            CNT_CONTAR("Verificar cabeca , nao cabeca");
-
-            return LIS_CondRetErroEstrutura ;
-         } /* if */
-
-         CNT_CONTAR("Verificar cabeca , cabeca");
 
       /* Verifica cabeca lista */
 
@@ -916,29 +885,18 @@
 
             CNT_CONTAR("Verificar cabeca , cabeca nao nula");
 
-            if ( TST_CompararPonteiro( pListaParm , pListaParm->pOrigemLista->cabecaLista ,
-                 "Origem lista não aponta para cabeça." ) != TST_CondRetOK )
+            if ( pListaParm != pListaParm->pOrigemLista->cabecaLista )
             {
                CNT_CONTAR("Verificar cabeca , origem nao aponta cabeca");
 
                return LIS_CondRetErroEstrutura ;
-            } /* if */
-         } else {
+            } /* if */  
 
             CNT_CONTAR("Verificar cabeca , origem aponta cabeca");
 
-            if ( TST_CompararPonteiro( NULL , pListaParm->pElemCorr ,
-                 "Lista vazia tem elemento corrente não NULL." ) != TST_CondRetOK )
-            {
-               CNT_CONTAR("Verificar cabeca , lista vazia corrente nao nulo");
+         }
 
-               return LIS_CondRetErroEstrutura ;
-            } /* if */ 
-
-            CNT_CONTAR("Verificar cabeca , lista vazia corrente nulo");
-         } /* if */
-
-
+         CNT_CONTAR("Verificar cabeca , cabeca nula");
 
       /* Verifica corrente */
 
@@ -946,22 +904,13 @@
          {
 
             CNT_CONTAR("Verificar cabeca , corrente nao nulo");
+            return LIS_CondRetErroEstrutura;
 
-            if ( TST_CompararPonteiro( pListaParm , pListaParm->pElemCorr->cabecaLista ,
-                 "Elemento corrente não aponta para cabeça." ) != TST_CondRetOK )
-            {
-               CNT_CONTAR("Verificar cabeca , corrente nao aponta cabeca");
-
-               return LIS_CondRetErroEstrutura ;
-            } /* if */
-
-            CNT_CONTAR("Verificar cabeca , corrente aponta cabeca");
          } else {
 
             CNT_CONTAR("Verificar cabeca , corrente nulo");
 
-            if ( TST_CompararPonteiro( NULL , pListaParm->pOrigemLista ,
-                 "Lista não vazia tem elemento corrente NULL." ) != TST_CondRetOK )
+            if ( pListaParm->pOrigemLista != NULL )
             {
                CNT_CONTAR("Verificar cabeca , lista nao vazia corrente nulo");
 
@@ -984,24 +933,22 @@
 *  Função: LIS  &Deturpar lista
 *  ****/
 
-      void LIS_Deturpar(LIS_tppLista pListaParm, 
+      void LIS_Deturpar(void * pListaPar, 
                         LIS_tpModosDeturpacao ModoDeturpar)
       {
-            tpElemLista * pElem = NULL;
-
+            //tpElemLista * pElem = NULL;
+            LIS_tppLista pListaParm = NULL;
             CNT_CONTAR("Deturpar , inicio");
 
-            if ( pListaParm == NULL)
+            if ( pListaPar == NULL)
             {
-               CNT_CONTAR("Deturpar , lista vazia");
-
                return;
             }/* if */
 
             CNT_CONTAR("Deturpar , lista nao vazia");
 
-            pElem = pListaParm->pOrigemLista;
-
+            //pElem = pListaParm->pOrigemLista;
+            pListaParm = (LIS_tpLista *) (pListaPar);
             switch ( ModoDeturpar ) {
 
             /* Anula o ponteiro de cabeça */
@@ -1011,8 +958,9 @@
 
                   CNT_CONTAR("Deturpar , ponteiro cabeca");
 
-                  pElem->cabecaLista = NULL;
-
+                  //pElem->cabecaLista = NULL;
+                  //CED_DefinirTipoEspaco(pListaParm->pOrigemLista->cabecaLista , CED_ID_TIPO_VALOR_NULO);
+                  pListaParm->pOrigemLista->cabecaLista = NULL;
                   break;
                }/* fim ativa: Anula o ponteiro de cabeça */
 
@@ -1023,7 +971,7 @@
 
                   CNT_CONTAR("Deturpar , tipo cabeca");
 
-                  CED_DefinirTipoEspaco( pElem->cabecaLista , CED_ID_TIPO_VALOR_NULO );
+                  CED_DefinirTipoEspaco( pListaParm , CED_ID_TIPO_VALOR_NULO );
 
                   break;
                }/* fim ativa: Modifica o tipo de cabeça*/
@@ -1047,7 +995,7 @@
 
                   CNT_CONTAR("Deturpar , espaco cabeca");
 
-                  memcpy( (( LIS_tppLista * )( pElem->cabecaLista )) - 50 , "????????" , 8 ) ;
+                  memcpy( (( LIS_tppLista * )( pListaParm->pOrigemLista->cabecaLista )) - 50 , "????????" , 8 ) ;
 
                   break;
                }/* fim ativa: Deturpa espaço cabeca */

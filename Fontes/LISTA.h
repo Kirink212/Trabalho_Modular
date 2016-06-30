@@ -382,7 +382,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 ***********************************************************************/
 
    #ifdef _DEBUG
-      LIS_tpCondRet LIS_VerificarLista( LIS_tppLista pListaParm );
+      LIS_tpCondRet LIS_VerificarLista( void * pListaParm );
    #endif
 
 /***********************************************************************
@@ -403,7 +403,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 ***********************************************************************/
 
    #ifdef _DEBUG
-      LIS_tpCondRet LIS_VerificarCabeca( LIS_tppLista pListaParm );
+      LIS_tpCondRet LIS_VerificarCabeca( void * pListaPar );
    #endif
 
 /***********************************************************************
@@ -428,7 +428,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 ***********************************************************************/
 
    #ifdef _DEBUG
-      void LIS_Deturpar(LIS_tppLista pListaParm, 
+      void LIS_Deturpar(void * pListaPar, 
                         LIS_tpModosDeturpacao ModoDeturpar);
    #endif
 

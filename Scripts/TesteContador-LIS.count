@@ -4,7 +4,6 @@
 // modulo lista
 //
 ///////////////////////////////////////////////
-
 Criacao da uma lista
 Lista nao existe, criar lista
 Lista existe, criar lista
@@ -71,27 +70,16 @@ Limpar cabeca
 Verificar lista , inicio
 Verificar lista , nao ok
 Verificar cabeca , inicio
-Verificar cabeca , origem lista nula
-Verificar cabeca , cabeca existe
-Verificar cabeca , espaco erro
-Verificar cabeca , espaco ok
-Verificar cabeca , nao cabeca
-Verificar cabeca , cabeca
 Verificar cabeca , cabeca nao nula
 Verificar cabeca , origem nao aponta cabeca
 Verificar cabeca , origem aponta cabeca
-Verificar cabeca , lista vazia corrente nao nulo
-Verificar cabeca , lista vazia corrente nulo
+Verificar cabeca , cabeca nula
 Verificar cabeca , corrente nao nulo
-Verificar cabeca , corrente nao aponta cabeca
-Verificar cabeca , corrente aponta cabeca
 Verificar cabeca , corrente nulo
 Verificar cabeca , lista nao vazia corrente nulo
 Verificar cabeca , lista nao vazia corrente nao nulo
 Deturpar , inicio
-Deturpar , lista vazia
 Deturpar , lista nao vazia
-Deturpar , deturpa
 Deturpar , ponteiro cabeca
 Deturpar , tipo cabeca
 Deturpar , tipo elemento

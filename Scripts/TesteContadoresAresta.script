@@ -20,6 +20,7 @@
 =declararparm   FimLista       int  2
 =declararparm   NaoAchou       int  3
 =declararparm   FaltouMemoria  int  4
+=declararparm   ErroEstrutura  int  5
 
 =declararparm   pNULL          int  0
 =declararparm   pNaoNULL       int  1
@@ -71,10 +72,10 @@
 == Ver se a lista ficou vazia
 =obtervalorelem  lista0   "???"     pNULL
 
-== Destruir a lista
+== Destruir a lista 0
 =destruirlista   lista0
 
-== Criar uma lista com dois elementos
+== Criar uma lista 1 com dois elementos
 =criarlista      lista1 
 =inselemapos     lista1   str0   OK
 =inselemapos     lista1   str1   OK
@@ -86,10 +87,10 @@
 == Procurar um valor em uma lista vazia
 =procurarvalor   lista1   "???"    ListaVazia
 
-== Destruir a lista
+== Destruir a lista 1
 =destruirlista   lista1
 
-== Criar uma lista com quatro elementos
+== Criar uma lista 2 com quatro elementos
 =criarlista      lista2 
 =inselemapos     lista2   str0   OK
 =inselemapos     lista2   str1   OK
@@ -135,13 +136,13 @@
 == Verificar se um elemento que nao esta na lista é encontrado
 =procurarvalor  lista2   str3   NaoAchou
 
-== Destruir a lista
+== Destruir a lista 2
 =destruirlista   lista2
 
 == Limitar número de espaços
 =limitarnumeroespacos	4
 
-== Criar lista
+== Criar lista 3
 =criarlista 	lista3
 
 == Inserir elemento antes falta memoria
@@ -151,7 +152,7 @@
 =inselemapos	 lista3   str0   FaltouMemoria
 =limitarnumeroespacos	3
 
-== Criar lista falta memoria
+== Criar lista 1 falta memoria
 =criarlista	lista1
 
 == Eliminar limite espaços
@@ -168,6 +169,47 @@
 == Inserir elemento apos primeiro nao ultimo
 =inselemapos 	 lista3   str2   OK
 =obtervalorelem  lista3   str2   pNaoNULL
+
+== Verificar a lista ok
+=verificarlista  lista3   OK
+
+== Deturpa ponteiro cabeca e verificar
+=deturpar 	 lista3   0
+=verificarlista  lista3   ErroEstrutura
+
+== Deturpa tipo cabeça e verificar
+=deturpar        lista3   1
+=verificarlista  lista3   ErroEstrutura
+
+== Destruir e recriar lista 3
+=destruirlista   lista3  
+=criarlista      lista3
+=inselemapos     lista3   str0   OK
+=obtervalorelem  lista3   str0   pNaoNULL
+
+== Deturpa espaco cabeça e verificar
+=deturpar        lista3   3
+=verificarlista  lista3   ErroEstrutura
+
+== Destruir e recriar lista 3
+=destruirlista   lista3  
+=criarlista      lista3
+=inselemapos     lista3   str0   OK
+=obtervalorelem  lista3   str0   pNaoNULL
+
+== Deturpar tipo elem e verificar
+=deturpar        lista3   2
+=verificarlista  lista3   ErroEstrutura
+
+== Destruir e recriar lista 3
+=destruirlista   lista3  
+=criarlista      lista3
+=inselemapos     lista3   str0   OK
+=obtervalorelem  lista3   str0   pNaoNULL
+
+== Deturpar espaco elem e verificar
+=deturpar        lista3   4
+=verificarlista  lista3   ErroEstrutura
 
 ==Terminar controlar contadores
 =pararcontagem
