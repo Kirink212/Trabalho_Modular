@@ -88,24 +88,26 @@ typedef struct LIS_tagLista * LIS_tppLista ;
          LIS_CondRetNaoAchou ,
                /* Não encontrou o valor procurado */
 
-         LIS_CondRetFaltouMemoria
+         LIS_CondRetFaltouMemoria,
                /* Faltou memória ao tentar criar um elemento de lista */
 
+         LIS_CondRetErroEstrutura
+               /* Erro na Estrutura de lista*/ 
    } LIS_tpCondRet ;
 
 
    #ifdef _DEBUG
 
    typedef enum {
-          DeturpaPonteiroCabeca = 0;
+          DeturpaPonteiroCabeca = 0,
 
-          DeturpaTipoCabeca = 1;
+          DeturpaTipoCabeca = 1,
 
-          DeturpaTipoElem = 2;
+          DeturpaTipoElem = 2,
 
-          DeturpaEspacoCabeca = 3;
+          DeturpaEspacoCabeca = 3,
 
-          DeturpaEspacoCorrente = 4;
+          DeturpaEspacoCorrente = 4
 
    } LIS_tpModosDeturpacao ;
 

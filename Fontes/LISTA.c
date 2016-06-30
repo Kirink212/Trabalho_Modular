@@ -851,7 +851,9 @@
 
       if ( LIS_VerificarCabeca( pListaParm ) != LIS_CondRetOK )
       {
-         return LIS_CondRetListaVazia ;
+         CNT_CONTAR("Verificar lista , nao ok");
+         
+         return LIS_CondRetErroEstrutura ;
       } /* if */
 
       CED_MarcarEspacoAtivo( pListaParm ) ;
@@ -872,23 +874,25 @@
    LIS_tpCondRet LIS_VerificarCabeca( LIS_tppLista pListaParm )
    {
 
-      LIS_tppLista * pCabeca = NULL ;
-
       CNT_CONTAR("Verificar cabeca , inicio");
       /* Verifica o tipo do espaço */
 
          if ( pListaParm->pOrigemLista == NULL )
          {
+            CNT_CONTAR("Verificar cabeca , origem lista nula");
+
             TST_NotificarFalha( "Tentou verificar cabeça inexistente." ) ;
-            return LIS_CondRetListaVazia ;
+            return LIS_CondRetErroEstrutura ;
          } /* if */
 
          CNT_CONTAR("Verificar cabeca , cabeca existe");
 
          if ( ! CED_VerificarEspaco( pListaParm->pOrigemLista , NULL ))
          {
+            CNT_CONTAR("Verificar cabeca , espaco erro");
+
             TST_NotificarFalha( "Controle do espaço acusou erro." ) ;
-            return LIS_CondRetListaVazia ;
+            return LIS_CondRetErroEstrutura ;
          } /* if */
 
          CNT_CONTAR("Verificar cabeca , espaco ok");
@@ -897,33 +901,37 @@
               CED_ObterTipoEspaco( pListaParm->pOrigemLista->cabecaLista ) ,
               "Tipo do espaço de dados não é cabeça de lista." ) != TST_CondRetOK )
          {
-            return LIS_CondRetListaVazia ;
+            CNT_CONTAR("Verificar cabeca , nao cabeca");
+
+            return LIS_CondRetErroEstrutura ;
          } /* if */
 
          CNT_CONTAR("Verificar cabeca , cabeca");
 
-         pCabeca = pListaParm->pOrigemLista->cabecaLista ;
-
       /* Verifica cabeca lista */
 
-         if ( pCabeca != NULL )
+         if ( pListaParm->pOrigemLista->cabecaLista != NULL )
          {
 
             CNT_CONTAR("Verificar cabeca , cabeca nao nula");
 
-            if ( TST_CompararPonteiro( pListaParm , pCabeca ,
+            if ( TST_CompararPonteiro( pListaParm , pListaParm->pOrigemLista->cabecaLista ,
                  "Origem lista não aponta para cabeça." ) != TST_CondRetOK )
             {
-               return LIS_CondRetListaVazia ;
+               CNT_CONTAR("Verificar cabeca , origem nao aponta cabeca");
+
+               return LIS_CondRetErroEstrutura ;
             } /* if */
          } else {
 
             CNT_CONTAR("Verificar cabeca , origem aponta cabeca");
 
-            if ( TST_CompararPonteiro( NULL , pCabeca->pElemCorr ,
+            if ( TST_CompararPonteiro( NULL , pListaParm->pElemCorr ,
                  "Lista vazia tem elemento corrente não NULL." ) != TST_CondRetOK )
             {
-               return LIS_CondRetNaoAchou ;
+               CNT_CONTAR("Verificar cabeca , lista vazia corrente nao nulo");
+
+               return LIS_CondRetErroEstrutura ;
             } /* if */ 
 
             CNT_CONTAR("Verificar cabeca , lista vazia corrente nulo");
@@ -933,15 +941,17 @@
 
       /* Verifica corrente */
 
-         if ( pCabeca->pElemCorr != NULL )
+         if ( pListaParm->pElemCorr != NULL )
          {
 
             CNT_CONTAR("Verificar cabeca , corrente nao nulo");
 
-            if ( TST_CompararPonteiro( pListaParm , pCabeca->pElemCorr->cabecaLista ,
+            if ( TST_CompararPonteiro( pListaParm , pListaParm->pElemCorr->cabecaLista ,
                  "Elemento corrente não aponta para cabeça." ) != TST_CondRetOK )
             {
-               return LIS_CondRetNaoAchou ;
+               CNT_CONTAR("Verificar cabeca , corrente nao aponta cabeca");
+
+               return LIS_CondRetErroEstrutura ;
             } /* if */
 
             CNT_CONTAR("Verificar cabeca , corrente aponta cabeca");
@@ -949,10 +959,12 @@
 
             CNT_CONTAR("Verificar cabeca , corrente nulo");
 
-            if ( TST_CompararPonteiro( NULL , pCabeca->pOrigemLista ,
+            if ( TST_CompararPonteiro( NULL , pListaParm->pOrigemLista ,
                  "Lista não vazia tem elemento corrente NULL." ) != TST_CondRetOK )
             {
-               return LIS_CondRetNaoAchou ;
+               CNT_CONTAR("Verificar cabeca , lista nao vazia corrente nulo");
+
+               return LIS_CondRetErroEstrutura ;
             } /* if */
 
             CNT_CONTAR("Verificar cabeca , lista nao vazia corrente nulo");
