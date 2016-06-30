@@ -34,6 +34,7 @@
 ***************************************************************************/
 
 #include "Baralho.h"
+#include <assert.h>
 #include <string.h>
 #include <stdio.h>
 #include <time.h>
@@ -96,6 +97,8 @@ typedef enum naipe {
 *
 *
 ***********************************************************************/
+
+typedef struct carta BAR_tpCarta ;
 struct carta {
 	Valor valor;
 	Naipe naipe;
@@ -116,7 +119,7 @@ LIS_tppLista BAR_CriarBaralho( )
 					  VALETE , REI , AS , DOIS , TRES } ;
 	Naipe nap[4] = { OUROS , ESPADAS , COPAS , PAUS } ;
 
-	BAR_tppCarta* carta=NULL ;
+	BAR_tppCarta carta = NULL ;
 
 	// Cria o baralho como uma lista vazia 
 	LIS_tppLista baralho = LIS_CriarLista( NULL ) ;
@@ -127,7 +130,7 @@ LIS_tppLista BAR_CriarBaralho( )
 		for( j = 0 ; j < 10 ; j++ )
 		{
 			//Cada carta sendo alocada dinamicamente à cada iteração
-			carta = (BAR_tppCarta*) malloc( sizeof( BAR_tppCarta ) ) ; 
+			carta = (BAR_tppCarta) malloc( sizeof( BAR_tpCarta ) ) ; 
 
 			if( carta == NULL )
 			{
@@ -153,18 +156,18 @@ LIS_tppLista BAR_CriarBaralho( )
 
 BAR_tpCondRet BAR_LiberarBaralho( LIS_tppLista baralho )
 {
+	BAR_tppCarta carta ;
+	
 	// Assertiva que verifica se baralho está vazio
 	#ifdef _DEBUG
 		assert( baralho != NULL ) ;
 	#endif
 
 	// Obtendo o valor da carta no topo do baralho
-	BAR_tppCarta* carta ;
-
 	// Movendo o ponteiro para o começo da lista de cartas
 	LIS_IrInicioLista( baralho ) ;
 	
-	carta = (BAR_tppCarta*) LIS_ObterValor( baralho ) ;
+	carta = (BAR_tppCarta) LIS_ObterValor( baralho ) ;
 
 	// Percorre o baralho enquanto não chega ao seu final
 	while( carta != NULL )
@@ -178,7 +181,7 @@ BAR_tpCondRet BAR_LiberarBaralho( LIS_tppLista baralho )
 		/* Liberando a carta e inicializando a próxima a ser retirada na
 		  iteração, respectivamente */
 		free( carta ) ;
-		carta = (BAR_tppCarta*) LIS_ObterValor( baralho ) ;
+		carta = (BAR_tppCarta) LIS_ObterValor( baralho ) ;
 
 	}/* while */
 	
@@ -194,14 +197,15 @@ BAR_tpCondRet BAR_LiberarBaralho( LIS_tppLista baralho )
 
 BAR_tpCondRet BAR_EmbaralharCartas(LIS_tppLista baralho)
 {
+	int random,
+      i ;
+	void* carta ;
+	
 	// Assertiva que verifica se baralho está vazio
 	#ifdef _DEBUG
 		assert( baralho != NULL ) ;
 	#endif
-
-	int random,
-      i ;
-	void* carta ;
+	
 	srand( (unsigned int) time( NULL ) ) ;
 	for( i = 0 ; i < 50 ; i++ )
 	{
@@ -244,12 +248,12 @@ BAR_tpCondRet BAR_EmbaralharCartas(LIS_tppLista baralho)
 
 BAR_tpCondRet BAR_DistribuirCartas(LIS_tppLista baralho, LIS_tppLista jogador)
 {
+	void* carta ;
+	int i ;
 	// Assertiva que verifica se baralho e jogador estão vazios
 	#ifdef _DEBUG
 		assert( baralho != NULL && jogador != NULL) ;
 	#endif
-	void* carta ;
-	int i ;
 	for( i = 0 ; i < 3 ; i++ )
 	{
 		LIS_IrInicioLista( baralho ) ;
@@ -268,29 +272,72 @@ BAR_tpCondRet BAR_DistribuirCartas(LIS_tppLista baralho, LIS_tppLista jogador)
 *  Função: BAR &Escolher manilha
 *  ****/
 
-int BAR_EscolherManilha(LIS_tppLista baralho)
+int BAR_EscolherManilha(LIS_tppLista baralho , char* manilha )
 {
+	BAR_tppCarta vira ;
+	
 	// Assertiva que verifica se baralho está vazio
 	#ifdef _DEBUG
 		assert( baralho != NULL ) ;
 	#endif
 
-	BAR_tppCarta *vira ;
-
 	/* Posiciona-se o ponteiro no início da lista de cartas e obtém o valor
 	  do primeiro elemento, que na nossa especificação é denominado "vira" */
 	LIS_IrInicioLista( baralho ) ;
-	vira = (BAR_tppCarta*) LIS_ObterValor( baralho ) ;
+	vira = (BAR_tppCarta) LIS_ObterValor( baralho ) ;
 
 	/* Como TRES é o valor mais alto do baralho, escolhe o menos valor 
 	como manilha */
 	if ( vira->valor == TRES )
 	{
+		if ( manilha != NULL )
+		{
+			strcpy( manilha , "QUATRO" ) ;
+		}
 		return QUATRO ;
 	}
 	// Considerando todos os outros casos, a manilha é o valor logo acima
 	else
 	{
+		if ( manilha != NULL ) 
+		{
+			if ( vira->valor == QUATRO )
+			{
+				strcpy( manilha , "CINCO" ) ;
+			}
+			else if ( vira->valor == CINCO )
+			{
+				strcpy( manilha , "SEIS" ) ;
+			}
+			else if ( vira->valor == SEIS )
+			{
+				strcpy( manilha , "SETE" ) ;
+			}
+			else if ( vira->valor == SETE )
+			{
+				strcpy( manilha , "DAMA" ) ;
+			}
+			else if ( vira->valor == DAMA )
+			{
+				strcpy( manilha , "VALETE" ) ;
+			}
+			else if ( vira->valor == VALETE )
+			{
+				strcpy( manilha , "REI" ) ;
+			}
+			else if ( vira->valor == REI )
+			{
+				strcpy( manilha , "AS" ) ;
+			}
+			else if ( vira->valor == AS )
+			{
+				strcpy( manilha , "DOIS" ) ;
+			}
+			else if ( vira->valor == DOIS )
+			{
+				strcpy( manilha , "TRES" ) ;
+			}
+		}
 		return (vira->valor) + 1 ;
 	}/* if */
 
@@ -301,7 +348,7 @@ int BAR_EscolherManilha(LIS_tppLista baralho)
 *  Função: BAR &Obter valor
 *  ****/
 
-int BAR_ObterValor( BAR_tppCarta* carta , char* valor )
+int BAR_ObterValor( BAR_tppCarta carta , char* valor )
 {
 	// Assertiva que verifica se carta está vazia
 	#ifdef _DEBUG
@@ -361,7 +408,7 @@ int BAR_ObterValor( BAR_tppCarta* carta , char* valor )
 *  Função: BAR &Obter naipe
 *  ****/
 
-int BAR_ObterNaipe( BAR_tppCarta* carta , char* naipe )
+int BAR_ObterNaipe( BAR_tppCarta carta , char* naipe )
 {
 	// Assertiva que verifica se carta está vazia
 	#ifdef _DEBUG

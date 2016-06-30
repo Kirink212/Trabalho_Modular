@@ -1,10 +1,15 @@
-#include <stdlib.h>
+typedef enum {
+	PAR_CondRetEquipeUmVenceu ,
+	PAR_CondRetEquipeDoisVenceu ,
+	PAR_CondRetEmpate ,
+	PAR_CondRetAceitaAumento ,
+	PAR_CondRetRecusaAumento ,
+} PAR_tpCondRet ;
 
 void PAR_GerenciarPartida();
-void PAR_ReiniciarPartida();
-PAR_tpCondRet PAR_GerenciarRodada( int manilha );
-PAR_tpCondRet PAR_GerenciarMao( int equipeInicial , int jogadorInicial );
+PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString );
+PAR_tpCondRet PAR_GerenciarMao();
 void PAR_IniciarMaoDeOnze();
-void PAR_IniciarMaoDeFerro();
-void PAR_PedirAumento(int n);
-void PAR_ResponderAumento();
+PAR_tpCondRet PAR_PedirAumento(int n);
+void PAR_LimparMesa();
+void PAR_LimparMao();

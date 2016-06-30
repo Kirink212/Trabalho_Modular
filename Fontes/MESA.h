@@ -114,6 +114,8 @@ typedef enum {
 *
 *  $EP Parâmetros
 *     mensagem - string contendo a mensagem a ser escrita.
+*     quebra - se a mensagem deve começar com uma quebra de
+*               linha. 0 - não, 1 - sim.
 *
 *  $FV Valor retornado
 *     MES_CondRetMensagemVazia - parâmetro mensagem inválido
@@ -121,7 +123,7 @@ typedef enum {
 *
 ***********************************************************************/
 
-	MES_tpCondRet MES_ExibirMensagem( char* mensagem ) ;
+	MES_tpCondRet MES_ExibirMensagem( char* mensagem , int quebra ) ;
 
 /***********************************************************************
 *

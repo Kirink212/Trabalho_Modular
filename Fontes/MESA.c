@@ -45,7 +45,7 @@
 	MES_tpCondRet MES_ExibirCartas( LIS_tppLista pCartas )
 	{
 		int i = 1 ;
-		BAR_tppCarta* carta ;
+		BAR_tppCarta carta ;
 		LIS_tpCondRet retornoLista ;
 		char* valor = ( char* ) malloc( 7 * sizeof( char ) ) ;
 		char* naipe = ( char* ) malloc( 8 * sizeof( char ) ) ;
@@ -61,7 +61,7 @@
 		}
 		LIS_IrInicioLista( pCartas ) ;
 		
-		carta = (BAR_tppCarta*) LIS_ObterValor( pCartas ) ;
+		carta = (BAR_tppCarta) LIS_ObterValor( pCartas ) ;
 		
 		if ( carta == NULL )
 		{
@@ -76,7 +76,7 @@
 		while ( retornoLista != LIS_CondRetFimLista )
 		{
 			i++ ;
-			carta = (BAR_tppCarta*) LIS_ObterValor( pCartas ) ;
+			carta = (BAR_tppCarta) LIS_ObterValor( pCartas ) ;
 			BAR_ObterValor( carta , valor ) ;
 			BAR_ObterNaipe( carta , naipe ) ;
 			printf( "\n%d - %s de %s" , i , valor , naipe ) ;
@@ -105,13 +105,18 @@
 *  Função: MES &Exibir mensagem
 *  ****/
 
-	MES_tpCondRet MES_ExibirMensagem( char* mensagem )
+	MES_tpCondRet MES_ExibirMensagem( char* mensagem , int quebra )
 	{
 		if ( mensagem == NULL )
 		{
 			return MES_CondRetMensagemVazia ;
 		}
-		printf( "\n%s" , mensagem ) ;
+		if ( quebra )
+		{
+			printf( "\n" ) ;
+		}
+		
+		printf( mensagem ) ;
 		
 		return MES_CondRetOK ;
 	}
@@ -123,15 +128,19 @@
 
 	MES_tpCondRet MES_ReceberComando( int* comando , int min , int max )
 	{	
+		char ch ;
 		if ( min > max )
 		{
 			return MES_CondRetMinMaiorMax ;
 		}
+		*comando = min - 1 ;
 		printf( "\nDigite um comando entre %d e %d:\n" , min , max ) ;
 		scanf( "%d" , comando ) ;
 		
 		while ( *comando < min || *comando > max ) 
 		{
+			while ( ( ch = getchar() ) != '\n' && ch != EOF )
+			continue;
 			printf( "Comando inválido. Digite um comando entre %d e %d:\n" , min , max ) ;
 			scanf( "%d" , comando ) ;
 		}

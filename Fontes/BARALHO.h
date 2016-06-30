@@ -48,7 +48,7 @@
 /***** Declarações exportadas pelo módulo *****/
 
 /* Tipo referência para uma carta */
-typedef struct carta BAR_tppCarta;
+typedef struct carta * BAR_tppCarta;
 
 typedef enum {
 
@@ -168,10 +168,12 @@ typedef enum {
 *  $ED Descrição da função
 *     Escolher a manilha depois do baralho, o qual é passado como 
 *     parâmetro ter sido embaralhado e distribuído para os jogadores.
+*     A palavra que corresponde à manilha é escrita no ponteiro
+*     recebido como parâmetro.
 *
 ***********************************************************************/
 
-	int BAR_EscolherManilha( LIS_tppLista baralho ) ;
+	int BAR_EscolherManilha( LIS_tppLista baralho , char* manilha ) ;
 
 /***********************************************************************
 *
@@ -183,7 +185,7 @@ typedef enum {
 *
 ***********************************************************************/
 
-	int BAR_ObterValor( BAR_tppCarta* carta , char* valor ) ;
+	int BAR_ObterValor( BAR_tppCarta carta , char* valor ) ;
 
 /***********************************************************************
 *
@@ -195,4 +197,4 @@ typedef enum {
 *
 ***********************************************************************/
 
-	int BAR_ObterNaipe( BAR_tppCarta* carta , char* naipe ) ;
+	int BAR_ObterNaipe( BAR_tppCarta carta , char* naipe ) ;
