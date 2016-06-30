@@ -8,7 +8,7 @@ PathDefault =  .
 err         =  .
 
 [Modulos]
-TestLis
+TestLis /D_DEBUG
 Lista /D_DEBUG
 
 [BuildInicio]

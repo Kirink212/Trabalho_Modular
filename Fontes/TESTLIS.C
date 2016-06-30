@@ -31,6 +31,7 @@
 
 #include    "Lista.h"
 
+/* Tabela dos nomes dos comandos de teste específicos */
 
 static const char RESET_LISTA_CMD         [ ] = "=resetteste"     ;
 static const char CRIAR_LISTA_CMD         [ ] = "=criarlista"     ;
@@ -45,6 +46,12 @@ static const char IR_FIM_CMD              [ ] = "=irfinal"        ;
 static const char AVANCAR_ELEM_CMD        [ ] = "=avancarelem"    ;
 static const char PROCURAR_VALOR_CMD      [ ] = "=procurarvalor"  ;
 
+/* os comandos a seguir somente operam em modo _DEBUG */
+
+static const char VER_CABECA_CMD          [ ] = "=verificarcabeca"  ;
+static const char VER_LISTA_CMD           [ ] = "=verificarlista"   ;
+static const char VER_MEMORIA_CMD         [ ] = "=verificarmemoria" ;
+static const char DETURPAR_CMD            [ ] = "=deturpar"         ;
 
 #define TRUE  1
 #define FALSE 0
@@ -87,6 +94,13 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 *     =irinicio                     inxLista
 *     =irfinal                      inxLista
 *     =avancarelem                  inxLista  numElem CondRetEsp
+*
+*     Estes comandos somente podem ser executados se o modulo tiver sido
+*     compilado com _DEBUG ligado
+*     =verificarcabeca              inxLista  CondRetEsp
+*     =verificarlista               inxLista  CondRetEsp
+*     =deturpar                     inxLista  CodigoDeturpa
+*     =verificarmemoria
 *
 ***********************************************************************/
 
@@ -396,7 +410,83 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 					  "Condicao de retorno errada ao procurar valor" ) ;
 					  
 		 } /* fim ativa: LIS  &Procurar valor */
+		 
+	  /* LIS  &Verificar cabeça */
+	  #ifdef _DEBUG
+	  
+		 else if ( strcmp( ComandoTeste , VER_CABECA_CMD ) == 0 )
+		 {
+			 
+			numLidos = LER_LerParametros( "ii" , &inxLista ,
+								&ValEsp ) ;
+			
+			if ( ( numLidos != 2 )
+			  || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
+			{
+				return TST_CondRetParm ;
+			} /* if */
+			
+			return TST_CompararInt( ValEsp ,
+						LIS_VerificarCabeca( vtListas[ inxLista ] ,
+						"Retorno incorreto ao verificar cabeca." ) ;
+		 } /* fim ativa: LIS  &Verificar cabeça */
+	  #endif
+	  
+	  /* LIS  &Verificar lista */
+	  #ifdef _DEBUG
+	  
+		 else if ( strcmp( ComandoTeste , VER_LISTA_CMD ) == 0 )
+		 {
+			 
+			numLidos = LER_LerParametros( "ii" , &inxLista ,
+			                    &ValEsp ) ;
+			
+			if ( ( numLidos != 2 )
+			  || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
+			{
+				return TST_CondRetParm ;
+			} /* if */
+			
+			return TST_CompararInt( ValEsp ,
+						LIS_VerificarLista( vtListas[ inxLista ] ,
+						"Retorno incorreto ao verificar lista." ) ;
+		 } /* fim ativa: LIS  &Verificar lista */
+	  #endif
+	  
+	  /* LIS  &Deturpar uma lista */
+	  #ifdef _DEBUG
+	  
+		 else if ( strcmp( ComandoTeste , DETURPAR_CMD ) == 0 )
+		 {
+			 
+			numLidos = LER_LerParametros( "ii" , &inxLista ,
+								&ValEsp ) ;
+			
+			if ( ( numLidos != 2 )
+			  || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
+			{
+				return TST_CondRetParm ;
+			} /* if */
+			
+			LIS_Deturpar( vtListas[ inxLista ] , ValEsp ) ;
+			
+			return TST_CondRetOK ;
+		 } /* fim ativa: LIS  &Deturpar uma lista */
+	  #endif
+	  
+	  /* Verificar vazamento de memória */
+      #ifdef _DEBUG
 
+         else if ( strcmp( ComandoTeste , VER_MEMORIA_CMD ) == 0 )
+         {
+
+            CED_ExibirTodosEspacos( CED_ExibirTodos ) ;
+
+            return TST_CondRetOK ;
+
+         } /* fim ativa: Verificar vazamento de memória */
+      #endif
+	  
       return TST_CondRetNaoConhec ;
 
    } /* Fim função: TLIS &Testar lista */
