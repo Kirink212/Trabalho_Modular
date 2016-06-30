@@ -840,3 +840,57 @@
 
 /********** Fim do módulo de implementação: LIS  Lista duplamente encadeada **********/
 
+void LIS_Deturpar(LIS_tppLista pListaParm, LIS_tpModosDeturpacao ModoDeturpar)
+{
+      tpElemLista * pElem = NULL;
+
+      if ( pListaParm == NULL)
+      {
+         return;
+      }
+
+      pElem = pListaParm->pOrigemLista;
+
+      switch ( ModoDeturpar ) {
+
+         case DeturpaPonteiroCabeca:
+         {
+
+            pElem->cabecaLista = NULL;
+
+            break;
+         }
+
+         case DeturpaTipoCabeca:
+         {
+
+            CED_DefinirTipoEspaco( pElem->cabecaLista , CED_ID_TIPO_VALOR_NULO );
+
+            break;
+         }
+
+         case DeturpaTipoElem:
+         {
+
+            CED_DefinirTipoEspaco( pListaParm->pElemCorr , CED_ID_TIPO_VALOR_NULO );
+
+            break;
+         }
+
+         case DeturpaEspacoCabeca:
+         {
+
+            CED_DefinirTipoEspaco( pElem->cabecaLista , CED_ID_TIPO_ILEGAL);
+
+            break;
+         }
+
+         case DeturpaEspacoCorrente:
+         {
+
+            CED_DefinirTipoEspaco( pListaParm->pElemCorr , CED_ID_TIPO_ILEGAL);
+
+            break;
+         }
+      }
+}

@@ -94,6 +94,24 @@ typedef struct LIS_tagLista * LIS_tppLista ;
    } LIS_tpCondRet ;
 
 
+   #ifdef _DEBUG
+
+   typedef enum {
+          DeturpaPonteiroCabeca = 0;
+
+          DeturpaTipoCabeca = 1;
+
+          DeturpaTipoElem = 2;
+
+          DeturpaEspacoCabeca = 3;
+
+          DeturpaEspacoCorrente = 4;
+
+   } LIS_tpModosDeturpacao ;
+
+    #endif
+
+
 /***********************************************************************
 *
 *  $FC Função: LIS  &Criar lista
