@@ -27,6 +27,7 @@
 #include   <assert.h>
 
 #ifdef _DEBUG
+	#include   "Generico.h"
 	#include   "conta.h" 
 	#include   "cespdin.h"
 #endif
@@ -1002,8 +1003,6 @@
             pElem = pListaParm->pOrigemLista;
 
             switch ( ModoDeturpar ) {
-
-               CNT_CONTAR("Deturpar , deturpa");
 
             /* Anula o ponteiro de cabeça */
 

@@ -28,6 +28,7 @@
 
 #include    "Generico.h"
 #include    "LerParm.h"
+#include "Cespdin.h"
 
 #include    "Lista.h"
 
@@ -427,7 +428,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 			} /* if */
 			
 			return TST_CompararInt( ValEsp ,
-						LIS_VerificarCabeca( vtListas[ inxLista ] ,
+						LIS_VerificarCabeca( vtListas[ inxLista ] ) ,
 						"Retorno incorreto ao verificar cabeca." ) ;
 		 } /* fim ativa: LIS  &Verificar cabeça */
 	  #endif
@@ -448,7 +449,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 			} /* if */
 			
 			return TST_CompararInt( ValEsp ,
-						LIS_VerificarLista( vtListas[ inxLista ] ,
+						LIS_VerificarLista( vtListas[ inxLista ] ) ,
 						"Retorno incorreto ao verificar lista." ) ;
 		 } /* fim ativa: LIS  &Verificar lista */
 	  #endif
