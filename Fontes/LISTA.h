@@ -356,6 +356,11 @@ typedef struct LIS_tagLista * LIS_tppLista ;
    LIS_tpCondRet LIS_ProcurarValor( LIS_tppLista pLista ,
                                     void * pValor        ) ;
 
+   #ifdef _DEBUG
+      void LIS_Deturpar(LIS_tppLista pListaParm, 
+                        LIS_tpModosDeturpacao ModoDeturpar);
+   #endif
+
 #undef LISTA_EXT
 
 /********** Fim do módulo de definição: LIS  Lista duplamente encadeada **********/
