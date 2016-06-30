@@ -968,7 +968,7 @@
                return LIS_CondRetErroEstrutura ;
             } /* if */
 
-            CNT_CONTAR("Verificar cabeca , lista nao vazia corrente nulo");
+            CNT_CONTAR("Verificar cabeca , lista nao vazia corrente nao nulo");
          } /* if */
 
       return LIS_CondRetOK ;
