@@ -139,19 +139,20 @@
 =destruirlista   lista2
 
 == Limitar número de espaços
-=limitarnumeroespacos	1
+=limitarnumeroespacos	4
 
 == Criar lista
 =criarlista 	lista3
-
-== Criar lista falta memoria
-=criarlista	lista1
 
 == Inserir elemento antes falta memoria
 =inselemantes    lista3   str0   FaltouMemoria
 
 == Inserir elemento apos falta memoria
 =inselemapos	 lista3   str0   FaltouMemoria
+=limitarnumeroespacos	3
+
+== Criar lista falta memoria
+=criarlista	lista1
 
 == Eliminar limite espaços
 =eliminarlimitesespaco
