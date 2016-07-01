@@ -1,0 +1,216 @@
+GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
+   LES / Informática / PUC-Rio    Versão 6.00 (c) 2005
+
+Composição do construto: TesteMesa.comp
+
+   Nome do Construto:           TesteMesa
+   Diretório base:              C:\Users\Leo\Documents\puc\modular\mesa
+
+   Arquivo composição:          TesteMesa.comp
+   Arquivo plataforma:          gmake.parm
+
+   Arquivo diretivas MAKE:      TesteMesa.make
+   Arquivo diretivas LINK:      TesteMesa.build
+   Arquivo listagem:            TesteMesa.list
+
+Módulos do construto: TesteMesa.comp
+
+   TestMes.c
+   Baralho.c
+   Lista.c
+   Mesa.c
+
+Estatísticas do construto
+
+   Estatísticas do arquivo: BARALHO.h
+      Total linhas:             200
+      Linhas de código:          17
+      Linhas de comentário:     160
+      Linhas em branco:          23
+   Arquivos de inclusão de que necessita
+      LISTA.h
+   Arquivos em que é incluído
+      Mesa.c
+
+   Estatísticas do arquivo: Baralho.c
+      Total linhas:             441
+      Linhas de código:         266
+      Linhas de comentário:     131
+      Linhas em branco:          52
+   Arquivos de inclusão de que necessita
+      Baralho.h
+      LISTA.h
+
+   Estatísticas do arquivo: Baralho.h
+      Total linhas:             200
+      Linhas de código:          17
+      Linhas de comentário:     160
+      Linhas em branco:          23
+   Arquivos de inclusão de que necessita
+      LISTA.h
+   Arquivos em que é incluído
+      Baralho.c
+      TestMes.c
+
+   Estatísticas do arquivo: Generico.h
+      Total linhas:             588
+      Linhas de código:          54
+      Linhas de comentário:     470
+      Linhas em branco:          64
+   Arquivos de inclusão de que necessita
+      TST_Espc.h
+   Arquivos em que é incluído
+      Lista.c
+      TestMes.c
+
+   Estatísticas do arquivo: LISTA.h
+      Total linhas:             440
+      Linhas de código:          55
+      Linhas de comentário:     320
+      Linhas em branco:          65
+   Arquivos em que é incluído
+      BARALHO.h
+      Baralho.c
+      Baralho.h
+      Lista.c
+      MESA.h
+      Mesa.c
+      Mesa.h
+      TestMes.c
+
+   Estatísticas do arquivo: LerParm.h
+      Total linhas:             463
+      Linhas de código:          36
+      Linhas de comentário:     362
+      Linhas em branco:          65
+   Arquivos em que é incluído
+      TestMes.c
+
+   Estatísticas do arquivo: Lista.c
+      Total linhas:            1020
+      Linhas de código:         592
+      Linhas de comentário:     180
+      Linhas em branco:         275
+   Arquivos de inclusão de que necessita
+      Generico.h
+      LISTA.h
+      TST_Espc.h
+      cespdin.h
+      conta.h
+
+   Estatísticas do arquivo: Lista.h
+      Total linhas:             440
+      Linhas de código:          55
+      Linhas de comentário:     320
+      Linhas em branco:          65
+   Arquivos em que é incluído
+      TestMes.c
+
+   Estatísticas do arquivo: MESA.h
+      Total linhas:             150
+      Linhas de código:          14
+      Linhas de comentário:     115
+      Linhas em branco:          21
+   Arquivos de inclusão de que necessita
+      LISTA.h
+   Arquivos em que é incluído
+      Mesa.c
+
+   Estatísticas do arquivo: Mesa.c
+      Total linhas:             151
+      Linhas de código:          84
+      Linhas de comentário:      40
+      Linhas em branco:          27
+   Arquivos de inclusão de que necessita
+      BARALHO.h
+      LISTA.h
+      MESA.h
+
+   Estatísticas do arquivo: Mesa.h
+      Total linhas:             150
+      Linhas de código:          14
+      Linhas de comentário:     115
+      Linhas em branco:          21
+   Arquivos de inclusão de que necessita
+      LISTA.h
+   Arquivos em que é incluído
+      TestMes.c
+
+   Estatísticas do arquivo: TST_Espc.h
+      Total linhas:             320
+      Linhas de código:          23
+      Linhas de comentário:     277
+      Linhas em branco:          20
+   Arquivos em que é incluído
+      Generico.h
+      Lista.c
+      TestMes.c
+
+   Estatísticas do arquivo: TestMes.c
+      Total linhas:             184
+      Linhas de código:          97
+      Linhas de comentário:      39
+      Linhas em branco:          53
+   Arquivos de inclusão de que necessita
+      Baralho.h
+      Generico.h
+      LISTA.h
+      LerParm.h
+      Lista.h
+      Mesa.h
+      TST_Espc.h
+
+   Estatísticas do arquivo: cespdin.h
+      Total linhas:             818
+      Linhas de código:          67
+      Linhas de comentário:     639
+      Linhas em branco:         112
+   Arquivos em que é incluído
+      Lista.c
+
+   Estatísticas do arquivo: conta.h
+      Total linhas:             495
+      Linhas de código:          44
+      Linhas de comentário:     372
+      Linhas em branco:          79
+   Arquivos em que é incluído
+      Lista.c
+
+Totais por tipo de arquivo
+
+  Tipo: obj      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: err      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: DEFAULT  Path: .
+         Total linhas do tipo:      4264
+         Linhas de código:           396
+         Linhas de comentário:      3310
+         Linhas em branco:           558
+         Arquivos deste tipo:         11
+
+  Tipo: c        Path: .
+         Total linhas do tipo:      1796
+         Linhas de código:          1039
+         Linhas de comentário:       390
+         Linhas em branco:           407
+         Arquivos deste tipo:          4
+
+Totais para todo o construto TesteMesa
+
+   Total linhas:              6060
+   Linhas de código:          1435
+   Linhas de comentário:      3700
+   Linhas em branco:           965
+   Arquivos processados:        15
+

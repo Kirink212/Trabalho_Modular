@@ -163,7 +163,7 @@ LIS_tppLista   Baralho = NULL ;
 				strcpy( mensagem, mensagemTemp ) ;
 			}
 			
-			CondRet = MES_ExibirMensagem( mensagem ) ;
+			CondRet = MES_ExibirMensagem( mensagem , 0 ) ;
 			
 			if ( mensagem )
 			{

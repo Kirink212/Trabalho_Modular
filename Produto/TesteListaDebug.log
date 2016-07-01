@@ -1,0 +1,76 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: testeListaDebug
+!!!      Script de teste:     TesteContadoresAresta.script
+
+>>>    1  Linha:     1  Comando de teste ignorado:  ï»¿// Script:    TesteContadoresAresta.script
+!!!    1  Linha:     2  // Autor:     Bruno dÂ´Almeida Franco 
+!!!    1  Linha:     3  // Data:      27/jun/2016 
+!!!    1  Linha:     4  // PropÃ³sito: Testar o percorrimento por arestas 
+!!!    1  Linha:     5  // 
+    7  == Inicializar valores
+   28  == Iniciar contagem
+   33  == Criar a lista 0
+   36  == Verificar ObterValor relativo a lista vazia
+   39  == Excluir elemento em lista vazia
+   42  == Avancar elemento em lista vazia
+   45  == Inserir elemento em lista vazia
+   49  == Nao avancar elemento
+   52  == Inserir elemento apÃ³s primeiro
+   56  == Inserir elemento antes do Ãºltimo
+   60  == Excluir elemento do meio
+   64  == Excluir elemento do inÃ­cio
+   68  == Excluir elemento final, Ãºnico
+   72  == Ver se a lista ficou vazia
+   75  == Destruir a lista 0
+   78  == Criar uma lista 1 com dois elementos
+   83  == Esvaziar a lista e ver se ficou vazia
+   87  == Procurar um valor em uma lista vazia
+   90  == Destruir a lista 1
+   93  == Criar uma lista 2 com quatro elementos
+  100  == Verificar a lista de trÃ¡s para diante
+  110  == Verificar a lista de frente para trÃ¡s
+  120  == Verificar a lista andando demais de trÃ¡s para diante
+  124  == Verificar a lista andando demais de frente para trÃ¡s
+  128  == Andar para o inicio da lista e remover o primeiro elemento
+  132  == Andar para o final da lista e remover o ultimo elemento
+  136  == Verificar se um elemento que nao esta na lista Ã© encontrado
+  139  == Destruir a lista 2
+  142  == Limitar nÃºmero de espaÃ§os
+  145  == Criar lista 3
+  148  == Inserir elemento antes falta memoria
+!!!    1  Linha:   149  Limita numero de espacos alocados. 
+  151  == Inserir elemento apos falta memoria
+!!!    1  Linha:   152  Limita numero de espacos alocados. 
+  155  == Criar lista 1 falta memoria
+!!!    1  Linha:   156  Limita numero de espacos alocados. 
+>>>    2  Linha:   156  Erro em ponteiro de nova lista. Deveria ser: não NULL  É: NULL
+  158  == Eliminar limite espaÃ§os
+  161  == Inserir elemento antes em lista vazia
+  165  == Inserir elemento antes do primeiro
+  169  == Inserir elemento apos primeiro nao ultimo
+  173  == Verificar a lista ok
+  176  == Deturpa ponteiro cabeca e verificar
+  180  == Deturpa tipo cabeÃ§a e verificar
+  184  == Destruir e recriar lista 3
+  190  == Deturpa espaco cabeÃ§a e verificar
+  194  == Destruir e recriar lista 3
+  200  == Deturpar tipo elem e verificar
+  204  == Destruir e recriar lista 3
+  210  == Deturpar espaco elem e verificar
+  214  ==Terminar controlar contadores
+cc>    3  Linha:   216   Contagem em "Verificar cabeca , corrente nulo" é zero.
+cc>    4  Linha:   216   Contagem em "Verificar cabeca , lista nao vazia corrente nao nulo" é zero.
+cc>    5  Linha:   216   Contagem em "Verificar cabeca , lista nao vazia corrente nulo" é zero.
+cc>    6  Linha:   216   Contagem em "Verificar cabeca , origem nao aponta cabeca" é zero.
+>>>    7  Linha:   216  Número de contadores zero errado. Deveria ser: 0  É: 4
+
+!!! Número de linhas lidas:         216
+!!! Número de casos de teste:        47
+!!! Número comandos corretos:       112
+!!! Número de falhas encontradas:     7
+
+!!! Foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 5

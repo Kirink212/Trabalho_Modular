@@ -1,0 +1,33 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: testeMesa
+!!!      Script de teste:     TesteMesa.script
+
+!!!    0  Linha:     1  // Script:    TesteMesa.script 
+!!!    0  Linha:     2  // Autor:     Leonardo Lages 
+!!!    0  Linha:     3  // Data:      28/jun/2016 
+!!!    0  Linha:     4  // Propósito: Testar superficialmente o módulo mesa para jogo de truco 
+!!!    0  Linha:     5  // 
+    7  == Inicializar valores
+   18  == Exibir placar igual zerado
+   21  == Exibir placar igual negativo
+   24  == Exibir placar igual positivo
+   27  == Exibir placares diferentes
+   31  == Exibir cartas existentes
+   34  == Exibir cartas lista vazia
+   37  == Exibir cartas lista nao existe
+   40  == Exibir valor zero
+   43  == Exibir valor negativo
+   46  == Exibir valor positivo
+   49  == Exibir mensagens
+!!!    0  Linha:    55  // fim 
+
+!!! Número de linhas lidas:          55
+!!! Número de casos de teste:        12
+!!! Número comandos corretos:        22
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0

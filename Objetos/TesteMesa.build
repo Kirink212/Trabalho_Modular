@@ -1,0 +1,6 @@
+/OUT:TesteMesa.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+TestMes.obj  Baralho.obj  Lista.obj  Mesa.obj  
+ArcaboucoTeste.lib
+

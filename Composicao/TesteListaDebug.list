@@ -1,0 +1,153 @@
+GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
+   LES / Informática / PUC-Rio    Versão 6.00 (c) 2005
+
+Composição do construto: TesteListaDebug.comp
+
+   Nome do Construto:           TesteListaDebug
+   Diretório base:              C:\Users\Leo\Documents\puc\modular\lista debug
+
+   Arquivo composição:          TesteListaDebug.comp
+   Arquivo plataforma:          gmake.parm
+
+   Arquivo diretivas MAKE:      TesteListaDebug.make
+   Arquivo diretivas LINK:      TesteListaDebug.build
+   Arquivo listagem:            TesteListaDebug.list
+
+Módulos do construto: TesteListaDebug.comp
+
+   TestLis.c
+   Lista.c
+
+Estatísticas do construto
+
+   Estatísticas do arquivo: Cespdin.h
+      Total linhas:             818
+      Linhas de código:          67
+      Linhas de comentário:     639
+      Linhas em branco:         112
+   Arquivos em que é incluído
+      TestLis.c
+
+   Estatísticas do arquivo: Generico.h
+      Total linhas:             588
+      Linhas de código:          54
+      Linhas de comentário:     470
+      Linhas em branco:          64
+   Arquivos de inclusão de que necessita
+      TST_Espc.h
+   Arquivos em que é incluído
+      Lista.c
+      TestLis.c
+
+   Estatísticas do arquivo: LISTA.h
+      Total linhas:             440
+      Linhas de código:          55
+      Linhas de comentário:     320
+      Linhas em branco:          65
+   Arquivos em que é incluído
+      Lista.c
+
+   Estatísticas do arquivo: LerParm.h
+      Total linhas:             463
+      Linhas de código:          36
+      Linhas de comentário:     362
+      Linhas em branco:          65
+   Arquivos em que é incluído
+      TestLis.c
+
+   Estatísticas do arquivo: Lista.c
+      Total linhas:            1020
+      Linhas de código:         592
+      Linhas de comentário:     180
+      Linhas em branco:         275
+   Arquivos de inclusão de que necessita
+      Generico.h
+      LISTA.h
+      TST_Espc.h
+      cespdin.h
+      conta.h
+
+   Estatísticas do arquivo: Lista.h
+      Total linhas:             440
+      Linhas de código:          55
+      Linhas de comentário:     320
+      Linhas em branco:          65
+   Arquivos em que é incluído
+      TestLis.c
+
+   Estatísticas do arquivo: TST_Espc.h
+      Total linhas:             320
+      Linhas de código:          23
+      Linhas de comentário:     277
+      Linhas em branco:          20
+   Arquivos em que é incluído
+      Generico.h
+      Lista.c
+      TestLis.c
+
+   Estatísticas do arquivo: TestLis.c
+      Total linhas:             547
+      Linhas de código:         307
+      Linhas de comentário:     102
+      Linhas em branco:         157
+   Arquivos de inclusão de que necessita
+      Cespdin.h
+      Generico.h
+      LerParm.h
+      Lista.h
+      TST_Espc.h
+
+   Estatísticas do arquivo: cespdin.h
+      Total linhas:             818
+      Linhas de código:          67
+      Linhas de comentário:     639
+      Linhas em branco:         112
+   Arquivos em que é incluído
+      Lista.c
+
+   Estatísticas do arquivo: conta.h
+      Total linhas:             495
+      Linhas de código:          44
+      Linhas de comentário:     372
+      Linhas em branco:          79
+   Arquivos em que é incluído
+      Lista.c
+
+Totais por tipo de arquivo
+
+  Tipo: obj      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: err      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: DEFAULT  Path: .
+         Total linhas do tipo:      4382
+         Linhas de código:           401
+         Linhas de comentário:      3399
+         Linhas em branco:           582
+         Arquivos deste tipo:          8
+
+  Tipo: c        Path: .
+         Total linhas do tipo:      1567
+         Linhas de código:           899
+         Linhas de comentário:       282
+         Linhas em branco:           432
+         Arquivos deste tipo:          2
+
+Totais para todo o construto TesteListaDebug
+
+   Total linhas:              5949
+   Linhas de código:          1300
+   Linhas de comentário:      3681
+   Linhas em branco:          1014
+   Arquivos processados:        10
+
