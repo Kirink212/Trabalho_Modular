@@ -57,12 +57,13 @@ limpa :
 ### Dependências de módulos objeto a compilar
 
 $(Fobj)\TestLis.obj :  {$(Pc)}\TestLis.c \
-    {$(PDEFAULT)}Generico.h           {$(PDEFAULT)}LerParm.h            {$(PDEFAULT)}Lista.h              \
-    {$(PDEFAULT)}TST_Espc.h          
+    {$(PDEFAULT)}Cespdin.h            {$(PDEFAULT)}Generico.h           {$(PDEFAULT)}LerParm.h            \
+    {$(PDEFAULT)}Lista.h              {$(PDEFAULT)}TST_Espc.h          
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 $(Fobj)\Lista.obj :  {$(Pc)}\Lista.c \
-    {$(PDEFAULT)}LISTA.h             
+    {$(PDEFAULT)}Generico.h           {$(PDEFAULT)}LISTA.h              {$(PDEFAULT)}TST_Espc.h           \
+    {$(PDEFAULT)}cespdin.h            {$(PDEFAULT)}conta.h             
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 

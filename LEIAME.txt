@@ -1,5 +1,5 @@
 
-Trabalho 2 para a disciplina INF-1310: Programação Modular - Implementação do jogo "Truco
+Trabalho 4 para a disciplina INF-1301: Programação Modular - Implementação do jogo "Truco
 "
 
 1) Os diretórios foram organizados de acordo com o padrão entitulado no arcabouço, com as pastas:
@@ -53,11 +53,11 @@ Trabalho 2 para a disciplina INF-1310: Programação Modular - Implementação do jo
   a)
 
   - Para executar o teste do módulo LISTA, copie os arquivos:
-    i. Da pasta Produto: TRAB2-2.exe
+    i. Da pasta Produto: TRAB4-2.exe
     ii. Da pasta Scripts: TesteLista.script
 
   - Para executar o teste do módulo BARALHo, copie os arquivos:
-    i. Da pasta Produto: TRAB2-1.exe
+    i. Da pasta Produto: TRAB4-1.exe
     ii. Da pasta Scripts: TesteBaralho.script
 
-  b) Após copiar os arquivos, abra o prompt de comando na pasta e utilize os comandos "trab2-1 /stestebaralho" ou "trab2-2 /stestelista" para rodar os testes. Caso deseje rodar outro script de teste, veja o item 2c, alterando o primeiro parâmetro do comando para "trab2-1" ou "trab2-2" conforme o teste copiado.
+  b) Após copiar os arquivos, abra o prompt de comando na pasta e utilize os comandos "trab4-1 /stestebaralho" ou "trab4-2 /stestelista" para rodar os testes. Caso deseje rodar outro script de teste, veja o item 2c, alterando o primeiro parâmetro do comando para "trab4-1" ou "trab4-2" conforme o teste copiado.

@@ -14,12 +14,14 @@
    27  == Distribuir cartas
    30  == Verificar se baralho foi liberado
    33  == Teste com o baralho 1
-   36  == Escolher manilha em um baralho ordenado
-   41  == Liberar baralho 1
+   36  == Obter naipe e valor da ultima carta de um baralho ordenado
+   40  == Escolher manilha em um baralho ordenado
+   43  == Obter naipe e valor da primeira carta de um baralho ordenado
+   47  == Liberar baralho 1
 
-!!! Número de linhas lidas:          43
-!!! Número de casos de teste:         8
-!!! Número comandos corretos:        19
+!!! Número de linhas lidas:          49
+!!! Número de casos de teste:        10
+!!! Número comandos corretos:        21
 !!! Número de falhas encontradas:     0
 
 !!! Não foram encontrados problemas

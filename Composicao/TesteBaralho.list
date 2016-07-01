@@ -22,18 +22,18 @@ Módulos do construto: TesteBaralho.comp
 Estatísticas do construto
 
    Estatísticas do arquivo: Baralho.c
-      Total linhas:             322
-      Linhas de código:         156
-      Linhas de comentário:     126
-      Linhas em branco:          48
+      Total linhas:             441
+      Linhas de código:         266
+      Linhas de comentário:     131
+      Linhas em branco:          52
    Arquivos de inclusão de que necessita
       Baralho.h
       LISTA.h
 
    Estatísticas do arquivo: Baralho.h
-      Total linhas:             195
+      Total linhas:             200
       Linhas de código:          17
-      Linhas de comentário:     155
+      Linhas de comentário:     160
       Linhas em branco:          23
    Arquivos de inclusão de que necessita
       LISTA.h
@@ -49,13 +49,14 @@ Estatísticas do construto
    Arquivos de inclusão de que necessita
       TST_Espc.h
    Arquivos em que é incluído
+      Lista.c
       TestBar.c
 
    Estatísticas do arquivo: LISTA.h
-      Total linhas:             346
-      Linhas de código:          35
-      Linhas de comentário:     262
-      Linhas em branco:          49
+      Total linhas:             440
+      Linhas de código:          55
+      Linhas de comentário:     320
+      Linhas em branco:          65
    Arquivos em que é incluído
       Baralho.c
       Baralho.h
@@ -71,18 +72,22 @@ Estatísticas do construto
       TestBar.c
 
    Estatísticas do arquivo: Lista.c
-      Total linhas:             560
-      Linhas de código:         288
-      Linhas de comentário:     136
-      Linhas em branco:         154
+      Total linhas:            1048
+      Linhas de código:         612
+      Linhas de comentário:     177
+      Linhas em branco:         286
    Arquivos de inclusão de que necessita
+      Generico.h
       LISTA.h
+      TST_Espc.h
+      cespdin.h
+      conta.h
 
    Estatísticas do arquivo: Lista.h
-      Total linhas:             346
-      Linhas de código:          35
-      Linhas de comentário:     262
-      Linhas em branco:          49
+      Total linhas:             440
+      Linhas de código:          55
+      Linhas de comentário:     320
+      Linhas em branco:          65
    Arquivos em que é incluído
       TestBar.c
 
@@ -93,13 +98,14 @@ Estatísticas do construto
       Linhas em branco:          20
    Arquivos em que é incluído
       Generico.h
+      Lista.c
       TestBar.c
 
    Estatísticas do arquivo: TestBar.c
-      Total linhas:             295
-      Linhas de código:         160
+      Total linhas:             297
+      Linhas de código:         161
       Linhas de comentário:      61
-      Linhas em branco:          84
+      Linhas em branco:          85
    Arquivos de inclusão de que necessita
       Baralho.h
       Generico.h
@@ -107,6 +113,22 @@ Estatísticas do construto
       LerParm.h
       Lista.h
       TST_Espc.h
+
+   Estatísticas do arquivo: cespdin.h
+      Total linhas:             818
+      Linhas de código:          67
+      Linhas de comentário:     639
+      Linhas em branco:         112
+   Arquivos em que é incluído
+      Lista.c
+
+   Estatísticas do arquivo: conta.h
+      Total linhas:             495
+      Linhas de código:          44
+      Linhas de comentário:     372
+      Linhas em branco:          79
+   Arquivos em que é incluído
+      Lista.c
 
 Totais por tipo de arquivo
 
@@ -125,24 +147,24 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: DEFAULT  Path: .
-         Total linhas do tipo:      2258
-         Linhas de código:           200
-         Linhas de comentário:      1788
-         Linhas em branco:           270
-         Arquivos deste tipo:          6
+         Total linhas do tipo:      3764
+         Linhas de código:           351
+         Linhas de comentário:      2920
+         Linhas em branco:           493
+         Arquivos deste tipo:          8
 
   Tipo: c        Path: .
-         Total linhas do tipo:      1177
-         Linhas de código:           604
-         Linhas de comentário:       323
-         Linhas em branco:           286
+         Total linhas do tipo:      1786
+         Linhas de código:          1039
+         Linhas de comentário:       369
+         Linhas em branco:           423
          Arquivos deste tipo:          3
 
 Totais para todo o construto TesteBaralho
 
-   Total linhas:              3435
-   Linhas de código:           804
-   Linhas de comentário:      2111
-   Linhas em branco:           556
-   Arquivos processados:         9
+   Total linhas:              5550
+   Linhas de código:          1390
+   Linhas de comentário:      3289
+   Linhas em branco:           916
+   Arquivos processados:        11
 

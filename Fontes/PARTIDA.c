@@ -917,3 +917,9 @@ void PAR_LimparMao( )
 		*  equipe e faremos o mesmo. */
 	}
 }
+
+int main ( void )
+{
+	PAR_GerenciarPartida() ;
+	return 0 ;
+}

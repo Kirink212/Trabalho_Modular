@@ -87,7 +87,7 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
       int i ;
 	  
 	  LIS_tppLista jogador ;
-	  BAR_tppCarta* carta ;
+	  BAR_tppCarta carta ;
 	  int valor ;
 
       /* Efetuar reset de teste de baralho */
@@ -206,7 +206,7 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 				return TST_CondRetParm ;
 			} /* if */
 			
-			CondRet = BAR_EscolherManilha( vtBaralhos[ inxBaralho ] ) ;
+			CondRet = BAR_EscolherManilha( vtBaralhos[ inxBaralho ] , NULL ) ;
 			
 			return TST_CompararInt( CondRetEsp , CondRet ,
 					  "Condicao de retorno errada ao escolher manilha." ) ;
@@ -224,9 +224,9 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 				return TST_CondRetParm ;
 			} /* if */
 			
-			carta = LIS_ObterValor( vtBaralhos[ inxBaralho ] , NULL ) ;
+			carta = LIS_ObterValor( vtBaralhos[ inxBaralho ] ) ;
 			
-			valor = BAR_ObterValor( carta ) ;
+			valor = BAR_ObterValor( carta , NULL ) ;
 			
 			return TST_CompararInt( CondRetEsp , valor ,
 					  "Condicao de retorno errada ao obter valor." ) ;
@@ -244,9 +244,9 @@ LIS_tppLista   vtBaralhos[ DIM_VT_BARALHO ] ;
 				return TST_CondRetParm ;
 			} /* if */
 			
-			carta = LIS_ObterValor( vtBaralhos[ inxBaralho ] , NULL ) ;
+			carta = LIS_ObterValor( vtBaralhos[ inxBaralho ] ) ;
 			
-			valor = BAR_ObterNaipe( carta ) ;
+			valor = BAR_ObterNaipe( carta , NULL ) ;
 			
 			return TST_CompararInt( CondRetEsp , valor ,
 					  "Condicao de retorno errada ao obter naipe." ) ;

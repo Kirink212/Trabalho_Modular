@@ -66,7 +66,8 @@ $(Fobj)\Baralho.obj :  {$(Pc)}\Baralho.c \
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 $(Fobj)\Lista.obj :  {$(Pc)}\Lista.c \
-    {$(PDEFAULT)}LISTA.h             
+    {$(PDEFAULT)}Generico.h           {$(PDEFAULT)}LISTA.h              {$(PDEFAULT)}TST_Espc.h           \
+    {$(PDEFAULT)}cespdin.h            {$(PDEFAULT)}conta.h             
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 
