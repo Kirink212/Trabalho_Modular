@@ -1,9 +1,53 @@
+/***************************************************************************
+*  $MCI Módulo de implementação: BAR  Baralho de Cartas
+*
+*  Arquivo gerado:              BARALHO.c
+*  Letras identificadoras:      BAR
+*
+*  Nome da base de software:    Arcabouço para a automação de testes 
+*								de programas redigidos em C
+*
+*  Projeto: INF 1301 - T2 de Programação Modular - Implementação do Truco
+*  Autores: Luís Fernando Teixeira Bicalho (lfer),  
+*			Leonardo Lages de Alencar(llages) e 
+*			Bruno D'Almeida Franco (bfranco)
+*
+*  $HA Histórico de evolução:
+*     Versão	Autor		Data				Observações
+*     6         llages  21/jul/2016         alterações nas funções
+*                                           obtervalor e obternaipe
+*                                           para preencherem uma
+*                                           string dada
+*     5         llages  08/maio/2016        alteração do nome de
+*                                           variáveis para seguir
+*                                           os padrões e adição de
+*                                           assertivas
+*     4			lfer	05/maio/2016		adição e revisão de 
+*											comentários no código
+*     3			lfer	03/maio/2016		criação das condições 
+*											de retorno e adição de 
+*                                           funções
+*     2			llages	22/abr/2016			revisão de implementação
+*     1			lfer e	16/abr/2016			início desenvolvimento
+*				bfranco
+*
+***************************************************************************/
+
 #include "PARTIDA.h"
 #include "BARALHO.h"
 #include <stdlib.h>
 #include "LISTA.h"
 #include "MESA.h"
 
+/***********************************************************************
+*
+*  $TC Tipo de dados: BAR Lista de Valores
+*
+*  $ED Descrição do tipo
+*     Tipos de valores possíveis para um elemento do tipo carta
+*
+*
+***********************************************************************/
 typedef struct jogada Jogada ;
 struct jogada {
 	BAR_tppCarta carta ;
@@ -11,6 +55,15 @@ struct jogada {
 		jogador ;
 } ;
 
+/***********************************************************************
+*
+*  $TC Tipo de dados: BAR Lista de Valores
+*
+*  $ED Descrição do tipo
+*     Estrutura Pincipal (Lista de Listas)
+*
+*
+***********************************************************************/
 static LIS_tppLista estruturaPrincipal ;
 
 static int numeroTotalJogadores ,
@@ -25,6 +78,10 @@ static int numeroTotalJogadores ,
 		   /* As variáveis de vencedores representam os
 		   *  vencedores da última rodada realizada. */
 
+/***************************************************************************
+*
+*  Função: BAR  &Criar baralho
+*  ****/
 void PAR_GerenciarPartida( )
 {
    int indiceMao = 0 ,
@@ -110,6 +167,10 @@ void PAR_GerenciarPartida( )
    }
 }
 
+/***************************************************************************
+*
+*  Função: BAR  &Criar baralho
+*  ****/
 PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 {
     int quantidadeJogadas ,
@@ -355,7 +416,10 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 		return PAR_CondRetEquipeDoisVenceu ;
 	}
 }
-
+/***************************************************************************
+*
+*  Função: BAR  &Criar baralho
+*  ****/
 PAR_tpCondRet PAR_GerenciarMao( )
 {
 	int retornoLista ,
@@ -564,13 +628,20 @@ PAR_tpCondRet PAR_GerenciarMao( )
 		return PAR_CondRetEquipeDoisVenceu ;
 	}
 }
+/***************************************************************************
+*
+*  Função: BAR  &Criar baralho
+*  ****/
 void PAR_IniciarMaoDeOnze(int indiceEquipe, int numeroTotalJogadores)
 {
     //integrantes do Equipe podem vizualizar a carta de seus parceiros
     
     
 }
-
+/***************************************************************************
+*
+*  Função: BAR  &Criar baralho
+*  ****/
 PAR_tpCondRet PAR_PedirAumento( int equipeAtual , int jogadorAtual )
 {
     /* O jogador X da equipe Y pediu aumento.
@@ -579,6 +650,10 @@ PAR_tpCondRet PAR_PedirAumento( int equipeAtual , int jogadorAtual )
 	MES_ExibirMensagem( "" , 1 ) ;
 }
 
+/***************************************************************************
+*
+*  Função: BAR  &Criar baralho
+*  ****/
 void PAR_LimparMesa( )
 {	
 	Jogada *jogada ;
@@ -625,6 +700,10 @@ void PAR_LimparMesa( )
 	
 }
 
+/***************************************************************************
+*
+*  Função: BAR  &Criar baralho
+*  ****/
 void PAR_LimparMao( )
 {
 	int i ,
