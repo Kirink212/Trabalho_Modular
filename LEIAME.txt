@@ -84,4 +84,10 @@ Trabalho 4 para a disciplina INF-1301: Programação Modular - Implementação do jo
     i. Da pasta Produto: TRAB4-4.exe
     ii. Da pasta Scripts: TesteMesa.script
 
+  - Para executar o programa como um todo, execute o arquivo TRAB4-5.exe na pasta Produto. Assim, começará o jogo de truco. O roteiro de testes estará em outro arquivo.
+
   b) Após copiar os arquivos, abra o prompt de comando na pasta e utilize os comandos "PRODUTO /sSCRIPT", sendo PRODUTO o arquivo .exe copiado e SCRIPT o arquivo .script copiado, para rodar os testes. Caso deseje rodar outro script de teste, basta alterar a parte SCRIPT.
+
+OBSERVAÇÕES FINAIS:
+  i. O módulo partida possui um header para não misturar os cabeçalhos das funções com a implementação.
+  ii. Alguns casos de teste do módulo LISTA com deturpações podem apontar erro, porém acontecem devido ao(esperado, pois era o que estava sendo testado) erro de memória.
