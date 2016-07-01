@@ -3,6 +3,8 @@
 // Data:      27/jun/2016
 // Propósito: Testar o percorrimento por arestas
 //
+// Erros : Nas operações de deturpação encontram-se erros gerados pela deturpação de espaço e tipo de ponteiros que ao verificar(usando CESPDIN) 
+//         não são verificados corretamente , assim os contadores das arestas dessas funções não são contados e o retorno da função tambem é retornado errado.
 
 == Inicializar valores
 =declararparm   lista0  int 0
@@ -171,7 +173,7 @@
 =obtervalorelem  lista3   str2   pNaoNULL
 
 == Verificar a lista ok
-=verificarlista  lista3   ErroEstrutura
+=verificarlista  lista3   OK
 
 == Deturpa ponteiro cabeca e verificar
 =deturpar 	 lista3   0

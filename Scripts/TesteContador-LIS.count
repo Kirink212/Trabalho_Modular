@@ -70,6 +70,8 @@ Limpar cabeca
 Verificar lista , inicio
 Verificar lista , nao ok
 Verificar cabeca , inicio
+Verificar cabeca , espaco nao cabeca
+Verificar cabeca , espaco cabeca
 Verificar cabeca , cabeca nao nula
 Verificar cabeca , origem nao aponta cabeca
 Verificar cabeca , origem aponta cabeca
