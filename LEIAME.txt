@@ -42,11 +42,27 @@ Trabalho 4 para a disciplina INF-1301: Programação Modular - Implementação do jo
        v. Da pasta Produto: exbestat.exe e GMake.exe
        vi. Da pasta Scripts: TesteBaralho.script
 
+    - Para compilar o teste do módulo LISTA com deturpações, copie os arquivos:
+       i. Da pasta Batches: CompilaListaDebug.bat, GeraListaDebug.bat, LimpaListaDebug.bat, TestaListaDebug.bat e TudoListaDebug.bat
+       ii. Da pasta Composicao: Gmake.parm e TesteListaDebug.comp
+       iii. Da pasta Fontes: CESPDIN.h, CONTA.h, GENERICO.h, LERPARM.h, LISTA.h, LISTA.c, TESTLIS.c, TST_ESPC.h
+       iv. Da pasta Objetos: ArcaboucoTeste.lib
+       v. Da pasta Produto: exbestat.exe e GMake.exe
+       vi. Da pasta Scripts: TesteContadoresAresta.script e TesteContador-LIS.count
+
+    - Para compilar o teste do módulo MESA, copie os arquivos:
+       i. Da pasta Batches: CompilaMesa.bat, GeraMesa.bat, LimpaMesa.bat, TestaMesa.bat e TudoMesa.bat
+       ii. Da pasta Composicao: Gmake.parm e TesteMesa.comp
+       iii. Da pasta Fontes: BARALHO.h, BARALHO.c, CESPDIN.h, CONTA.h, GENERICO.h, LERPARM.h, LISTA.h, LISTA.c, MESA.h, MESA.c, TESTMES.c, TST_ESPC.h
+       iv. Da pasta Objetos: ArcaboucoTeste.lib
+       v. Da pasta Produto: exbestat.exe e GMake.exe
+       vi. Da pasta Scripts: TesteMesa.script
+
     OBS: Para ambos os casos, deve-se copiar o arquivo "vsvars32.bat" referente ao Visual Studio instalado na máquina. O arquivo encontra-se (dentro da pasta do Visual Studio) na pasta /Common7/Tools.
 
-  b) Após copiar os arquivos referentes ao teste desejado, deve-se abrir o prompt comando na pasta criada e rodar o arquivo "vsvars32.bat". Após a execução do mesmo, basta executar o arquivo "TudoLista.bat" ou "TudoBaralho.bat". Assim, será compilado o executável do teste e rodado o .script de teste referente ao módulo.
+  b) Após copiar os arquivos referentes ao teste desejado, deve-se abrir o prompt comando na pasta criada e rodar o arquivo "vsvars32.bat". Após a execução do mesmo, basta executar o arquivo "TudoLista.bat", "TudoBaralho.bat", "TudoListaDebug.bat" ou "TudoMesa.bat". Assim, será compilado o executável do teste e rodado o .script de teste referente ao módulo.
 
-  c) Depois da compilação, para rodar outros testes, basta utilizar, ainda no prompt de comando, "testelista /sNomeDoArquivo" ou "testebaralho /sNomeDoArquivo", sendo "NomeDoArquivo" o nome referente ao novo .script de teste a ser realizado.
+  c) Depois da compilação, para rodar outros testes, basta utilizar, ainda no prompt de comando, "testelista /sNomeDoArquivo", "testebaralho /sNomeDoArquivo", "testelistadebug /sNomeDoArquivo" ou "testemesa /sNomeDoArquivo", sendo "NomeDoArquivo" o nome referente ao novo .script de teste a ser realizado.
 
 3) Para apenas executar os testes, sem compilação, é necessário criar uma nova pasta e copiar os seguintes arquivos:
 
@@ -60,4 +76,12 @@ Trabalho 4 para a disciplina INF-1301: Programação Modular - Implementação do jo
     i. Da pasta Produto: TRAB4-1.exe
     ii. Da pasta Scripts: TesteBaralho.script
 
-  b) Após copiar os arquivos, abra o prompt de comando na pasta e utilize os comandos "trab4-1 /stestebaralho" ou "trab4-2 /stestelista" para rodar os testes. Caso deseje rodar outro script de teste, veja o item 2c, alterando o primeiro parâmetro do comando para "trab4-1" ou "trab4-2" conforme o teste copiado.
+  - Para executar o teste do módulo LISTA com deturpações, copie os arquivos:
+    i. Da pasta Produto: TRAB4-3.exe
+    ii. Da pasta Scripts: TesteContadoresAresta.script e TesteContador-LIS.count
+
+  - Para executar o teste do módulo MESA, copie os arquivos:
+    i. Da pasta Produto: TRAB4-4.exe
+    ii. Da pasta Scripts: TesteMesa.script
+
+  b) Após copiar os arquivos, abra o prompt de comando na pasta e utilize os comandos "PRODUTO /sSCRIPT", sendo PRODUTO o arquivo .exe copiado e SCRIPT o arquivo .script copiado, para rodar os testes. Caso deseje rodar outro script de teste, basta alterar a parte SCRIPT.
