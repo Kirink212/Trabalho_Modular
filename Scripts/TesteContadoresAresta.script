@@ -171,7 +171,7 @@
 =obtervalorelem  lista3   str2   pNaoNULL
 
 == Verificar a lista ok
-=verificarlista  lista3   OK
+=verificarlista  lista3   ErroEstrutura
 
 == Deturpa ponteiro cabeca e verificar
 =deturpar 	 lista3   0
