@@ -84,8 +84,7 @@ static int numeroTotalJogadores ,
 *  ****/
 void PAR_GerenciarPartida( )
 {
-   int indiceMao = 0 ,
-       numeroAtualJogadores ,
+   int numeroAtualJogadores ,
 	   vencedorMao ,
 	   retornoLista ;
    

@@ -139,7 +139,7 @@
 		
 		while ( *comando < min || *comando > max ) 
 		{
-			while ( ( ch = getchar() ) != '\n' && ch != EOF )
+			while ( ( ch = ( unsigned char ) getchar() ) != '\n' && ch != EOF )
 			continue;
 			printf( "Comando inválido. Digite um comando entre %d e %d:\n" , min , max ) ;
 			scanf( "%d" , comando ) ;

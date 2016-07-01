@@ -4,11 +4,24 @@
 13/04/2016 ; 30 minutos ; Especificar os módulos ; Com o feedback do professor, fizemos mais alterações nos módulos.
 13/04/2016 ; 30 minutos ; Revisar especificações ; Com a correção do professor, fizemos mais alterações nas especificações.
 13/04/2016 ; 1 hora ; Especificar as funções ; Seguindo as alterações nos módulos, reformamos a especificação das funções.
-23/04/2016 ; 2 horas e 30 minutos ; Codificar módulo ; Codificação do módulo baralho.
-03/05/2016 ; 4 horas ; Codificar módulo ; Codificação do módulo de teste do módulo baralho.
+23/04/2016 ; 2 horas e 30 minutos ; Codificar módulo ; Codificação do módulo BARALHO.
+03/05/2016 ; 4 horas ; Codificar módulo ; Codificação do módulo de teste do módulo BARALHO.
 07/05/2016 ; 3 horas ; Diagnosticar e corrigir os problemas encontrados ; Os scripts de teste estão dando erro em qualquer comando, portanto trabalhei em tentar resolver os problemas.
 08/05/2016 ; 30 minutos ; Revisar código do módulo ; Revisei o código do módulo BARALHO para arrumá-lo dentro dos padrões de programação.
 08/05/2016 ; 2 horas ; Diagnosticar e corrigir os problemas encontrados ; O teste estava parando de funcionar ao rodar a função LiberarBaralho devido a um erro dentro dela.
 09/05/2016 ; 20 minutos ; Revisar especificações ; Li novamente a especificação de requisitos, modificando alguns termos para se encaixarem melhor e adicionando os quatro requisitos não-funcionais.
 09/05/2016 ; 10 minutos ; Revisar script de teste ; Revisão do script de teste do módulo BARALHO.
 09/05/2016 ; 20 minutos ; Revisar sciprt de teste ; Revisão do script de teste do módulo LISTA e adição de testes à função "ProcurarValor".
+11/06/2016 ; 30 minutos ; Codificar módulo ; Codificação do módulo MESA.
+21/06/2016 ; 30 minutos ; Codificar módulo ; Pequenas alterações no módulo BARALHO para as funções "ObterValor" e "ObterNaipe" preencherem uma string com o respectivo retorno.
+27/06/2016 ; 30 minutos ; Codificar módulo ; Alterações no módulo MESA para englobar mais facilidades.
+28/06/2016 ; 5 minutos ; Revisar código do módulo ; Revisão no módulo LISTA para corrigir funcionalidades do módulo CESPDIN.
+28/06/2016 ; 30 minutos ; Diagnosticar e corrigir os problemas encontrados ; Devido à definição da constante _DEBUG, tiveram de ser feitos novos .bat e .comp para que incluíssem esta possibilidade. (não encontrei um tipo de tarefa que melhor descrevesse a atividade com o arcabouço, portanto escolhi este)
+28/06/2016 ; 1 hora e 30 minutos ; Codificar módulo ; Codificação do módulo de teste para MESA.
+29/06/2016 ; 4 horas ; Codificar módulo ; Codificação do módulo PARTIDA, funções GerenciarMao e GerenciarRodada.
+30/06/2016 ; 20 minutos ; Revisar código do módulo ; Adicionar comentários de formatação no módulo MESA.
+30/06/2016 ; 30 minutos ; Revisar código do módulo ; Adicionar funcionalidades de verificação e deturpação ao módulo de teste do LISTA.
+30/06/2016 ; 40 minutos ; Diagnosticar e corrigir os problemas encontrados ; Scripts de teste estavam dando erro relacionado a limitação de memória devido ao include do CESPDIN.h no módulo de teste do LISTA.
+30/06/2016 ; 4 horas ; Codificar módulo ; Codificação do módulo PARTIDA, funções LimparMao, LimparMesa, GerenciarPartida e correções em GerenciarMao e GerenciarRodada.
+30/06/2016 ; 30 minutos ; Diagnosticar e corrigir os problemas encontrados ; No módulo PARTIDA, a segunda instância de GerenciarMao estava dando erro, pois o baralho da mão anterior não havia sido retirado da lista de listas.
+01/07/2016 ; 1 hora e 30 minutos ; Codificar módulo ; Codificação do módulo PARTIDA. Terminar de implementar pedido de truco, exibição de cartas já na mesa, exibição do ganhador da rodada, exibição do ganhador da mão, exibição do placar antes de finalizar o jogo e liberar variáveis.
