@@ -14,22 +14,18 @@
 *
 *  $HA Histórico de evolução:
 *     Versão	Autor		Data				Observações
-*     6         llages  21/jul/2016         alterações nas funções
-*                                           obtervalor e obternaipe
-*                                           para preencherem uma
-*                                           string dada
-*     5         llages  08/maio/2016        alteração do nome de
-*                                           variáveis para seguir
-*                                           os padrões e adição de
-*                                           assertivas
-*     4			lfer	05/maio/2016		adição e revisão de 
+*     6         llages  01/jul/2016         implementação da "Mao de Onze"
+*											internamente na GerenciarMao
+*     5         llages  30/jun/2016			adição e revisão de 
 *											comentários no código
-*     3			lfer	03/maio/2016		criação das condições 
-*											de retorno e adição de 
-*                                           funções
-*     2			llages	22/abr/2016			revisão de implementação
-*     1			lfer e	16/abr/2016			início desenvolvimento
-*				bfranco
+*     4			lfer	28/jun/2016			implementação das funções
+*											de gerenciamento de mão e
+*											rodada
+*     3			lfer	26/jun/2016			criação da nova estrutura
+*											para a jogada
+*     2			lfer	22/jun/2016			implementação da função 
+*											de gerenciamente da Partida
+*     1			lfer	16/jun/2016			início desenvolvimento
 *
 ***************************************************************************/
 
@@ -41,42 +37,59 @@
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: BAR Lista de Valores
+*  $TC Tipo de dados: PAR Lista de Jogadas
 *
 *  $ED Descrição do tipo
-*     Tipos de valores possíveis para um elemento do tipo carta
-*
+*     Armazenamento dos dados respectivos a cada jogada realizada
+*	  em uma rodada.
 *
 ***********************************************************************/
-typedef struct jogada Jogada ;
+typedef struct jogada PAR_tppJogada ;
 struct jogada {
+
 	BAR_tppCarta carta ;
+				 /* Carta utilizada na realização da jogada */
 	int equipe ,
+		/* Índice respectivo à equipe do jogador indexado */
 		jogador ;
+		/* Índice respectivo ao jogador realizando a jogada */
 } ;
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: BAR Lista de Valores
+*  $TC Tipo de dados: BAR Dados globais
 *
 *  $ED Descrição do tipo
-*     Estrutura Pincipal (Lista de Listas)
+*     Estrutura Pincipal (Lista de Listas), seguida das variáveis
+*	  globais do módulo Partida.
 *
-*
-***********************************************************************/
+*****************************************************************************/
 static LIS_tppLista estruturaPrincipal ;
 
 static int numeroTotalJogadores ,
+		   /* Referencia o número total de jogadores */
 		   pontuacaoPartidaEquipeUm ,
+		   /* Referencia a pontuação total da equipe um 
+			* na Partida atual */
 		   pontuacaoPartidaEquipeDois ,
+		   /* Referencia a pontuação total da equipe dois
+		    * na Partida atual */
 		   pontuacaoMaoEquipeUm ,
+		   /* Referencia a pontuação total da equipe um
+		    * na Mão atual */
 		   pontuacaoMaoEquipeDois ,
+		   /* Referencia a pontuação total da equipe dois
+		    * na Mão atual */
 		   valorMao ,
+		   /* A pontuação que será adicionada ao ganhador
+		    * da Mão atual */
 		   equipeMaoDeOnze = -1 ,
+		   /* Inicialização da variável que referencia 
+		    * equipe que chegou aos 11 pontos primeiramente */
 		   equipeVencedora = 1 ,
+		   /* Referencia a equpe vencedora da Rodada atual */
 		   jogadorVencedor = 0 ;
-		   /* As variáveis de vencedores representam os
-		   *  vencedores da última rodada realizada. */
+		   /*Referencia o jogador vencedor da Rodada atual*/
 
 /***************************************************************************
 *
@@ -115,8 +128,11 @@ void PAR_GerenciarPartida( )
 		 numeroAtualJogadores += 2 )
    {
 		jogador = LIS_CriarLista( NULL ) ;
+
 		LIS_InserirElementoAntes( equipeUm , jogador ) ;
+
 		jogador = LIS_CriarLista( NULL ) ;
+
 		LIS_InserirElementoAntes( equipeDois , jogador ) ;
    }
    
@@ -135,10 +151,12 @@ void PAR_GerenciarPartida( )
 	   {
 		   pontuacaoPartidaEquipeUm += valorMao ;
 	   }
+
 	   else if ( vencedorMao == PAR_CondRetEquipeDoisVenceu )
 	   {
 		   pontuacaoPartidaEquipeDois += valorMao ;
 	   }
+
 	   /* Se alguma equipe atingir 11 pontos, a mão
 	   *  de onze é ativada. */
 	   if ( equipeMaoDeOnze == -1 )
@@ -146,15 +164,20 @@ void PAR_GerenciarPartida( )
 		   if ( pontuacaoPartidaEquipeUm == 11 )
 		   {
 			   equipeMaoDeOnze = 1 ;
-		   }
+		   }/* if */
+
 		   else if ( pontuacaoPartidaEquipeDois == 11 )
 		   {
 			   equipeMaoDeOnze = 2 ;
-		   }
-	   }
-   }
+		   }/* else if */
+
+	   }/* if */
+
+   }/* while */
+
    MES_ExibirPlacar( pontuacaoPartidaEquipeUm ,
 					 pontuacaoPartidaEquipeDois ) ;
+
    /* O único jeito de sair do loop é com
    *  alguma equipe atingindo 12 ou mais pontos.
    *  Como apenas uma equipe pode pontuar por vez,
@@ -163,54 +186,67 @@ void PAR_GerenciarPartida( )
 		pontuacaoPartidaEquipeDois )
    {
 	   MES_ExibirMensagem( "Equipe 1 venceu." , 1 ) ;
-   }
+   }/* if */
+
    else
    {
 	   MES_ExibirMensagem( "Equipe 2 venceu." , 1 ) ;
-   }
+   }/* else */
    
    /* Limpar as listas de jogadores e a estrutura
    *  principal. */
    
    LIS_IrInicioLista( equipeUm ) ;
+
    jogador = ( LIS_tppLista ) LIS_ObterValor( equipeUm ) ;
+
    if ( jogador )
    {
 	   LIS_DestruirLista( jogador ) ;
-   }
+   }/* if */
    retornoLista = LIS_ExcluirElemento( equipeUm ) ;
    
    while( retornoLista != LIS_CondRetListaVazia )
    {
 	   jogador = ( LIS_tppLista ) LIS_ObterValor( equipeUm ) ;
+
 	   if ( jogador )
 	   {
 		   LIS_DestruirLista( jogador ) ;
-	   }
+	   }/* if */
+
 	   retornoLista = LIS_ExcluirElemento( equipeUm ) ;
-   }
+   }/* while */
    
    LIS_DestruirLista( equipeUm ) ;
+
    LIS_IrInicioLista( equipeDois ) ;
+
    jogador = ( LIS_tppLista ) LIS_ObterValor( equipeDois ) ;
+
    if ( jogador )
    {
 	   LIS_DestruirLista( jogador ) ;
-   }
+   }/* if */
+
    retornoLista = LIS_ExcluirElemento( equipeUm ) ;
    
    while( retornoLista != LIS_CondRetListaVazia )
    {
 	   jogador = ( LIS_tppLista ) LIS_ObterValor( equipeDois ) ;
+
        if ( jogador )
 	   {
 		   LIS_DestruirLista( jogador ) ;
-	   }
+	   }/* if */
+
 	   retornoLista = LIS_ExcluirElemento( equipeDois ) ;
-   }
+   }/* while */
    
    LIS_DestruirLista( equipeDois ) ;
+
    LIS_DestruirLista( estruturaPrincipal ) ;
+
 }
 
 /***************************************************************************
@@ -229,7 +265,7 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 		valorMaiorCarta ,
 		respostaAumento = -1 ;
 	
-	Jogada *novaJogada ,
+	PAR_tppJogada *novaJogada ,
 		   *jogadaMaiorCarta ;
 	
 	LIS_tppLista mesa ,
@@ -364,7 +400,7 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 			LIS_AvancarElementoCorrente( jogador , comando - 1 ) ;
 			
 			/* Criar a nova jogada. */
-			novaJogada = ( Jogada* ) malloc( sizeof( Jogada ) ) ;
+			novaJogada = ( PAR_tppJogada* ) malloc( sizeof( PAR_tppJogada ) ) ;
 			
 			/* Armazenar a carta jogada, juntamente à equipe
 			*  do jogador que a jogou e qual jogador foi. */
@@ -445,13 +481,13 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 	
 	/* A primeira jogada começará sendo a de maior valor. */
 	LIS_IrInicioLista( mesa ) ;
-	jogadaMaiorCarta = ( Jogada* ) LIS_ObterValor( mesa ) ;
+	jogadaMaiorCarta = ( PAR_tppJogada* ) LIS_ObterValor( mesa ) ;
 	valorMaiorCarta = BAR_ObterValor( jogadaMaiorCarta->carta , NULL ) ;
 	retornoLista = LIS_AvancarElementoCorrente( mesa , 1 ) ;
 	while ( retornoLista != LIS_CondRetFimLista )
 	{
 		/* A partir da primeira, vamos comparar os valores. */
-		novaJogada = ( Jogada* ) LIS_ObterValor( mesa ) ;
+		novaJogada = ( PAR_tppJogada* ) LIS_ObterValor( mesa ) ;
 		valorCarta = BAR_ObterValor( novaJogada->carta , NULL ) ;
 		/* Se a maior carta for a manilha e a carta sendo analisada
 		*  também for a manilha, então deve-se checar o naipe. */
@@ -676,37 +712,56 @@ PAR_tpCondRet PAR_GerenciarMao( )
 					/* Limpar mão dos jogadores e destruir
 					*  baralho */
 					MES_ExibirMensagem( "Equipe 1 venceu a mao.\n" , 0 ) ;
+
 					PAR_LimparMao() ;
+
 					BAR_LiberarBaralho( baralho ) ;
+
 					LIS_IrInicioLista( estruturaPrincipal ) ;
+
 					LIS_ExcluirElemento( estruturaPrincipal ) ;
+
 					free( manilhaString ) ;
+
 					return PAR_CondRetEquipeUmVenceu ;
-				}
+
+				}/* if */
 				else if ( vencedorPrimeiraRodada == 2 )
 				{
 					/* Limpar mão dos jogadores e destruir
 					*  baralho */
 					MES_ExibirMensagem( "Equipe 2 venceu a mao.\n" , 0 ) ;
+
 					PAR_LimparMao() ;
+
 					BAR_LiberarBaralho( baralho ) ;
+
 					LIS_IrInicioLista( estruturaPrincipal ) ;
+
 					LIS_ExcluirElemento( estruturaPrincipal ) ;
+
 					free( manilhaString ) ;
+
 					return PAR_CondRetEquipeDoisVenceu ;
-				}
+				}/* else if */
 				else
 				{
 					/* Limpar mão dos jogadores e destruir
 					*  baralho */
 					MES_ExibirMensagem( "A mao empatou.\n" , 0 ) ;
+
 					PAR_LimparMao() ;
+
 					BAR_LiberarBaralho( baralho ) ;
+
 					LIS_IrInicioLista( estruturaPrincipal ) ;
+
 					LIS_ExcluirElemento( estruturaPrincipal ) ;
+
 					free( manilhaString ) ;
+
 					return PAR_CondRetEmpate ;
-				}
+				}/* else */
 			}
 		}
 		/* A mesa é limpa no final de cada rodada, antes da
@@ -720,8 +775,9 @@ PAR_tpCondRet PAR_GerenciarMao( )
 			 || pontuacaoMaoEquipeDois - pontuacaoMaoEquipeUm >= 2 )
 		{
 			break ;
-		}
+		}/* if */
 	}
+
 	/* Para os casos de:
 	*  1. Uma equipe ganhar as duas primeiras rodadas
 	*  2. A primeira rodada empatar e uma equipe ganhar
@@ -732,11 +788,17 @@ PAR_tpCondRet PAR_GerenciarMao( )
 		/* Limpar mão dos jogadores e destruir
 		*  baralho */
 		MES_ExibirMensagem( "Equipe 1 venceu a mao.\n" , 0 ) ;
+
 		PAR_LimparMao() ;
+
 		BAR_LiberarBaralho( baralho ) ;
+
 		LIS_IrInicioLista( estruturaPrincipal ) ;
+
 		LIS_ExcluirElemento( estruturaPrincipal ) ;
+
 		free( manilhaString ) ;
+
 		return PAR_CondRetEquipeUmVenceu ;
 	}
 	else
@@ -744,11 +806,17 @@ PAR_tpCondRet PAR_GerenciarMao( )
 		/* Limpar mão dos jogadores e destruir
 		*  baralho */
 		MES_ExibirMensagem( "Equipe 1 venceu a mao.\n" , 0 ) ;
+
 		PAR_LimparMao() ;
+
 		BAR_LiberarBaralho( baralho ) ;
+
 		LIS_IrInicioLista( estruturaPrincipal ) ;
+
 		LIS_ExcluirElemento( estruturaPrincipal ) ;
+
 		free( manilhaString ) ;
+
 		return PAR_CondRetEquipeDoisVenceu ;
 	}
 }
@@ -764,50 +832,63 @@ void PAR_IniciarMaoDeOnze(int indiceEquipe, int numeroTotalJogadores)
 }
 /***************************************************************************
 *
-*  Função: BAR  &Criar baralho
+*  Função: PAR  &Pedir Aumento
 *  ****/
 PAR_tpCondRet PAR_PedirAumento( int equipeAtual , int jogadorAtual )
 {
 	int resposta ;
+
     /* O jogador X da equipe Y pediu aumento.
 	*  A equipe Z precisa responder se aceita
 	*  ou não. */
 	MES_ExibirMensagem( "Valor atual da mao: " , 0 ) ;
+
 	MES_ExibirValor( valorMao ) ;
+
 	MES_ExibirMensagem( "O jogador " , 1 ) ;
+
 	MES_ExibirValor( jogadorAtual + 1 ) ;
+
 	MES_ExibirMensagem( " da equipe " , 0 ) ;
+
 	MES_ExibirValor( equipeAtual ) ;
+
 	MES_ExibirMensagem( " pediu truco.\nA equipe adversaria aceita?" , 0 ) ;
+
 	MES_ExibirMensagem( "1 - Sim\n2 - Nao" , 1 ) ;
+
 	MES_ReceberComando( &resposta , 1 , 2 ) ;
+
 	system( "cls" ) ;
+
 	if ( resposta == 1 )
 	{
 		if ( valorMao == 1 )
 		{
 			valorMao = 3 ;
-		}
+		}/* if */
+
 		else
 		{
 			valorMao += 3 ;
-		}
+		}/* else */
 		
 		return PAR_CondRetAceitaAumento ;
-	}
+	}/* if */
+
 	else
 	{
 		return PAR_CondRetRecusaAumento ;
-	}
+	}/* else */
 }
 
 /***************************************************************************
 *
-*  Função: BAR  &Criar baralho
+*  Função: PAR  &Limpar mesa
 *  ****/
 void PAR_LimparMesa( )
 {	
-	Jogada *jogada ;
+	PAR_tppJogada *jogada ;
 	
 	LIS_tppLista mesa ,
 				 baralho ;
@@ -816,12 +897,15 @@ void PAR_LimparMesa( )
 	*  o começo da lista de jogadas. A mesa é o último
 	*  elemento da lista de listas. */
 	LIS_IrFinalLista( estruturaPrincipal ) ;
+
 	mesa = ( LIS_tppLista ) LIS_ObterValor( estruturaPrincipal ) ;
+
 	LIS_IrInicioLista( mesa ) ;
 	
 	/* Também precisamos do baralho para jogar as
 	*  cartas para lá. */
 	LIS_IrInicioLista( estruturaPrincipal ) ;
+
 	baralho = ( LIS_tppLista ) LIS_ObterValor( estruturaPrincipal ) ;
 	
 	/* Agora temos a mesa. A partir de então, pegamos
@@ -829,7 +913,8 @@ void PAR_LimparMesa( )
 	*  esta. A carta pode voltar para o baralho, pois
 	*  este não será mais utilizado e posteriormente
 	*  liberará todas as cartas nele. */
-	jogada = ( Jogada* ) LIS_ObterValor( mesa ) ;
+	jogada = ( PAR_tppJogada* ) LIS_ObterValor( mesa ) ;
+
 	while ( jogada != NULL )
 	{
 		/* Se ainda há jogadas na mesa, devemos
@@ -837,23 +922,28 @@ void PAR_LimparMesa( )
 		*  baralho. Após isso, podemos liberar a
 		*  jogada. */
 		LIS_ExcluirElemento( mesa ) ;
+
 		LIS_InserirElementoAntes( baralho , jogada->carta ) ;
+
 		free( jogada ) ;
-		jogada = ( Jogada* ) LIS_ObterValor( mesa ) ;
+
+		jogada = ( PAR_tppJogada* ) LIS_ObterValor( mesa ) ;
 	}
 	
 	/* Passamos todas as cartas da mesa para o baralho
 	*  e limpamos as jogadas da mesa. Agora é só retirar
 	*  a mesa da lista de listas. */
 	LIS_IrFinalLista( estruturaPrincipal ) ;
+
 	LIS_ExcluirElemento( estruturaPrincipal ) ;
+
 	LIS_DestruirLista( mesa ) ;
 	
 }
 
 /***************************************************************************
 *
-*  Função: BAR  &Criar baralho
+*  Função: PAR  &Limpar Mao
 *  ****/
 void PAR_LimparMao( )
 {
@@ -868,6 +958,7 @@ void PAR_LimparMao( )
 				 
 	/* Vamos começar pegando o baralho. */
 	LIS_IrInicioLista( estruturaPrincipal ) ;
+
 	baralho = ( LIS_tppLista ) LIS_ObterValor( estruturaPrincipal ) ;
 	
 	/* Para limpar a mão de cada jogador,
@@ -878,10 +969,13 @@ void PAR_LimparMao( )
 	for( i = 1 ; i < 3 ; i++ )
 	{
 		LIS_IrInicioLista( estruturaPrincipal ) ;
+
 		/* Avançamos o elemento para pegar a
 		*  equipe que trataremos no momento. */
 		LIS_AvancarElementoCorrente( estruturaPrincipal , i ) ;
+
 		equipe = ( LIS_tppLista ) LIS_ObterValor( estruturaPrincipal ) ;
+
 		LIS_IrInicioLista( equipe ) ;
 		
 		/* Temos a equipe. Agora vamos tratar
@@ -897,17 +991,22 @@ void PAR_LimparMao( )
 			*  é uma lista de cartas. Temos que
 			*  pegar cada carta e passar para o
 			*  baralho. */
+
 			carta = ( BAR_tppCarta ) LIS_ObterValor( jogador ) ;
+
 			while ( carta != NULL )
 			{
 				LIS_ExcluirElemento( jogador ) ;
+
 				LIS_InserirElementoAntes( baralho , carta ) ;
+
 				carta = ( BAR_tppCarta ) LIS_ObterValor( jogador ) ;
-			}
+			}/* while */
 			
 			/* Limpamos as cartas do jogador.
 			*  Agora só temos que passar para
 			*  o próximo. */
+
 			LIS_AvancarElementoCorrente( equipe , 1 ) ;
 		}
 		
@@ -915,9 +1014,11 @@ void PAR_LimparMao( )
 		*  jogadores da equipe. Quando o loop
 		*  recomeçar, iremos para a próxima
 		*  equipe e faremos o mesmo. */
-	}
+	}/* for */
 }
 
+/* Função MAIN para executar a chamada da 
+ * função PAR_GerenciarPartida*/
 int main ( void )
 {
 	PAR_GerenciarPartida() ;

@@ -44,10 +44,10 @@
 ***********************************************************************/
 
    typedef struct tagElemLista {
-		#ifdef _DEBUG
-		 LIS_tppLista cabecaLista ;
-			   /* Ponteiro para a cabeça de lista */
-		#endif
+		 #ifdef _DEBUG
+				LIS_tppLista cabecaLista ;
+				/* Ponteiro para a cabeça de lista */
+		 #endif
 
          void * pValor ;
                /* Ponteiro para o valor contido no elemento */
