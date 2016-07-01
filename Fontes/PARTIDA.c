@@ -86,7 +86,8 @@ void PAR_GerenciarPartida( )
 {
    int indiceMao = 0 ,
        numeroAtualJogadores ,
-	   vencedorMao ;
+	   vencedorMao ,
+	   retornoLista ;
    
    LIS_tppLista equipeUm ,
 				equipeDois ,
@@ -95,8 +96,9 @@ void PAR_GerenciarPartida( )
    /* Criar a estrutura principal */
    estruturaPrincipal = LIS_CriarLista ( NULL ) ;
    
-   MES_ExibirMensagem( "Qual o numero de jogadores?\n1 - 2\n2 - 4\n3 - 6" , 1 ) ;
+   MES_ExibirMensagem( "Qual o numero de jogadores?\n1 - 2\n2 - 4\n3 - 6" , 0 ) ;
    MES_ReceberComando( &numeroTotalJogadores , 1 , 3 ) ;
+   system( "cls" ) ;
    numeroTotalJogadores = numeroTotalJogadores * 2 ;
 				
    /* Faltam as checagens de retorno do lista */
@@ -152,6 +154,8 @@ void PAR_GerenciarPartida( )
 		   }
 	   }
    }
+   MES_ExibirPlacar( pontuacaoPartidaEquipeUm ,
+					 pontuacaoPartidaEquipeDois ) ;
    /* O único jeito de sair do loop é com
    *  alguma equipe atingindo 12 ou mais pontos.
    *  Como apenas uma equipe pode pontuar por vez,
@@ -165,6 +169,49 @@ void PAR_GerenciarPartida( )
    {
 	   MES_ExibirMensagem( "Equipe 2 venceu." , 1 ) ;
    }
+   
+   /* Limpar as listas de jogadores e a estrutura
+   *  principal. */
+   
+   LIS_IrInicioLista( equipeUm ) ;
+   jogador = ( LIS_tppLista ) LIS_ObterValor( equipeUm ) ;
+   if ( jogador )
+   {
+	   LIS_DestruirLista( jogador ) ;
+   }
+   retornoLista = LIS_ExcluirElemento( equipeUm ) ;
+   
+   while( retornoLista != LIS_CondRetListaVazia )
+   {
+	   jogador = ( LIS_tppLista ) LIS_ObterValor( equipeUm ) ;
+	   if ( jogador )
+	   {
+		   LIS_DestruirLista( jogador ) ;
+	   }
+	   retornoLista = LIS_ExcluirElemento( equipeUm ) ;
+   }
+   
+   LIS_DestruirLista( equipeUm ) ;
+   LIS_IrInicioLista( equipeDois ) ;
+   jogador = ( LIS_tppLista ) LIS_ObterValor( equipeDois ) ;
+   if ( jogador )
+   {
+	   LIS_DestruirLista( jogador ) ;
+   }
+   retornoLista = LIS_ExcluirElemento( equipeUm ) ;
+   
+   while( retornoLista != LIS_CondRetListaVazia )
+   {
+	   jogador = ( LIS_tppLista ) LIS_ObterValor( equipeDois ) ;
+       if ( jogador )
+	   {
+		   LIS_DestruirLista( jogador ) ;
+	   }
+	   retornoLista = LIS_ExcluirElemento( equipeDois ) ;
+   }
+   
+   LIS_DestruirLista( equipeDois ) ;
+   LIS_DestruirLista( estruturaPrincipal ) ;
 }
 
 /***************************************************************************
@@ -180,17 +227,21 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 		quantidadeCartas ,
 		comando ,
 		valorCarta ,
-		valorMaiorCarta ;
+		valorMaiorCarta ,
+		respostaAumento = -1 ;
 	
 	Jogada *novaJogada ,
 		   *jogadaMaiorCarta ;
 	
 	LIS_tppLista mesa ,
 				 *equipes ,
-				 jogador ;
+				 jogador ,
+				 cartasNaMesa ;
 				 
 	/* Criar a mesa */
 	mesa = LIS_CriarLista( NULL ) ;
+	/* Criar lista de cartas na mesa */
+	cartasNaMesa = LIS_CriarLista( NULL ) ;
    
 	/* Inserir a mesa na lista de listas */
 	LIS_IrFinalLista( estruturaPrincipal ) ;
@@ -257,7 +308,6 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 	{
 		jogador = ( LIS_tppLista ) LIS_ObterValor( equipes[equipeAtual] ) ;
 		/* Exibir placar da partida */
-		system( "cls" ) ;
 		MES_ExibirMensagem( "Placar da partida:" , 0 ) ;
 		MES_ExibirPlacar( pontuacaoPartidaEquipeUm ,
 						  pontuacaoPartidaEquipeDois ) ;
@@ -267,8 +317,13 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 		MES_ExibirPlacar( pontuacaoMaoEquipeUm ,
 						  pontuacaoMaoEquipeDois ) ;
 						  
+		/* Exibir o valor atual da mão */
+		MES_ExibirMensagem( "O valor atual da mao e: " , 1 ) ;
+		MES_ExibirValor( valorMao ) ;
+		
 		/* Exibir cartas na mesa */
 		MES_ExibirMensagem( "As cartas atualmente na mesa sao:" , 1 ) ;
+		MES_ExibirCartas( cartasNaMesa ) ;
 		/* Falta implementar exibição de cartas na mesa */
 		
 		/* Exibir qual carta é a manilha */
@@ -285,11 +340,20 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 		/* Exibir opções do jogador */
 		MES_ExibirCartas( jogador ) ;
 		MES_ExibirMensagem( "" , 1 ) ;
-		MES_ExibirValor( quantidadeCartas + 1) ;
-		MES_ExibirMensagem( " - Pedir truco" , 0 ) ;
+		if ( valorMao < 12 )
+		{
+			MES_ExibirValor( quantidadeCartas + 1) ;
+			MES_ExibirMensagem( " - Pedir truco" , 0 ) ;
+			/* Perguntar qual comando o jogador deseja executar */
+			MES_ReceberComando( &comando , 1 , quantidadeCartas + 1 ) ;
+		}
+		else
+		{
+			/* Perguntar qual comando o jogador deseja executar */
+			MES_ReceberComando( &comando , 1 , quantidadeCartas ) ;
+		}
 		
-		/* Perguntar qual comando o jogador deseja executar */
-		MES_ReceberComando( &comando , 1 , quantidadeCartas + 1 ) ;
+		system( "cls" ) ;
 		
 		/* Comando recebido. Se for um número até quantidadeCartas,
 		*  é um comando de jogar carta. */
@@ -309,6 +373,9 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 			novaJogada->equipe = equipeAtual ;
 			novaJogada->jogador = jogadorAtual ;
 			
+			/* Inserir carta na lista de cartas da mesa */
+			LIS_InserirElementoApos( cartasNaMesa , LIS_ObterValor( jogador ) ) ;
+			
 			/* Inserir a jogada na mesa. */
 			LIS_InserirElementoApos( mesa , novaJogada ) ;
 			
@@ -317,27 +384,58 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 		}
 		else
 		{
-			/* Jogador pediu truco. Ainda deve ser implementado. */
-			PAR_PedirAumento( equipeAtual + 1 , jogadorAtual ) ;
+			/* Jogador pediu truco. */
+			respostaAumento = PAR_PedirAumento( equipeAtual + 1 , jogadorAtual ) ;
+			/* Caso seja recusado, */
+			if ( respostaAumento == PAR_CondRetRecusaAumento )
+			{
+				if ( equipeAtual == 0 )
+				{
+					MES_ExibirMensagem( "Equipe 2 recusou o truco.\n" , 0 ) ;
+					PAR_LimparMesa() ;
+					LIS_DestruirLista( cartasNaMesa ) ;
+					free( equipes ) ;
+					return PAR_CondRetEquipeUmTruco ;
+				}
+				else
+				{
+					MES_ExibirMensagem( "Equipe 1 recusou o truco.\n" , 0 ) ;
+					PAR_LimparMesa() ;
+					LIS_DestruirLista( cartasNaMesa ) ;
+					free( equipes ) ;
+					return PAR_CondRetEquipeDoisTruco ;
+				}
+			}
 		}
 		/* Andar o elemento corrente da equipe para o próximo
-		*  jogador. */
-		retornoLista = LIS_AvancarElementoCorrente( equipes[equipeAtual] , 1 ) ;
-		if (retornoLista == LIS_CondRetFimLista )
+		*  jogador, apenas se não houve pedido de aumento. */
+		if ( respostaAumento == -1 )
 		{
-			LIS_IrInicioLista( equipes[equipeAtual] ) ;
-		}
-		
-		/* Passar a jogada para a próxima equipe. */
-		equipeAtual++ ;
-		if ( equipeAtual > 1 )
-		{
-			equipeAtual = 0 ;
-			jogadorAtual++ ;
-			if ( jogadorAtual >= numeroTotalJogadores / 2 )
+			retornoLista = LIS_AvancarElementoCorrente( equipes[equipeAtual] , 1 ) ;
+			if (retornoLista == LIS_CondRetFimLista )
 			{
-				jogadorAtual = 0 ;
+				LIS_IrInicioLista( equipes[equipeAtual] ) ;
 			}
+			
+			/* Passar a jogada para a próxima equipe. */
+			equipeAtual++ ;
+			if ( equipeAtual > 1 )
+			{
+				equipeAtual = 0 ;
+				jogadorAtual++ ;
+				if ( jogadorAtual >= numeroTotalJogadores / 2 )
+				{
+					jogadorAtual = 0 ;
+				}
+			}
+		}
+		/* Se houve pedido de aumento, vamos apenas
+		*  sinalizar que pode ser pedido novamente e
+		*  retornar a vez ao jogador. */
+		else
+		{
+			respostaAumento = -1 ;
+			quantidadeJogadas-- ;
 		}
 	}
 	
@@ -375,9 +473,9 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 		else if ( valorMaiorCarta != manilha && valorCarta == valorMaiorCarta )
 		{
 			/* Limpar mesa, ainda falta implementar */
+			MES_ExibirMensagem( "A rodada empatou.\n" , 0 ) ;
 			PAR_LimparMesa() ;
-			equipes[0] = NULL ;
-			equipes[1] = NULL ;
+			LIS_DestruirLista( cartasNaMesa ) ;
 			free( equipes ) ;
 			return PAR_CondRetEmpate ;
 		}
@@ -400,18 +498,18 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString )
 	if ( equipeVencedora == 1 )
 	{
 		/* Limpar mesa, ainda falta implementar */
+		MES_ExibirMensagem( "Equipe 1 venceu a rodada.\n" , 0 ) ;
 		PAR_LimparMesa() ;
-		equipes[0] = NULL ;
-		equipes[1] = NULL ;
+		LIS_DestruirLista( cartasNaMesa ) ;
 		free( equipes ) ;
 		return PAR_CondRetEquipeUmVenceu ;
 	}
-	else if ( equipeVencedora == 2 )
+	else
 	{
 		/* Limpar mesa, ainda falta implementar */
+		MES_ExibirMensagem( "Equipe 2 venceu a rodada.\n" , 0 ) ;
 		PAR_LimparMesa() ;
-		equipes[0] = NULL ;
-		equipes[1] = NULL ;
+		LIS_DestruirLista( cartasNaMesa ) ;
 		free( equipes ) ;
 		return PAR_CondRetEquipeDoisVenceu ;
 	}
@@ -492,7 +590,27 @@ PAR_tpCondRet PAR_GerenciarMao( )
 		/* Gerenciar rodada e definir o vencedor.
 		*  O vencedor leva 1 ponto na mão. */
 		vencedorRodada = PAR_GerenciarRodada( manilha , manilhaString ) ;
-		if ( vencedorRodada == PAR_CondRetEquipeUmVenceu )
+		if ( vencedorRodada == PAR_CondRetEquipeUmTruco )
+		{
+			MES_ExibirMensagem( "Equipe 1 venceu a mao." , 0 ) ;
+			PAR_LimparMao() ;
+			BAR_LiberarBaralho( baralho ) ;
+			LIS_IrInicioLista( estruturaPrincipal ) ;
+			LIS_ExcluirElemento( estruturaPrincipal ) ;
+			free( manilhaString ) ;
+			return PAR_CondRetEquipeUmVenceu ;
+		}
+		else if ( vencedorRodada == PAR_CondRetEquipeDoisTruco )
+		{
+			MES_ExibirMensagem( "Equipe 2 venceu a mao." , 0 ) ;
+			PAR_LimparMao() ;
+			BAR_LiberarBaralho( baralho ) ;
+			LIS_IrInicioLista( estruturaPrincipal ) ;
+			LIS_ExcluirElemento( estruturaPrincipal ) ;
+			free( manilhaString ) ;
+			return PAR_CondRetEquipeDoisVenceu ;
+		}
+		else if ( vencedorRodada == PAR_CondRetEquipeUmVenceu )
 		{
 			pontuacaoMaoEquipeUm += valorRodada ;
 			if ( i == 0 )
@@ -528,6 +646,7 @@ PAR_tpCondRet PAR_GerenciarMao( )
 				{
 					/* Limpar mão dos jogadores e destruir
 					*  baralho */
+					MES_ExibirMensagem( "Equipe 1 venceu a mao.\n" , 1 ) ;
 					PAR_LimparMao() ;
 					BAR_LiberarBaralho( baralho ) ;
 					LIS_IrInicioLista( estruturaPrincipal ) ;
@@ -539,6 +658,7 @@ PAR_tpCondRet PAR_GerenciarMao( )
 				{
 					/* Limpar mão dos jogadores e destruir
 					*  baralho */
+					MES_ExibirMensagem( "Equipe 2 venceu a mao.\n" , 1 ) ;
 					PAR_LimparMao() ;
 					BAR_LiberarBaralho( baralho ) ;
 					LIS_IrInicioLista( estruturaPrincipal ) ;
@@ -556,6 +676,7 @@ PAR_tpCondRet PAR_GerenciarMao( )
 				{
 					/* Limpar mão dos jogadores e destruir
 					*  baralho */
+					MES_ExibirMensagem( "Equipe 1 venceu a mao.\n" , 0 ) ;
 					PAR_LimparMao() ;
 					BAR_LiberarBaralho( baralho ) ;
 					LIS_IrInicioLista( estruturaPrincipal ) ;
@@ -567,6 +688,7 @@ PAR_tpCondRet PAR_GerenciarMao( )
 				{
 					/* Limpar mão dos jogadores e destruir
 					*  baralho */
+					MES_ExibirMensagem( "Equipe 2 venceu a mao.\n" , 0 ) ;
 					PAR_LimparMao() ;
 					BAR_LiberarBaralho( baralho ) ;
 					LIS_IrInicioLista( estruturaPrincipal ) ;
@@ -578,6 +700,7 @@ PAR_tpCondRet PAR_GerenciarMao( )
 				{
 					/* Limpar mão dos jogadores e destruir
 					*  baralho */
+					MES_ExibirMensagem( "A mao empatou.\n" , 0 ) ;
 					PAR_LimparMao() ;
 					BAR_LiberarBaralho( baralho ) ;
 					LIS_IrInicioLista( estruturaPrincipal ) ;
@@ -609,6 +732,7 @@ PAR_tpCondRet PAR_GerenciarMao( )
 	{
 		/* Limpar mão dos jogadores e destruir
 		*  baralho */
+		MES_ExibirMensagem( "Equipe 1 venceu a mao.\n" , 0 ) ;
 		PAR_LimparMao() ;
 		BAR_LiberarBaralho( baralho ) ;
 		LIS_IrInicioLista( estruturaPrincipal ) ;
@@ -620,6 +744,7 @@ PAR_tpCondRet PAR_GerenciarMao( )
 	{
 		/* Limpar mão dos jogadores e destruir
 		*  baralho */
+		MES_ExibirMensagem( "Equipe 1 venceu a mao.\n" , 0 ) ;
 		PAR_LimparMao() ;
 		BAR_LiberarBaralho( baralho ) ;
 		LIS_IrInicioLista( estruturaPrincipal ) ;
@@ -644,10 +769,37 @@ void PAR_IniciarMaoDeOnze(int indiceEquipe, int numeroTotalJogadores)
 *  ****/
 PAR_tpCondRet PAR_PedirAumento( int equipeAtual , int jogadorAtual )
 {
+	int resposta ;
     /* O jogador X da equipe Y pediu aumento.
 	*  A equipe Z precisa responder se aceita
 	*  ou não. */
-	MES_ExibirMensagem( "" , 1 ) ;
+	MES_ExibirMensagem( "Valor atual da mao: " , 0 ) ;
+	MES_ExibirValor( valorMao ) ;
+	MES_ExibirMensagem( "O jogador " , 1 ) ;
+	MES_ExibirValor( jogadorAtual + 1 ) ;
+	MES_ExibirMensagem( " da equipe " , 0 ) ;
+	MES_ExibirValor( equipeAtual ) ;
+	MES_ExibirMensagem( " pediu truco.\nA equipe adversaria aceita?" , 0 ) ;
+	MES_ExibirMensagem( "1 - Sim\n2 - Nao" , 1 ) ;
+	MES_ReceberComando( &resposta , 1 , 2 ) ;
+	system( "cls" ) ;
+	if ( resposta == 1 )
+	{
+		if ( valorMao == 1 )
+		{
+			valorMao = 3 ;
+		}
+		else
+		{
+			valorMao += 3 ;
+		}
+		
+		return PAR_CondRetAceitaAumento ;
+	}
+	else
+	{
+		return PAR_CondRetRecusaAumento ;
+	}
 }
 
 /***************************************************************************
