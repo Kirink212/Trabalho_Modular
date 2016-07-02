@@ -114,6 +114,16 @@
 	} LIS_tpIdTipoEspaco ;
 #endif
 
+/*****  Dados encapsulados no módulo  *****/
+
+      #ifdef _DEBUG
+
+      static char EspacoLixo[ 256 ] =
+             "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" ;
+            /* Espaço de dados lixo usado ao testar */
+
+      #endif
+
 /***** Protótipos das funções encapsuladas no módulo *****/
 
    static void LiberarElemento( LIS_tppLista   pLista ,
@@ -1039,6 +1049,106 @@
 
                   break;
                }/* fim ativa: Deturpa espaço corrente*/
+
+            /* Eliminar elemento corrente*/
+
+               case EliminarCorrente:
+               {
+                  CNT_CONTAR("Deturpar , eliminar corrente");
+
+                  LIS_ExcluirElemento(pListaParm);
+
+                  break;
+               }/* fim ativa: Eliminar elemento corrente*/
+
+            /* Deturpar ponteiro proximo*/
+
+               case DeturpaPonteiroProx:
+               {
+                  CNT_CONTAR("Deturpar , ponteiro prox");
+
+                  pListaParm->pElemCorr->pProx=NULL;
+                  
+                  break;
+               }/* fim ativa: Deturpar ponteiro proximo */
+
+            /* Deturpar ponteiro anterior*/
+
+               case DeturpaPonteiroAnt:
+               {
+                  CNT_CONTAR("Deturpar , ponteiro ant");
+
+                  pListaParm->pElemCorr->pAnt=NULL;
+
+                  break;
+               }/* fim ativa: Deturpar ponteiro anterior*/
+
+            /* Faz proximo apontar pra lixo*/
+
+               case DeturpaProxLixo:
+               {
+                  CNT_CONTAR("Deturpar , prox lixo");
+
+                  pListaParm->pElemCorr->pProx = ( tagElemLista * )( EspacoLixo );
+
+                  break;
+               }/* fim ativa: Faz proximo apontar pra lixo*/
+
+            /* Faz anterior apontar pra lixo*/
+
+               case DeturpaAntLixo:
+               {
+                  CNT_CONTAR("Deturpar , ant lixo");
+
+                  pListaParm->pElemCorr->pAnt = ( tagElemLista * )( EspacoLixo );
+
+                  break;
+               }/* fim ativa: Faz anterior apontar pra lixo*/
+
+            /* Deturpa ponteiro de valor*/
+
+               case DeturpaPonteiroValor:
+               {
+                  CNT_CONTAR("Deturpar , ponteiro valor");
+
+                  pListaParm->pElemCorr->pValor = NULL;
+
+                  break;
+               }/* fim ativa: Deturpa ponteiro de valor*/
+
+            /* Deturpa tipo de estrutura*/
+
+               case DeturpaTipoEstrutura:
+               {
+                  CNT_CONTAR("Deturpar , tipo estrutura");
+
+                  CED_DefinirTipoEspaco( pListaParm , CED_ID_TIPO_VALOR_NULO);
+
+                  break;
+               }/* fim ativa: Deturpa tipo de estrutura*/
+
+            /* Deturpa ponteiro corrente*/
+
+               case DeturpaPonteiroCorrente:
+               {
+                  CNT_CONTAR("Deturpar , ponteiro corrente");
+
+                  pListaParm->pElemCorr = NULL;
+
+                  break;
+               }/* fim ativa: Deturpa ponteiro corrente*/
+
+            /* Deturpa ponteiro origem*/
+
+               case DeturpaPonteiroOrigem:
+               {
+                  CNT_CONTAR("Deturpar , ponteiro origem");
+
+                  pListaParm->pOrigemLista = NULL;
+
+                  break;
+               }/* fim ativa: Deturpa ponteiro origem*/
+
 
             }/* fim seleciona: Deturpa lista*/
 

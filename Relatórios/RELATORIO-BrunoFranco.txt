@@ -25,4 +25,5 @@ a compilação deles, em nome da entrega de um trabalho bem feito. Conclusão do md
 26/06/2016; 1 horas trabalhadas;Módulo Conta e script;Revisando o módulo conta e scripts de teste com os exemplos disponibilizados pelo professor.
 27/06/2016; 3 horas trabalhadas;Módulo lista e script;Codificando as arestas do modulo lista e o script de teste para contar arestas.
 29/06/2016; 4 horas trabalhadas;Módulo lista e script;Continuação de arestas e codificando as funções de deturpação e verificação do módulo lista e script de teste para as mesmas.
-30/06/2016; 6 horas trabalhadas;Módulo lista e script;Continuação sa implementação das funções de deturpação e verificação do módulo lista e script de teste das mesmas.  
+30/06/2016; 6 horas trabalhadas;Módulo lista e script;Continuação da implementação das funções de deturpação e verificação do módulo lista e script de teste das mesmas.  
+01/07/2016; 2 horas trabalhadas;Módulo Lista e linguagem script;Terminar as deturpações e criação do arquivo com as linguagens dos scripts de teste.

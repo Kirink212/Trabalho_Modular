@@ -1,0 +1,36 @@
+// Descrição de cada comando de teste (linguagem de script de teste) 
+
+// Comandos parar Teste de Lista
+"=resetteste" 			<Efetuar reset do teste>
+"=criarlista" 			<Criar uma lista nova>
+"=destruirlista" 		<Destruir uma lista>
+"=esvaziarlista" 		<Esvaziar uma lista>
+"=inselemantes" 		<Inserir elemento antes do elemento corrente numa lista>
+"=inselemapos" 			<Inserir elemento apos elemento corrente numa lista>
+"=obtervalorelem" 		<Obter o valor do elemento corrente da lista>
+"=excluirelem" 			<Excluir um elemento da lista>
+"=irinicio"  			<Ir para o inicio da lista>
+"=irfinal"  			<Ir para o final da lista>
+"=avancarelem" 			<Avançar o elemento corrente da lista> 
+"=procurarvalor" 		<Procurar um valor na lista>
+"=verificarcabeca" 		<Verificar a cabeça de lista>
+"=verificarlista" 		<Verificar a lista>
+"=verificarmemoria" 		<Verificar vazamento de memória>
+"=deturpar" 			<Deturpar uma lista>
+
+// Comandos para Teste de Baralho 
+"=resetteste" 			<Efetuar reset do teste>
+"=criarbaralho" 		<Criar um baralho novo>
+"=liberarbaralho" 		<Liberar um baralho>
+"=embaralharcartas" 		<Embaralhar as cartas de um baralho>
+"=distribuircartas" 		<Distribuir as cartas de um baralho>
+"=escolhermanilha" 		<Escolher a manilha de uma baralho>
+"=obtervalor" 			<Obter o valor de uma carta>
+"=obternaipe" 			<Obter o naipe de uma carta>
+
+// Comandos para Teste de Contadores
+"=inicializarcontadores" 	<Inicializa os contadores que serão usados>
+"=lercontadores" 		<Ler os contadores de um arquivo>
+"=iniciarcontagem" 		<Inicia a contagem dos contadores> 
+"=pararcontagem" 		<Termina a contagem dos contadores>
+"=verificarcontagens" 		<Verifica a contagem dos contadores com o esperado>

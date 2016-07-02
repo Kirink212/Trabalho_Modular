@@ -118,8 +118,36 @@ typedef struct LIS_tagLista * LIS_tppLista ;
           DeturpaEspacoCabeca = 3,
                 /* Deturpa espaço de cabeca */
 
-          DeturpaEspacoCorrente = 4
+          DeturpaEspacoCorrente = 4,
                 /* Deturpa espaço corrente*/
+
+          EliminarCorrente =5, 
+                /* Eliminar elemento corrente*/
+
+          DeturpaPonteiroProx = 6,
+                /* Deturpar ponteiro proximo*/
+
+          DeturpaPonteiroAnt = 7,
+                /* Deturpar ponteiro anterior*/
+
+          DeturpaProxLixo = 8,
+                /* Faz proximo apontar pra lixo*/
+
+          DeturpaAntLixo = 9,
+                /* Faz anterior apontar pra lixo*/
+
+          DeturpaPonteiroValor = 10,
+                /* Deturpa ponteiro de valor*/
+
+          DeturpaTipoEstrutura = 11,
+                /* Deturpa tipo de estrutura*/
+
+          DeturpaPonteiroCorrente = 12,
+                /* Deturpa ponteiro corrente*/
+          
+          DeturpaPonteiroOrigem = 13
+                /* Deturpa ponteiro origem*/
+
 
    } LIS_tpModosDeturpacao ;
 
