@@ -23,18 +23,21 @@ por convenção, além de utilizar o programa draw.io para desenhar o modelo físico
 07/05/2016; 1 horas trabalhadas; Codificar Módulo, Revisar Código do Módulo; Adição de comentários e revisão de padrões estabelecidos por convenção, 
 além do LEIA-ME ter sido redigido.
 08/05/2016; 6 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Todos os membros testaram os arquivos executáveis e
-a compilação deles, em nome da entrega de um trabalho bem feito. Conclusão do modelo físico.
-08/05/2016; 6 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Todos os membros testaram os arquivos executáveis e
 a compilação deles, em nome da entrega de um trabalho bem feito. Conclusão do modelo físico.
-08/05/2016; 6 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Todos os membros testaram os arquivos executáveis e
-a compilação deles, em nome da entrega de um trabalho bem feito. Conclusão do modelo físico.
-08/05/2016; 6 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Todos os membros testaram os arquivos executáveis e
-a compilação deles, em nome da entrega de um trabalho bem feito. Conclusão do modelo físico.
-08/05/2016; 6 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Todos os membros testaram os arquivos executáveis e
-a compilação deles, em nome da entrega de um trabalho bem feito. Conclusão do modelo físico.
-08/05/2016; 6 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Todos os membros testaram os arquivos executáveis e
-a compilação deles, em nome da entrega de um trabalho bem feito. Conclusão do modelo físico.
-08/05/2016; 6 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Todos os membros testaram os arquivos executáveis e
-a compilação deles, em nome da entrega de um trabalho bem feito. Conclusão do modelo físico.
-08/05/2016; 6 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Todos os membros testaram os arquivos executáveis e
+06/06/2016; 2 horas trabalhadas; Especificar os módulos, Revisar Especificações, Especificar as Funções; Atividade realizada em sala de aula, 
+como parte do T3, que consistiu em especificarmos e desenharmos os módulos, bem como corrigir erros na especificação de requisitos, além de dar 
+nomes às funções de cada módulo.
+13/06/2016; 2 horas trabalhadas; Especificar os módulos, Revisar Especificações, Especificar as Funções; Atividade realizada em sala de aula, 
+como parte do T3, que consistiu em especificarmos e desenharmos os módulos, bem como corrigir erros na especificação de requisitos, além de dar 
+nomes às funções de cada módulo.
+18/05/2016; 6 horas trabalhadas; Codificar Módulo; Começo da implementação do módulo Partida;
+22/06/2016; 2 horas trabalhadas; Especificar os módulos, Revisar Especificações, Especificar as Funções; Atividade realizada em sala de aula, 
+como parte do T3, que consistiu em especificarmos e desenharmos os módulos, bem como corrigir erros na especificação de requisitos, além de dar 
+nomes às funções de cada módulo.
+26/06/2016; 1 horas trabalhadas; Implementar testes de verificação do arquivo executável;
+28/06/2016; 2 horas trabalhadas; Codificar Módulo, Revisar Código do Módulo; Adição de comentários e revisão de padrões estabelecidos por convenção, 
+30/06/2016; 1 horas trabalhadas; Especificar os módulos, Revisar Especificações, Especificar as Funções;
+01/07/2016; 6 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Implementação do documento em pdf com
+a lista genérica autoverificável e suas assertivas.
+01/07/2016; 6 horas trabalhadas; Diagnosticar e Corrigir os Problemas Encontrados, Realizar Testes; Todos os membros testaram os arquivos executáveis e
 a compilação deles, em nome da entrega de um trabalho bem feito. Conclusão do modelo físico.

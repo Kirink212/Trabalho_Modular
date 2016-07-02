@@ -24,10 +24,50 @@ b) Testar se o programa acusa número inválido de jogada menor que 1 (string util
 
 c) Testar se o programa acusa número inválido de jogada para strings não numéricas (string utilizada "aeuahdallad") --> OK
 
-2) Aceitar ou recusar truco, seis, nove e doze:
+d) Comando válido digitado igual a 1 --> OK
+
+e) Comando válido digitado igual a 2 --> OK
+
+f) Comando válido digitado igual a 3 --> OK
+
+g) Comando válido digitado igual a 4 --> OK
+
+3) Aceitar ou recusar truco, seis, nove e doze:
 
 a) Testar se o programa acusa número inválido de jogada maior que 2 (string utilizada "7") --> OK
 
 b) Testar se o programa acusa número inválido de jogada menor que 1 (string utilizada "-1") --> OK
 
 c) Testar se o programa acusa número inválido de jogada para strings não numéricas (string utilizada "lkhjlkhjl") --> OK
+
+d) Comando válido digitado igual a 1 --> OK
+
+d) Comando válido digitado igual a 2 --> OK
+
+e) Desistência
+
+4) Mensagens em geral:
+
+a) Placar da partida --> OK
+
+b) Placar da mão --> OK
+
+c) Comunicação com o usuário (scanfs, pedidos, jogadas) --> OK
+
+d) Número da mão --> OK
+
+5) Teste da mão de onze:
+
+a) Funcionalidade ativada quando o placar chega a 11 para um dos grupos --> OK
+
+b) Comando válido digitado igual a 1 --> OK
+
+c) Comando válido digitado igual a 2 --> OK
+
+d) Testar se o programa acusa número inválido de jogada maior que 2 (string utilizada "3") --> OK
+
+e) Testar se o programa acusa número inválido de jogada menor que 1 (string utilizada "0") --> OK
+
+e) Testar se o programa acusa número inválido de jogada menor que 1 (string utilizada "-15") --> OK
+
+f) Testar se o programa acusa número inválido de jogada para strings não numéricas (string utilizada "sdfgsdf") --> OK
