@@ -165,9 +165,9 @@
 		 CED_DefinirTipoEspaco( pLista , LIS_TipoEspacoCabeca ) ;
 	  #endif
      
-     #ifdef _DEBUG
-            CNT_CONTAR( "Lista existe, criar lista" );
-     #endif
+	  #ifdef _DEBUG
+		 CNT_CONTAR( "Lista existe, criar lista" );
+	  #endif
       
       LimparCabeca( pLista ) ;
 

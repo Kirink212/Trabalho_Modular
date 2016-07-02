@@ -1,0 +1,33 @@
+Trabalho T4 - Programação Modular
+
+Teste manuais para o jogo Truco
+
+1) Escolha de número de jogadores:
+
+a) Testar se o programa acusa número inválido de jogadores maiores que 3 (string utilizada "432452") --> OK
+
+b) Testar se o programa acusa número inválido de jogadores menores que 1 (string utilizada "-11") --> OK
+
+c) Testar se o programa acusa número inválido de jogadores para strings não numéricas (string utilizada "aeuahdallad") --> OK
+
+d) Comando válido digitado igual a 1 --> OK
+
+e) Comando válido digitado igual a 2 --> OK
+
+f) Comando válido digitado igual a 3 --> OK
+
+2) Jogadas a serem feitas após o embaralhamento das cartas, escolha da manilha, distribuição das cartas:
+
+a) Testar se o programa acusa número inválido de jogada maior que 4 (string utilizada "5") --> OK
+
+b) Testar se o programa acusa número inválido de jogada menor que 1 (string utilizada "-13") --> OK
+
+c) Testar se o programa acusa número inválido de jogada para strings não numéricas (string utilizada "aeuahdallad") --> OK
+
+2) Aceitar ou recusar truco, seis, nove e doze:
+
+a) Testar se o programa acusa número inválido de jogada maior que 2 (string utilizada "7") --> OK
+
+b) Testar se o programa acusa número inválido de jogada menor que 1 (string utilizada "-1") --> OK
+
+c) Testar se o programa acusa número inválido de jogada para strings não numéricas (string utilizada "lkhjlkhjl") --> OK
