@@ -24,4 +24,4 @@
 30/06/2016 ; 40 minutos ; Diagnosticar e corrigir os problemas encontrados ; Scripts de teste estavam dando erro relacionado a limitação de memória devido ao include do CESPDIN.h no módulo de teste do LISTA.
 30/06/2016 ; 4 horas ; Codificar módulo ; Codificação do módulo PARTIDA, funções LimparMao, LimparMesa, GerenciarPartida e correções em GerenciarMao e GerenciarRodada.
 30/06/2016 ; 30 minutos ; Diagnosticar e corrigir os problemas encontrados ; No módulo PARTIDA, a segunda instância de GerenciarMao estava dando erro, pois o baralho da mão anterior não havia sido retirado da lista de listas.
-01/07/2016 ; 1 hora e 30 minutos ; Codificar módulo ; Codificação do módulo PARTIDA. Terminar de implementar pedido de truco, exibição de cartas já na mesa, exibição do ganhador da rodada, exibição do ganhador da mão, exibição do placar antes de finalizar o jogo e liberar variáveis.
+01/07/2016 ; 2 horas ; Codificar módulo ; Codificação do módulo PARTIDA. Terminar de implementar pedido de truco, mão de onze, exibição de cartas já na mesa, exibição do ganhador da rodada, exibição do ganhador da mão, exibição do placar antes de finalizar o jogo e liberar variáveis.
