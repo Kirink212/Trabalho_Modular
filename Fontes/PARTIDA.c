@@ -128,11 +128,8 @@ void PAR_GerenciarPartida( )
 		 numeroAtualJogadores += 2 )
    {
 		jogador = LIS_CriarLista( NULL ) ;
-
 		LIS_InserirElementoAntes( equipeUm , jogador ) ;
-
 		jogador = LIS_CriarLista( NULL ) ;
-
 		LIS_InserirElementoAntes( equipeDois , jogador ) ;
    }
    
@@ -151,7 +148,6 @@ void PAR_GerenciarPartida( )
 	   {
 		   pontuacaoPartidaEquipeUm += valorMao ;
 	   }
-
 	   else if ( vencedorMao == PAR_CondRetEquipeDoisVenceu )
 	   {
 		   pontuacaoPartidaEquipeDois += valorMao ;
@@ -165,14 +161,11 @@ void PAR_GerenciarPartida( )
 		   {
 			   equipeMaoDeOnze = 1 ;
 		   }/* if */
-
 		   else if ( pontuacaoPartidaEquipeDois == 11 )
 		   {
 			   equipeMaoDeOnze = 2 ;
 		   }/* else if */
-
 	   }/* if */
-
    }/* while */
 
    MES_ExibirPlacar( pontuacaoPartidaEquipeUm ,
@@ -195,11 +188,8 @@ void PAR_GerenciarPartida( )
    
    /* Limpar as listas de jogadores e a estrutura
    *  principal. */
-   
    LIS_IrInicioLista( equipeUm ) ;
-
    jogador = ( LIS_tppLista ) LIS_ObterValor( equipeUm ) ;
-
    if ( jogador )
    {
 	   LIS_DestruirLista( jogador ) ;
@@ -560,7 +550,8 @@ PAR_tpCondRet PAR_GerenciarMao( )
 		vencedorRodada ,
 		valorRodada = 1 ,
 		vencedorPrimeiraRodada = 0 ,
-		manilha ;
+		manilha ,
+		comando ;
 		
 	char * manilhaString ;
 		
@@ -585,6 +576,13 @@ PAR_tpCondRet PAR_GerenciarMao( )
 	/* Realizar embaralhamento */
     BAR_EmbaralharCartas( baralho ) ;
 	
+	/* Avisar a mão de onze */
+	if ( equipeMaoDeOnze != -1 )
+	{
+		MES_ExibirMensagem( "Uma equipe atingiu 11 pontos." , 0 ) ;
+		MES_ExibirMensagem( "A mao de onze sera ativada agora." , 1 ) ;
+	}
+	
 	/* Ok, a lista de listas está pronta para ser utilizada.
 	*  Precisamos agora distribuir as cartas. Avançamos 1 casa
 	*  na lista para chegar à primeira equipe. Como o processo
@@ -601,12 +599,53 @@ PAR_tpCondRet PAR_GerenciarMao( )
 		jogador = ( LIS_tppLista ) LIS_ObterValor( equipe ) ;
 		BAR_DistribuirCartas( baralho , jogador ) ;
 		retornoLista = LIS_AvancarElementoCorrente( equipe , 1 ) ;
+		/* Se o jogador for da equipe da mão de onze, devemos
+		*  mostrar suas cartas. */
+		if ( i + 1 == equipeMaoDeOnze )
+		{
+			MES_ExibirMensagem( "Cartas do jogador:" , 1 ) ;
+			MES_ExibirCartas( jogador ) ;
+		}
 		
 		while ( retornoLista != LIS_CondRetFimLista )
 		{
 			jogador = ( LIS_tppLista ) LIS_ObterValor( equipe ) ;
 			BAR_DistribuirCartas( baralho , jogador ) ;
 			retornoLista = LIS_AvancarElementoCorrente( equipe , 1 ) ;
+			/* Se o jogador for da equipe da mão de onze, devemos
+			*  mostrar suas cartas. */
+			if ( i + 1 == equipeMaoDeOnze )
+			{
+				MES_ExibirMensagem( "Cartas do jogador:" , 1 ) ;
+				MES_ExibirCartas( jogador ) ;
+			}
+		}
+	}
+	
+	if ( equipeMaoDeOnze != -1 )
+	{
+		MES_ExibirMensagem( "A equipe " , 1 ) ;
+		MES_ExibirValor( equipeMaoDeOnze ) ;
+		MES_ExibirMensagem( " deseja desistir desta mao?" , 0 ) ;
+		MES_ExibirMensagem( "1 - Sim\n2 - Nao" , 1 ) ;
+		MES_ReceberComando( &comando , 1 , 2 ) ;
+		system( "cls" ) ;
+		if ( comando == 1 )
+		{
+			PAR_LimparMao() ;
+			BAR_LiberarBaralho( baralho ) ;
+			LIS_IrInicioLista( estruturaPrincipal ) ;
+			LIS_ExcluirElemento( estruturaPrincipal ) ;
+			if ( equipeMaoDeOnze == 1 )
+			{
+				MES_ExibirMensagem( "Equipe 2 venceu a mao." , 0 ) ;
+				return PAR_CondRetEquipeDoisVenceu ;
+			}
+			else
+			{
+				MES_ExibirMensagem( "Equipe 1 venceu a mao." , 0 ) ;
+				return PAR_CondRetEquipeUmVenceu ;
+			}
 		}
 	}
 	
@@ -819,16 +858,6 @@ PAR_tpCondRet PAR_GerenciarMao( )
 
 		return PAR_CondRetEquipeDoisVenceu ;
 	}
-}
-/***************************************************************************
-*
-*  Função: BAR  &Criar baralho
-*  ****/
-void PAR_IniciarMaoDeOnze(int indiceEquipe, int numeroTotalJogadores)
-{
-    //integrantes do Equipe podem vizualizar a carta de seus parceiros
-    
-    
 }
 /***************************************************************************
 *

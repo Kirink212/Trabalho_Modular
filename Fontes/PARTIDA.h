@@ -16,8 +16,6 @@ PAR_tpCondRet PAR_GerenciarRodada( int manilha , char* manilhaString );
 
 PAR_tpCondRet PAR_GerenciarMao();
 
-void PAR_IniciarMaoDeOnze();
-
 PAR_tpCondRet PAR_PedirAumento(int equipeAtual , int jogadorAtual );
 
 void PAR_LimparMesa();
